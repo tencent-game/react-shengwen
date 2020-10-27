@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Route} from "react-router-dom"
 import {WingBlank} from 'antd-mobile'
 import {StyledMyPage} from "./styledMy"
 import MyAvatar from "./MyAvatar";
@@ -6,7 +7,6 @@ import MyAvatarLogin from "./MyAvatarLogin";
 import MyList from "./MyList";
 // 图片
 import {withRouter} from "react-router-dom"
-
 
 class My extends Component {
   state = {
@@ -28,6 +28,7 @@ class My extends Component {
           }
         </WingBlank>
         <MyList/>
+        <Route path="/my/123"><div>123</div></Route>
       </StyledMyPage>
     );
   }

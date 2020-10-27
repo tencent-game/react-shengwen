@@ -16,11 +16,11 @@ function MyAvatarLogin(props) {
         <div className="avatar-top-center">
           <h3>特立独行的狗</h3>
           <span><i onClick={() => {
-            props.history.push("/my/concern")
+            props.history.push("/followFans/concern")
           }}>关注 22</i>&nbsp;&nbsp;<i>粉丝 2302</i></span>
         </div>
         <div className="avatar-top-right">
-          <span onClick={() => props.history.push("/myPersonalData")}>个人主页</span>
+          <span onClick={() => props.history.push("/personal/dynamic")}>个人主页</span>
           <Icon type="right"/>
         </div>
       </div>
