@@ -6,7 +6,7 @@ import followImg from "../assets/img/my/follow.png"
 import addFollow from "../assets/img/my/addFollow.png"
 
 function FollowAndFans(props) {
-  const [activeTag, setActiveTag] = useState("concern")
+  const [activeTag, setActiveTag] = useState("follow")
   const [follow, setFollow] = useState(false)
   return (
     <>
@@ -15,14 +15,14 @@ function FollowAndFans(props) {
           <img
             src={back}
             alt=""
-            onClick={() => props.history.goBack("/")}
+            onClick={() => props.history.goBack("/my")}
           /></div>
         <ul>
           <li
-            className={activeTag === "concern" ? "active" : ""}
+            className={activeTag === "follow" ? "active" : ""}
             onClick={() => {
-              setActiveTag("concern")
-              props.history.push("/my/concern")
+              setActiveTag("follow")
+              props.history.replace("/followFans/follow")
             }}
           >
             <h3>我的关注</h3>
@@ -32,7 +32,7 @@ function FollowAndFans(props) {
             className={activeTag === "fans" ? "active" : ""}
             onClick={() => {
               setActiveTag("fans")
-              props.history.push("/my/fans")
+              props.history.replace("/followFans/fans")
             }}
           >
             <h3>我的粉丝</h3>
