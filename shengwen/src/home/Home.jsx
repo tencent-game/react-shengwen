@@ -9,6 +9,7 @@ import message from "../assets/img/message.png"
 import messageActive from "../assets/img/message-active.png"
 import my from "../assets/img/my.png"
 import myActive from "../assets/img/my-active.png"
+import PageHome from './homepage/container/PageHome';
 
 class Home extends Component {
   constructor(props) {
@@ -53,7 +54,7 @@ class Home extends Component {
             }}
             data-seed="logId"
           >
-            <div>Home</div>
+            <PageHome></PageHome>
           </TabBar.Item>
           <TabBar.Item
             icon={
