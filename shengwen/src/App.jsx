@@ -1,29 +1,51 @@
 import React, {Component} from 'react';
-import {Route, Switch} from "react-router-dom"
+import {Route, Switch, Redirect} from "react-router-dom"
 import Login from "./login/Login";
-import Home from "./home/Home";
-import Submitted from "./my/Submitted";
+import {withRouter} from "react-router-dom"
+import My from "./my/My"
 import FollowAndFans from "./my/FollowAndFans";
 import MyPersonalData from "./my/MyPersonalData";
-// import {NavLink} from "react-router-dom"
-// import {NavBar} from "./StyledApp";
-// import home from "./assets/img/home.png"
-// import dynamic from "./assets/img/dynamic.png"
+import Home from "./home/Home"
+import PageFooter from "./component/PageFooter"
 
 class App extends Component {
+
+  renderFooter() {
+    let {pathname} = this.props.location
+    if (!/\/(home|dynamic|my|message)/.test(pathname)) return "";
+    return <PageFooter/>
+  }
+
   render() {
     return (
       <div>
         <Switch>
-          <Route path="/" exact><Home/></Route>
-          <Route path="/login"><Login/></Route>
-          <Route path="/submitted"><Submitted/></Route>
-          <Route path="/my/:tag"><FollowAndFans/></Route>
-          <Route path="/myPersonalData"><MyPersonalData/></Route>
+          <Route path="/home"><Home/></Route>
+          <Route path="/my">
+            <My/>
+          </Route>
+          <Route path="/dynamic">
+            <div>
+              <button onClick={() => {
+                this.props.history.push("/detail")
+              }}>跳转
+              </button>
+            </div>
+          </Route>
+          <Route path="/message">
+            <div>message</div>
+          </Route>
+          <Route path="/login">
+            <Login/>
+          </Route>
+          <Route path="/followFans/:tag"><FollowAndFans/></Route>
+          <Route path="/personal/:tag"><MyPersonalData/></Route>
+          <Redirect from="/" to="/home"/>
         </Switch>
+        {this.renderFooter()}
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

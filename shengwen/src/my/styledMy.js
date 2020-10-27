@@ -271,6 +271,7 @@ const StyledMyPublicMainItem = border(
   `
 )
 
+// 我的个人主页顶部部分
 const StyledMyPersonalDataTop = border(
   styled.div`
     padding: 0 .12rem;
@@ -298,6 +299,7 @@ const StyledMyPersonalDataTop = border(
   `
 )
 
+// 我的个人主页中间部分
 const StyledMyPersonalDataMain = styled.div`
   padding: .16rem .12rem 0 .12rem;
   .avatar-top-left {
@@ -361,8 +363,44 @@ const StyledMyPersonalDataMain = styled.div`
         }
       }
     }
+  } 
+`
+
+const StyledMyPersonalDataBottom = styled.div`
+  padding: 0 .12rem;
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    
+    height: .96rem;
+    li {
+      width: 16.67%;
+      text-align: center;
+      h3 {
+        color: #999999;
+        font-weight: 400;
+      }
+      span {
+        display: inline-block;
+        width: .3rem;
+        height: .05rem;
+        
+      }
+    }
+    li.active {
+      h3 {
+        color: #333333;
+        font-size: .18rem;
+        font-weight: 700;
+      }
+      span {
+        background-color: rgba(61, 126, 255, 1);
+        border-radius: .03rem;
+      }
+    }
   }
-  
 `
 
 export {
@@ -373,5 +411,6 @@ export {
   StyledMyPublicMain,
   StyledMyPublicMainItem,
   StyledMyPersonalDataTop,
-  StyledMyPersonalDataMain
+  StyledMyPersonalDataMain,
+  StyledMyPersonalDataBottom
 }

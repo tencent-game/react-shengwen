@@ -1,21 +1,44 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyledMyPersonalDataTop,
-  StyledMyPersonalDataMain
+  StyledMyPersonalDataMain,
+  StyledMyPersonalDataBottom
 } from "./styledMy"
+import {useHistory} from "react-router-dom"
+import MyDynamic from "./MyDynamic"
+import MyArticle from "./MyArticle"
+import MyInfo from "./MyInfo"
 
+// 图片
 import back from "../assets/img/my/back.png"
 import more from "../assets/img/my/more.png"
 import defaultImg from "../assets/img/u4206.png";
 import woman from "../assets/img/my/woman.png";
+
 function MyPersonalData(props) {
+  const history = useHistory()
+  const [activeTag, setActiveTag] = useState("dynamic")
+
+  const renderContent = (tagName) => {
+    switch (tagName) {
+      case "dynamic":
+        return <MyDynamic/>
+      case "article":
+        return <MyArticle/>
+      case "info":
+        return <MyInfo/>
+      default:
+        return null
+    }
+  }
+
   return (
     <div>
       <StyledMyPersonalDataTop
         className="personal-top"
         width="0 0 1px 0"
       >
-        <img src={back} alt="back"/>
+        <img src={back} alt="back" onClick={() => history.goBack()}/>
         <h1>我的动态</h1>
         <img src={more} alt="more"/>
       </StyledMyPersonalDataTop>
@@ -49,9 +72,41 @@ function MyPersonalData(props) {
           </ul>
         </div>
       </StyledMyPersonalDataMain>
-      <div>
-
-      </div>
+      <StyledMyPersonalDataBottom>
+        <ul>
+          <li
+            className={activeTag === "dynamic" ? "active" : ""}
+            onClick={() => {
+              history.replace("/personal/dynamic")
+              setActiveTag("dynamic")
+            }}
+          >
+            <h3>动态</h3>
+            <span/>
+          </li>
+          <li
+            className={activeTag === "article" ? "active" : ""}
+            onClick={() => {
+              history.replace("/personal/article")
+              setActiveTag("article")
+            }}
+          >
+            <h3>文章</h3>
+            <span/>
+          </li>
+          <li
+            className={activeTag === "info" ? "active" : ""}
+            onClick={() => {
+              history.replace("/personal/info")
+              setActiveTag("info")
+            }}
+          >
+            <h3>资料</h3>
+            <span/>
+          </li>
+        </ul>
+        {renderContent(activeTag)}
+      </StyledMyPersonalDataBottom>
     </div>
   );
 }
