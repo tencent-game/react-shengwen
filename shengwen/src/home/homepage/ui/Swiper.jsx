@@ -15,6 +15,7 @@ export default class Swiper extends Component {
     return (
       <SwiperWrap>
         <Carousel
+          selectedIndex={2}
           autoplay={true}
           infinite
           dots={false}
