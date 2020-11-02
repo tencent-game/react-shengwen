@@ -15,9 +15,9 @@ const StyledFooter = styled.div`
   bottom: 0;
   width: 100%;
   height: .5rem;
-  line-height: .5rem;
   ul {
     display: flex;
+    line-height: .5rem;
     justify-content: center;
     align-items: center;
     text-align: center;
