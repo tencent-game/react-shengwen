@@ -17,12 +17,10 @@ export default class SelectionofActivities extends Component {
         <h1>活动精选</h1>
         <Carousel
           infinite
-          selectedIndex={2}
           dots={false}
           cellSpacing={15}
           slideWidth={0.4}
-          beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-          afterChange={index => this.setState({ slideIndex: index })}
+          
         >
           <div className="active-img">
             <img src={active1 } alt=""/>

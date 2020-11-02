@@ -9,29 +9,6 @@ const HeaderWrap=styled.div`
   width :100%;
   line-height: .47rem;
   z-index: 9999;
-  h1{
-    position: absolute;
-    float:left;
-    line-height: .46rem;
-    padding-left: .1rem;
-    font-size:.24rem;
-    font-weight：700;
-  } 
-  >div{
-    float:right;
-    width: .72rem;
-    padding-right:.1rem;
-    padding-top:.12rem;
-    .menu{
-      float:left;     
-      height: .23rem;
-      width: .23rem;
-    }
-    .search{
-      float:right;
-      height: .23rem;
-      width: .23rem;
-    }
     .my-drawer {
       position: relative;
       overflow: auto;
@@ -46,7 +23,7 @@ const HeaderWrap=styled.div`
       width: 300px;
       padding: 0;
     }
-  }
+  
   
 `
 const SwiperWrap=styled.div`
@@ -108,7 +85,8 @@ const ActivitiesWrap=styled.div`
     padding-bottom:.1rem;
   }
   .active-img{
-    box-shadow: .03rem .03rem .015rem #888888;
+    border：1px solid #888888;
+    box-shadow: .04rem .04rem .02rem .02rem #888888;
     img{
       width: 100%;
     }

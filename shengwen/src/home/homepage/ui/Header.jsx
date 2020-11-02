@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {
-  HeaderWrap
+  HeaderWrap,
 } from './PageHomeStyle'
 import { Drawer, List, NavBar } from 'antd-mobile';
 import menu from '@a/img/homepage/menu.png';
@@ -23,28 +23,28 @@ class Header extends Component {
       })}
     </List>);
 
-    return (<HeaderWrap >
-      <NavBar 
+    return (<HeaderWrap>
+      <NavBar className="HeaderWrap"
         mode="light"
-        leftContent={[
-          <span style={{
-            position: "absolute",
-            float:"left",
-            lineHeight: ".46rem",
-            paddingLeft: ".1rem",
-            fontSize:".24rem",
-          }}>首页</span>
-        ]}
+        leftContent={[<h1 style={{color:"#000000",fontSize:".24rem"}}>首页</h1>]}
         rightContent={[
-          <div key="0"  className="menu" style={
-         {background:`url(${menu}) center center /  23px 23px no-repeat`}}></div>
+          <div key="1"  className="menu" style={
+         {background:`url(${menu}) center center /  23px 23px no-repeat`,  
+         height: ".23rem",
+         width: ".23rem",
+         marginRight:".4rem"}}
+         onLeftClick={() => this.onDock('docked')}
+          ></div>,
+          <div key="2"  className="search" style={
+            {background:`url(${search}) center center /  23px 23px no-repeat`,
+            height: ".23rem",
+            width: ".23rem",
+          }}></div>
         ]}
-        onClick={() => this.onDock('docked')}>
-        <div key="0"  className="search" style={
-         {background:`url(${search}) center center /  23px 23px no-repeat`}}></div>
+        >
       </NavBar>
       <Drawer
-        className="my-drawer"
+        className="myDrawer"
         style={{ minHeight: document.documentElement.clientHeight }}
         contentStyle={{ color: '#A6A6A6', textAlign: 'center', paddingTop: 42 }}
         sidebarStyle={{ border: '1px solid #ddd' }}
