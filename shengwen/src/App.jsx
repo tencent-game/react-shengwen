@@ -1,21 +1,21 @@
 import React, {Component} from 'react';
-<<<<<<< HEAD
+// <<<<<<< HEAD
 import {Route, Switch} from "react-router-dom"
-import Login from "./login/Login";
-import Home from "./home/Home";
-import Submitted from "./my/Submitted";
-import FollowAndFans from "./my/FollowAndFans";
-import MyPersonalData from "./my/MyPersonalData";
+import Login from "./login/container/Login";
+// import Home from "./home/Home";
+// import Submitted from "./my/Submitted";
+// import FollowAndFans from "./my/FollowAndFans";
+// import MyPersonalData from "./my/MyPersonalData";
 import Like from './message/ui/Like'
 // import {NavLink} from "react-router-dom"
 // import {NavBar} from "./StyledApp";
 // import home from "./assets/img/home.png"
 // import dynamic from "./assets/img/dynamic.png"
-=======
-import {Route, Switch, Redirect} from "react-router-dom"
+// =======
+import {  Redirect} from "react-router-dom"
 import PageHome from "@/home/homepage/container/PageHome";
 // import Login from "./login/Login";
-import {Login} from "@/login/index";
+// import {Login} from "@/login/index";
 import {withRouter} from "react-router-dom"
 import My from "./my/My"
 import FollowAndFans from "./my/followandfans/FollowAndFans";
@@ -28,7 +28,8 @@ import Settings from "./my/settings/Settings";
 import Feedback from "./my/feedback/Feedback";
 import VerificationCode from "./login/ui/VerificationCode";
 import Withdrawals from "./my/wallet/Withdrawals";
->>>>>>> master
+import Message from './message/container/Message'
+// >>>>>>> master
 
 class App extends Component {
 
@@ -55,7 +56,7 @@ class App extends Component {
             </div>
           </Route>
           <Route path="/message">
-            <div>message</div>
+            <Message/>
           </Route>
           <Route path="/login">
             <Login/>
@@ -64,14 +65,14 @@ class App extends Component {
           <Route path="/followFans/:tag"><FollowAndFans/></Route>
           <Route path="/personal/:tag"><MyPersonalData/></Route>
           <Route path="/submitted"><Submitted/></Route>
-<<<<<<< HEAD
+{/* <<<<<<< HEAD */}
           <Route path="/my/:tag"><FollowAndFans/></Route>
           <Route path="/myPersonalData"><MyPersonalData/></Route>
           <Route path="/like"><Like/></Route>
           {/* <Route path="/dianzan"><DianZan/></Route>
           <Route path="/dianzan"><DianZan/></Route>
           <Route path="/dianzan"><DianZan/></Route> */}
-=======
+{/* ======= */}
           <Route path="/activities"><Activities/></Route>
           <Route path="/wallet"><Wallet/></Route>
           {/*提现*/}
@@ -79,7 +80,7 @@ class App extends Component {
           <Route path="/settings"><Settings/></Route>
           <Route path="/feedback"><Feedback/></Route>
           <Redirect from="/" to="/home"/>
->>>>>>> master
+{/* >>>>>>> master */}
         </Switch>
         {this.renderFooter()}
       </div>

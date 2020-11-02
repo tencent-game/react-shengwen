@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { withRouter } from 'react-router-dom'
 
 import MessageUi from '../ui/MessageUi'
 
-export default class Message extends Component {
-  render() {
+function Message (props) {
     return (
       <MessageUi></MessageUi>
     )
-  }
 }
+export default withRouter(Message)

@@ -69,7 +69,8 @@ const TipsWrap = styled.div`
 `
 
 const LikeWrap = styled.div`
-  padding:.44rem .15rem 0 .1rem;
+  margin:.44rem .15rem 0 .1rem;
+  border-bottom:1px solid #999999;
   h1{
     text-align:center;
     font-size:.18rem;
@@ -81,10 +82,25 @@ const LikeWrap = styled.div`
       flex-direction:column;
       .name{
         display:flex;
+        font-size:.1rem;
         justify-content:space-between;
         align-items:center;
         .left{
           display:flex;
+          p{
+            display:flex;
+            font-size:.14rem;
+            align-items:center;
+            padding-left:.1rem;
+          }
+        }
+      }
+      .title{
+        display:flex;
+        font-size:.12rem;
+        padding:.1rem 0;
+        p{
+          color:#999999;
         }
       }
   }
