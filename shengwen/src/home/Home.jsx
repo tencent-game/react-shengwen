@@ -9,12 +9,13 @@ import message from "../assets/img/message.png"
 import messageActive from "../assets/img/message-active.png"
 import my from "../assets/img/my.png"
 import myActive from "../assets/img/my-active.png"
+import Message from '../message/container/Message'
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'My',
+      selectedTab: 'Message',
       hidden: false,
       fullScreen: true,
     };
@@ -108,7 +109,7 @@ class Home extends Component {
               });
             }}
           >
-            <div>Message</div>
+            <Message>Message</Message>
           </TabBar.Item>
           <TabBar.Item
             icon={
