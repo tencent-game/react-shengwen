@@ -32,6 +32,20 @@ const HeaderWrap=styled.div`
       height: .23rem;
       width: .23rem;
     }
+    .my-drawer {
+      position: relative;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .my-drawer .am-drawer-sidebar {
+      background-color: #fff;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .my-drawer .am-drawer-sidebar .am-list {
+      width: 300px;
+      padding: 0;
+    }
   }
   
 `
@@ -93,8 +107,8 @@ const ActivitiesWrap=styled.div`
     padding-top:.1rem;
     padding-bottom:.1rem;
   }
-  div{
-    box-shadow: .06rem .06rem .03rem #888888;
+  .active-img{
+    box-shadow: .03rem .03rem .015rem #888888;
     img{
       width: 100%;
     }

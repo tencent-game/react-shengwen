@@ -24,19 +24,19 @@ export default class SelectionofActivities extends Component {
           beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
           afterChange={index => this.setState({ slideIndex: index })}
         >
-          <div>
+          <div className="active-img">
             <img src={active1 } alt=""/>
             <span>全栈工程师线下培训课程</span>
           </div>
-          <div>
+          <div className="active-img">
             <img src={active2 } alt=""/>
             <span>全栈工程师线下培训课程</span>
           </div>
-          <div>
+          <div className="active-img">
             <img src={active3 } alt=""/>
             <span>全栈工程师线下培训课程</span>
           </div>
-          <div>
+          <div className="active-img">
             <img src={active4 } alt=""/>
             <span>全栈工程师线下培训课程</span>
           </div>
