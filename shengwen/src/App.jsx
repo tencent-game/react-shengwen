@@ -36,7 +36,7 @@ class App extends Component {
           </Route>
           <Route path="/dynamic" component={Dynamic}></Route>
           <Route path="/Dynamicdetail" component={DynamicDetail}></Route>
-          
+
           <Route path="/message">
             <div>message</div>
           </Route>
