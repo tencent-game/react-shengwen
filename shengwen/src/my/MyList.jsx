@@ -1,6 +1,7 @@
 import React from 'react';
-import {withRouter} from "react-router-dom"
+import {useSelector} from "react-redux"
 import {List} from "antd-mobile";
+import {useHistory} from "react-router-dom"
 // 图片
 import submitted from "../assets/img/my/post.png";
 import activities from "../assets/img/my/activities.png";
@@ -11,6 +12,22 @@ import feedback from "../assets/img/my/feedback.png";
 const Item = List.Item
 
 function MyList(props) {
+  const history = useHistory()
+  const isLogin = useSelector(state => {
+    return state.getIn(["login", "isLogin"])
+  })
+
+
+  const isToLogin = (path) => {
+    return () => {
+      if (isLogin) {
+        history.push(path)
+      } else {
+        history.push("/login")
+      }
+    }
+  }
+
   return (
     <>
       <List className="my-list">
@@ -18,17 +35,12 @@ function MyList(props) {
           style={{height: ".64rem"}}
           thumb={submitted}
           arrow="horizontal"
-          onClick={() => {
-            let history = props.history
-            history.push("/submitted")
-            console.log(props)
-          }}
+          onClick={isToLogin("/submitted")}
         ><span>我要投稿</span></Item>
         <Item
           style={{height: ".64rem"}}
           thumb={activities}
-          onClick={() => {
-          }}
+          onClick={isToLogin("/activities")}
           arrow="horizontal"
         >
           <span>我的活动</span>
@@ -36,8 +48,7 @@ function MyList(props) {
         <Item
           style={{height: ".64rem"}}
           thumb={wallet}
-          onClick={() => {
-          }}
+          onClick={isToLogin("/wallet")}
           arrow="horizontal"
         >
           <span>我的钱包</span>
@@ -45,8 +56,7 @@ function MyList(props) {
         <Item
           style={{height: ".64rem"}}
           thumb={setting}
-          onClick={() => {
-          }}
+          onClick={isToLogin("/settings")}
           arrow="horizontal"
         >
           <span>设置</span>
@@ -54,8 +64,7 @@ function MyList(props) {
         <Item
           style={{height: ".64rem"}}
           thumb={feedback}
-          onClick={() => {
-          }}
+          onClick={isToLogin("/feedback")}
           arrow="horizontal"
         >
           <span>反馈建议</span>
@@ -65,4 +74,4 @@ function MyList(props) {
   );
 }
 
-export default withRouter(MyList);
+export default MyList;

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from "react-redux"
 import {WingBlank} from 'antd-mobile'
 import {StyledMyPage} from "./styledMy"
 import MyAvatar from "./MyAvatar";
@@ -7,16 +8,14 @@ import MyList from "./MyList";
 // 图片
 import {withRouter} from "react-router-dom"
 
+const mapStateToProps = (state) => {
+  return {
+    isLogin: state.getIn(["login", "isLogin"])
+  }
+}
 
+@connect(mapStateToProps)
 class My extends Component {
-  state = {
-    isLogin: true
-  }
-
-  toLogin = () => {
-    console.log(this)
-    this.props.history.push("/login")
-  }
 
   render() {
     return (
@@ -24,7 +23,7 @@ class My extends Component {
         <WingBlank>
           <h1 style={{fontSize: ".24rem", fontWeight: "700"}}>我的</h1>
           {
-            this.state.isLogin ? <MyAvatarLogin/> : <MyAvatar/>
+            this.props.isLogin ? <MyAvatarLogin/> : <MyAvatar/>
           }
         </WingBlank>
         <MyList/>

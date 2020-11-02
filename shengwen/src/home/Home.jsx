@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {Component} from "react";
 import {TabBar} from 'antd-mobile';
 import My from "../my/My";
@@ -10,19 +11,15 @@ import messageActive from "../assets/img/message-active.png"
 import my from "../assets/img/my.png"
 import myActive from "../assets/img/my-active.png"
 import PageHome from './homepage/container/PageHome';
+=======
+import React, {Component} from 'react';
+import {withRouter} from "react-router-dom"
+>>>>>>> master
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedTab: 'My',
-      hidden: false,
-      fullScreen: true,
-    };
-  }
-
   render() {
     return (
+<<<<<<< HEAD
       <div style={this.state.fullScreen ? {position: 'fixed', height: '100%', width: '100%', top: 0} : {height: 400}}>
         <TabBar
           unselectedTintColor="#949494"
@@ -139,9 +136,16 @@ class Home extends Component {
             <My/>
           </TabBar.Item>
         </TabBar>
+=======
+      <div>
+        <button onClick={() => {
+          this.props.history.push("/login")
+        }}>点击
+        </button>
+>>>>>>> master
       </div>
     );
   }
 }
 
-export default Home
+export default withRouter(Home);
