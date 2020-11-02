@@ -14,10 +14,12 @@ const StyledFooter = styled.div`
   background-color: #fff;
   bottom: 0;
   width: 100%;
-  height: .5rem;
-  line-height: .5rem;
+  height: .44rem;
+  z-index:999;
+  background:#fff;
   ul {
     display: flex;
+    padding-top:.1rem;
     justify-content: center;
     align-items: center;
     text-align: center;

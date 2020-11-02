@@ -15,31 +15,28 @@ import Settings from "./my/settings/Settings";
 import Feedback from "./my/feedback/Feedback";
 import VerificationCode from "./login/ui/VerificationCode";
 import Withdrawals from "./my/wallet/Withdrawals";
+import Dynamic from './dynamic/container/Dynamic'
+import DynamicDetail from './dynamic/container/DynamicDetail';
 
 class App extends Component {
 
   renderFooter() {
     let {pathname} = this.props.location
-    if (/^\/(home|dynamic|my|message)$/.test(pathname)) return <PageFooter/>;
-    return null
+    if (pathname.match(/\/home.*?|\/dynamic.*?|\/message.*?|\/my.*?/)) return <PageFooter/>
+    return ''
   }
 
   render() {
     return (
-      <div>
+      <div style={{height:'100%'}}>
         <Switch>
           <Route path="/home"><PageHome/></Route>
           <Route path="/my">
             <My/>
           </Route>
-          <Route path="/dynamic">
-            <div>
-              <button onClick={() => {
-                this.props.history.push("/detail")
-              }}>跳转
-              </button>
-            </div>
-          </Route>
+          <Route path="/dynamic" component={Dynamic}></Route>
+          <Route path="/Dynamicdetail" component={DynamicDetail}></Route>
+          
           <Route path="/message">
             <div>message</div>
           </Route>
