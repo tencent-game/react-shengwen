@@ -16,9 +16,9 @@ function PageFooter(props) {
           <div className="home"/>
         </li>
         <li
-          className={history.location.pathname === "/dynamic" ? "active" : ""}
+          className={history.location.pathname.match(/^(\/dynamic).*?/)  ? "active" : ""}
           onClick={() => {
-            history.push("/dynamic")
+            history.push("/dynamic/hot")
           }}
         >
           <div className="dynamic"/>
