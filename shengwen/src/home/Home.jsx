@@ -7,7 +7,8 @@ class Home extends Component {
       <div>
         <button onClick={() => {
           this.props.history.push("/login")
-        }}>点击</button>
+        }}>点击
+        </button>
       </div>
     );
   }

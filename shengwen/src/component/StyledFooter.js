@@ -27,21 +27,25 @@ const StyledFooter = styled.div`
         width: .18rem;
         height: .19rem;
         background-image: url("${home}");
+        background-size: .18rem .19rem;
       }
       .dynamic {
         width: .21rem;
         height: .21rem;
-        background-image: url("${dynamic}");        
+        background-image: url("${dynamic}");
+        background-size: .21rem;
       }
       .message {
         width: .19rem;
         height: .2rem;
-        background-image: url("${message}");                
+        background-image: url("${message}");
+        background-size: .19rem .2rem;
       }
       .my {
         width: .16rem;
         height: .19rem;
-        background-image: url("${my}");        
+        background-image: url("${my}");
+        background-size: .16rem .19rem;
       }
     }
     li.active {

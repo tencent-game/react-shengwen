@@ -1,11 +1,12 @@
 import React from 'react';
 import {StyledMyAvatarLogin} from "./styledMy"
 import {Icon} from "antd-mobile"
-import {withRouter} from "react-router-dom"
+import {useHistory} from "react-router-dom"
 import defaultImg from "../assets/img/u4206.png";
 import woman from "../assets/img/my/woman.png"
 
 function MyAvatarLogin(props) {
+  const history = useHistory()
   return (
     <StyledMyAvatarLogin>
       <div className="avatar-top">
@@ -15,12 +16,20 @@ function MyAvatarLogin(props) {
         </div>
         <div className="avatar-top-center">
           <h3>特立独行的狗</h3>
-          <span><i onClick={() => {
-            props.history.push("/followFans/concern")
-          }}>关注 22</i>&nbsp;&nbsp;<i>粉丝 2302</i></span>
+          <span>
+            <i
+              onClick={() => history.push("/followFans/concern")}
+            >
+            关注 22
+            </i>&nbsp;&nbsp;&nbsp;&nbsp;
+            <i
+              onClick={() => history.push("/followFans/fans")}
+            >
+              粉丝 2302
+            </i></span>
         </div>
         <div className="avatar-top-right">
-          <span onClick={() => props.history.push("/personal/dynamic")}>个人主页</span>
+          <span onClick={() => history.push("/personal/dynamic")}>个人主页</span>
           <Icon type="right"/>
         </div>
       </div>
@@ -46,4 +55,4 @@ function MyAvatarLogin(props) {
   );
 }
 
-export default withRouter(MyAvatarLogin);
+export default MyAvatarLogin;
