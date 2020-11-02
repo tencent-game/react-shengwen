@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {Route, Switch, Redirect} from "react-router-dom"
+import PageHome from "@/home/homepage/container/PageHome";
 // import Login from "./login/Login";
 import {Login} from "@/login/index";
 import {withRouter} from "react-router-dom"
 import My from "./my/My"
 import FollowAndFans from "./my/followandfans/FollowAndFans";
 import MyPersonalData from "./my/personal/MyPersonalData";
-import Home from "./home/Home"
 import PageFooter from "./component/PageFooter"
 import Submitted from "./my/submitted/Submitted"
 import Activities from "./my/activities/Activities";
@@ -28,7 +28,7 @@ class App extends Component {
     return (
       <div>
         <Switch>
-          <Route path="/home"><Home/></Route>
+          <Route path="/home"><PageHome/></Route>
           <Route path="/my">
             <My/>
           </Route>

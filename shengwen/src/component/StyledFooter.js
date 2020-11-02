@@ -10,9 +10,12 @@ import myActive from "../assets/img/my-active.png"
 
 const StyledFooter = styled.div`
   position: absolute;
+  z-index: 999;
+  background-color: #fff;
   bottom: 0;
   width: 100%;
-  height: .44rem;
+  height: .5rem;
+  line-height: .5rem;
   ul {
     display: flex;
     justify-content: center;
