@@ -3,7 +3,7 @@ import styled from "styled-components";
 import border from "../../styles/border";
 
 const StyledMyDynamic = styled.div`
-  padding: 0 .12rem;
+  padding: .1rem 0 0 0;
   .dynamic-item {
     width: 100%;
     height: 3.3rem;
@@ -111,13 +111,13 @@ const StyledMyPersonalDataMain = styled.div`
 // 我的个人主页底部 动态 文章 资料 列表
 const StyledMyPersonalDataBottom = styled.div`
   padding: 0 .12rem;
-  ul {
+  .my-list {
     display: flex;
     flex-direction: row;
     justify-content: left;
     align-items: center;
-    
-    height: .96rem;
+    height: .54rem;
+    margin-top: .3rem;
     li {
       width: 16.67%;
       text-align: center;
@@ -146,9 +146,87 @@ const StyledMyPersonalDataBottom = styled.div`
   }
 `
 
+// 我的个人主页  文章
+const StyledPersonalDataArticle = border(
+  styled.div`
+    height: 1.44rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .item-img {
+      width: 1.45rem;
+      height: 1.02rem;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .item-text {
+      padding-left: .12rem;
+      height: 1.02rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      p {
+        flex: 1;
+      }
+      .item-bottom {
+        height: 0.16rem;
+        font-size: .12rem;
+        color: #999999;
+        display: flex;
+        flex-direction: row;
+        p {
+          img {
+            margin-right: .04rem;
+            width: .16rem;
+            height: .16rem;
+          }
+        }
+      }
+    }
+  `
+)
+
+// 我的个人主页  资料
+const StyledPersonalDataInfo = styled.div`
+  padding-bottom: .3rem;
+  margin-top: .2rem;
+  .info-list {
+    display: flex;
+    flex-direction: column;
+    li {
+      height: 0.34rem;
+      line-height: 0.34rem;
+      display: flex;
+      flex-direction: row;
+      div:first-child {
+        width: .8rem;
+        color: #999999;
+      }
+      div:last-child {
+        flex: 1;
+      }
+    }
+    li:last-child {
+      button {
+        width: .67rem;
+        height: .32rem;
+        line-height: .32rem;
+        background-color: rgba(61, 126, 255, 0.388235294117647);
+        color: #FFFFFF;
+        border: 0;
+        margin-right: .16rem;
+      }
+    }
+  }
+`
+
 export {
   StyledMyDynamic,
   StyledMyPersonalDataBottom,
   StyledMyPersonalDataMain,
-  StyledMyPersonalDataTop
+  StyledMyPersonalDataTop,
+  StyledPersonalDataArticle,
+  StyledPersonalDataInfo
 }

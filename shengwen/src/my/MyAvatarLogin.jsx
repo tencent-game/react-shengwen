@@ -29,7 +29,7 @@ function MyAvatarLogin(props) {
             </i></span>
         </div>
         <div className="avatar-top-right">
-          <span onClick={() => history.push("/personal/dynamic")}>个人主页</span>
+          <span onClick={() => history.push("/personal/ambulatory")}>个人主页</span>
           <Icon type="right"/>
         </div>
       </div>
