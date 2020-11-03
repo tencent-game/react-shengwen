@@ -1,6 +1,7 @@
 // 我的个人主页底部 动态 样式
 import styled from "styled-components";
 import border from "../../styles/border";
+import {select} from "@/assets/img/my/select.png";
 
 const StyledMyDynamic = styled.div`
   padding: .1rem 0 0 0;
@@ -31,12 +32,16 @@ const StyledMyPersonalDataTop = border(
     }
     h1 {
       flex: 1;
+      font-weight: 400;
       font-size: .18rem;
       text-align: center;
     }
     img[alt="more"] {
       width: .17rem;
       height: .18rem;
+    }
+    span {
+      color: #3D7EFF;
     }
   `
 )
@@ -149,6 +154,7 @@ const StyledMyPersonalDataBottom = styled.div`
 // 我的个人主页  文章
 const StyledPersonalDataArticle = border(
   styled.div`
+    padding: 0 .12rem;
     height: 1.44rem;
     display: flex;
     flex-direction: row;

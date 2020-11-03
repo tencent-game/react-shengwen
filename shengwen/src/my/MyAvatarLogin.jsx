@@ -34,11 +34,17 @@ function MyAvatarLogin(props) {
         </div>
       </div>
       <div className="avatar-bottom">
-        <div className="avatar-bottom-item">
+        <div
+          className="avatar-bottom-item"
+          onClick={() => history.push("/ambulatoryArticle/ambulatory")}
+        >
           <h4>232</h4>
           <span>动态</span>
         </div>
-        <div className="avatar-bottom-item">
+        <div
+          className="avatar-bottom-item"
+          onClick={() => history.push("/ambulatoryArticle/article")}
+        >
           <h4>269</h4>
           <span>文章</span>
         </div>
@@ -46,7 +52,10 @@ function MyAvatarLogin(props) {
           <h4>143</h4>
           <span>收藏</span>
         </div>
-        <div className="avatar-bottom-item">
+        <div
+          className="avatar-bottom-item"
+          onClick={() => history.push("/historyLog")}
+        >
           <h4>20</h4>
           <span>浏览</span>
         </div>

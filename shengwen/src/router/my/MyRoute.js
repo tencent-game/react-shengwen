@@ -7,6 +7,8 @@ import Wallet from "@/my/wallet/Wallet";
 import Settings from "@/my/settings/Settings";
 import Feedback from "@/my/feedback/Feedback";
 import Withdrawals from "@/my/wallet/Withdrawals";
+import AmbulatoryAndArticle from "@/my/ambulatoryandarticle/AmbulatoryAndArticle";
+import HistoryLog from "@/my/history/HistoryLog";
 
 const MyRoute = [
   {
@@ -36,5 +38,11 @@ const MyRoute = [
   {
     id: 9, path: "/withdrawals", component: Withdrawals, exact: false
   },
+  {
+    id: 10, path: "/ambulatoryArticle", component: AmbulatoryAndArticle, exact: false
+  },
+  {
+    id: 11, path: "/historyLog", component: HistoryLog, exact: false
+  }
 ]
 export default MyRoute

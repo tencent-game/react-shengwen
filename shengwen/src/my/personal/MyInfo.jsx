@@ -13,8 +13,8 @@ function MyInfo(props) {
           <div>签名</div>
           <div>与你分享我的观点，weibo：Alex Wang</div>
         </li>
-        <li style={{marginTop:".2rem"}}>
-          <div style={{color:"#333333"}}>社交账号</div>
+        <li style={{marginTop: ".2rem"}}>
+          <div style={{color: "#333333"}}>社交账号</div>
         </li>
         <li>
           <div>QQ</div>
@@ -28,10 +28,10 @@ function MyInfo(props) {
           <div>微博</div>
           <div>daisy</div>
         </li>
-        <li style={{marginTop:".2rem"}}>
-          <div style={{color:"#333333"}}>关注领域</div>
+        <li style={{marginTop: ".2rem"}}>
+          <div style={{color: "#333333"}}>关注领域</div>
         </li>
-        <li style={{marginTop:".2rem"}}>
+        <li style={{marginTop: ".2rem"}}>
           <button>科技</button>
           <button>娱乐</button>
           <button>媒体</button>
