@@ -36,6 +36,7 @@ const FollowBtnCss = styled.div `
   
 `
 
+
 export {
-  FollowBtnCss
+  FollowBtnCss,
 }

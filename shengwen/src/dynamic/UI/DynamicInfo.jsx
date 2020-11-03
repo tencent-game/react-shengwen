@@ -21,6 +21,14 @@ const DynamicInfo = () => {
           <DynamicInfoHeader></DynamicInfoHeader>
           <DynamicFooter></DynamicFooter>
         </li>
+        <li className='licontent'>
+          <DynamicInfoHeader></DynamicInfoHeader>
+          <DynamicFooter></DynamicFooter>
+        </li>
+        <li className='licontent'>
+          <DynamicInfoHeader></DynamicInfoHeader>
+          <DynamicFooter></DynamicFooter>
+        </li>
       </ul>
     </DynamicContentCss>
   );
