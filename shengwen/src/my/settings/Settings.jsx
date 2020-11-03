@@ -19,8 +19,7 @@ function Settings(props) {
           <Item
             arrow="horizontal"
             style={{height: ".5rem"}}
-            onClick={() => {
-            }}>
+            onClick={() => history.push("/editInfo")}>
             <span style={{fontSize: ".14rem"}}>账号资料</span>
           </Item>
           <Item

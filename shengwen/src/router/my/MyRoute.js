@@ -9,6 +9,7 @@ import Feedback from "@/my/feedback/Feedback";
 import Withdrawals from "@/my/wallet/Withdrawals";
 import AmbulatoryAndArticle from "@/my/ambulatoryandarticle/AmbulatoryAndArticle";
 import HistoryLog from "@/my/history/HistoryLog";
+import EditInfo from "@/my/editinfo/EditInfo";
 
 const MyRoute = [
   {
@@ -43,6 +44,9 @@ const MyRoute = [
   },
   {
     id: 11, path: "/historyLog", component: HistoryLog, exact: false
+  },
+  {
+    id: 12, path: "/editInfo", component: EditInfo, exact: false
   }
 ]
 export default MyRoute

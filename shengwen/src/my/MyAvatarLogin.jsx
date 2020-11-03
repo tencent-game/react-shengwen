@@ -2,8 +2,8 @@ import React from 'react';
 import {StyledMyAvatarLogin} from "./styledMy"
 import {Icon} from "antd-mobile"
 import {useHistory} from "react-router-dom"
-import defaultImg from "../assets/img/u4206.png";
-import woman from "../assets/img/my/woman.png"
+import defaultImg from "@/assets/img/u4206.png";
+import woman from "@/assets/img/my/woman.png"
 
 function MyAvatarLogin(props) {
   const history = useHistory()
