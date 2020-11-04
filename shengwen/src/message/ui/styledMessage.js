@@ -2,18 +2,20 @@ import styled from 'styled-components'
 
 
 const Container = styled.div`
-  padding:.44rem .2rem 0 .2rem;
+  padding:0 .2rem 0 .2rem;
   display:flex;
   flex-direction:column;
   header{
     font-size:.24rem;
     font-weight:700;
     font-family: "思源黑体 Bold", 思源黑体;
+    line-heiht:.44rem;
+    height:.44rem;
   }
 `
 
 const MenuWrap = styled.div`
-    padding:.1rem;
+    height:100%;
     > div {
       flex:1;
       display:flex;
@@ -69,17 +71,32 @@ const TipsWrap = styled.div`
 `
 
 const LikeWrap = styled.div`
-  margin:.44rem .15rem 0 .1rem;
-  border-bottom:1px solid #999999;
-  h1{
-    text-align:center;
-    font-size:.18rem;
-    font-weight:normal;
-    padding-bottom:.3rem;
+  padding:0 .15rem 0 .1rem;
+  header{
+    display:flex;
+    padding:.1rem .2rem;
+    p{
+      text-align:center;
+      font-size:.18rem;
+      font-weight:normal;
+      height:.44rem;
+      line-height:.44rem;
+      width:100%;
+    }
+    .back{
+      display:flxe;
+      align-items:center;
+      img{
+        width:.18rem;
+        height:.18rem;
+      }
+    }
   }
   .wrap{
-      display:flex;
-      flex-direction:column;
+    display:flex;
+    flex-direction:column;
+    border-bottom:1px solid #999999;
+    margin-bottom:.1rem;
       .name{
         display:flex;
         font-size:.1rem;
