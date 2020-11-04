@@ -11,6 +11,18 @@ const StyledMyDynamic = styled.div`
     box-shadow: 2px 2px 10px rgba(215, 215, 215, 1);
     border-radius: .1rem;
     margin-bottom: .14rem;
+    .ulcontent{
+      width:100%;
+      padding:.1rem;
+      .licontent{
+        width:100%;
+        height:3rem;
+        background:#fff;
+        margin-bottom:.1rem;
+        border-radius:.2rem;
+        position:relative;
+      }
+    }
   }
 `
 

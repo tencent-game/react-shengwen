@@ -1,11 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyledMyAvatarLogin} from "./styledMy"
 import {Icon} from "antd-mobile"
 import {useHistory} from "react-router-dom"
 import defaultImg from "@/assets/img/u4206.png";
 import woman from "@/assets/img/my/woman.png"
+import http from "@/utils/http";
 
 function MyAvatarLogin(props) {
+  useEffect(async () => {
+    let result = await http.get("http://localhost:9000/api/userInfo")
+    console.log(result)
+  })
+
   const history = useHistory()
   return (
     <StyledMyAvatarLogin>
