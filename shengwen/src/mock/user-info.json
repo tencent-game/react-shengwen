@@ -1,0 +1,18 @@
+{
+  "code": 1,
+  "msg": "查询成功",
+  "data": {
+    "userInfo": {
+      "userId": "001",
+      "userName": "清酒独酌",
+      "userinfoPhoto": "https://img2.woyaogexing.com/2020/03/01/63dba6d27b79483ea51f51c42c0604cd!400x400.jpeg",
+      "userinfoSex": "男",
+      "userinfoWeixin": "清酒独酌"
+    }
+  },
+  "likeCount": 1111,
+  "favoriateCount": 11111,
+  "fansCount": 111111,
+  "attentionCount": 1111,
+  "fanstype": 1
+}
