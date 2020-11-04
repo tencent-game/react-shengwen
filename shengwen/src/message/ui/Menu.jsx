@@ -11,9 +11,9 @@ import { withRouter } from 'react-router-dom'
     return (
       <MenuWrap>
         <div onClick={() => props.history.push("/like")}> <img src={img1} alt=""/> <div className="title">赞</div> </div>
-        <div> <img src={img2} alt=""/> <div className="title">评论</div> </div>
-        <div> <img src={img3} alt=""/> <div className="title">粉丝</div> </div>
-        <div> <img src={img4} alt=""/> <div className="title">通知</div> </div>
+        <div onClick={() => props.history.push("/remark")}> <img src={img2} alt=""/> <div className="title">评论</div> </div>
+        <div onClick={() => props.history.push("/fans")}> <img src={img3} alt=""/> <div className="title">粉丝</div> </div>
+        <div onClick={() => props.history.push("/notice")}> <img src={img4} alt=""/> <div className="title">通知</div> </div>
       </MenuWrap>
     )
 }
