@@ -21,14 +21,14 @@ import weibo from "../../assets/img/my/weibo.png"
 
 function MyPersonalData(props) {
   const history = useHistory()
-  const [activeTag, setActiveTag] = useState("dynamic")
+  const [activeTag, setActiveTag] = useState("info")
   const [state, setState] = useState({
     clicked: 'none'
   })
 
   const renderContent = (tagName) => {
     switch (tagName) {
-      case "dynamic":
+      case "ambulatory":
         return <MyDynamic/>
       case "article":
         return <MyArticle/>
@@ -99,12 +99,12 @@ function MyPersonalData(props) {
         </div>
       </StyledMyPersonalDataMain>
       <StyledMyPersonalDataBottom>
-        <ul>
+        <ul className="my-list">
           <li
-            className={activeTag === "dynamic" ? "active" : ""}
+            className={activeTag === "ambulatory" ? "active" : ""}
             onClick={() => {
-              history.replace("/personal/dynamic")
-              setActiveTag("dynamic")
+              history.replace("/personal/ambulatory")
+              setActiveTag("ambulatory")
             }}
           >
             <h3>动态</h3>

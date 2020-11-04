@@ -6,6 +6,8 @@ const DynamicHeaderCss = styled.div `
   ul{
     width:100%;
     height:100%;
+    position:sticky;
+    top:0;
     li{
       float:left;
       line-height:.4rem;
@@ -25,7 +27,7 @@ const DynamicContentCss = styled.div `
   width:100%;
   height:100%;
   overflow-y:scroll;
-  padding-bottom:.8rem;
+  padding-bottom:.5rem;
   .ulcontent{
     width:100%;
     padding:.1rem;
@@ -114,7 +116,6 @@ const DynamicInfoCss = styled.div `
 `
 const DynamicFooterCss= styled.ul `
   width:100%;
-  height:.5rem;
   display:flex;
   justify-content:space-around;
   position:absolute;
@@ -139,9 +140,113 @@ const DynamicFooterCss= styled.ul `
   }
 `
 const DynamicDetailFooterCss = styled.div `
-  height:.85rem;
+  height:.45rem;
+  width:100%;
+  background:#fff;
   position:absolute;
   bottom:0;
+  left:0;
+  cursor:pointer;
+  display:flex;
+  .replay{
+    position:absolute;
+    width:2.5rem;
+    height:.4rem;
+    right:0;
+    bottom:0;
+  }
+`
+const AddCommentCss = styled.div `
+  width:1.24rem;
+  height:.3rem;
+  border-width:0;
+  position:absolute;
+  background-color:rgba(242,242,242);
+  border-radius:.3rem;
+  text-align:center;
+  left:.1rem;
+  span{
+    width: 90px;
+    height: 25px;
+    line-height:.3rem;
+    background-color: transparent;
+    font-family: '思源黑体';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    text-decoration: none;
+    color: rgb(51, 51, 51);
+    text-align: left;
+    border-color: transparent;
+    outline-style: none;
+  }
+}
+`
+
+const DynamicDetailCommentCss = styled.div `
+  width:100%;
+  padding:0.1rem;
+  margin-top:1rem;
+  .commentleft{
+    width:.3rem;
+    padding-top:.1rem;
+    float:left;
+    .images{
+      width:.3rem;
+      height:.3rem;
+      img{
+        width:100%;
+        height:100%;
+        display:block;
+        border-radius:.3rem;
+      }
+    }
+  }
+  .commentright{
+    width:3.2rem;
+    padding:.08rem 0 0 .4rem;
+    .header{
+      display:flex;
+      justify-content:space-between;
+      >p{
+        font-size:.12rem;
+        color:#bbb;
+      }
+    }
+    .firstcommentinfo{
+      width:100%;
+      >p{
+        font-size:.14rem
+      }
+    }
+    .firstcommentdetail{
+      display:flex;
+      justify-content:space-between;
+      height:.2rem;
+      margin-top:.1rem; 
+      >p{
+        font-size:.12rem;
+      }
+      >span{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        img{
+          width:.16rem;
+          height:.16rem;
+          margin-left:.2rem;
+        }
+      }
+    }
+    .replayinfo{
+      width:100%;
+      height:1rem;
+      background:rgba(242, 242, 242, 1);
+      padding:.1rem;
+    }
+    
+
+  }
 `
 
 export {
@@ -150,5 +255,7 @@ export {
   DynamicInfoHeaderCss,
   DynamicInfoCss,
   DynamicFooterCss,
-  DynamicDetailFooterCss
+  DynamicDetailFooterCss,
+  AddCommentCss,
+  DynamicDetailCommentCss
 }

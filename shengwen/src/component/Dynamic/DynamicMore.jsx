@@ -124,6 +124,7 @@ class DynamicMore extends React.Component {
     });
   }
   transmitValue=(value)=>{
+    console.log(value)
     switch (value) {
       case '不感兴趣':
        let str= '不感兴趣成功，以后为您减少此类推荐'
@@ -134,8 +135,12 @@ class DynamicMore extends React.Component {
         Toast.info(str1)
         break
       case '取消关注':
-        let str2=''
+        let str2='成功取消关注！'
+        Toast.info(str2)
+        break
       case '举报':
+        let str3 = '成功举报！'
+        Toast.info(str3)
         break
       default:
         return ''

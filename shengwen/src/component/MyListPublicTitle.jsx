@@ -13,7 +13,7 @@ function MyListPublicTitle(props) {
       {
         history.location.pathname === "/submitted" ? (
           <img src={share} alt="share" onClick={props.onShareClick}/>
-        ):(<div/>)
+        ) : (<div/>)
       }
     </StyledMyListPublicTitle>
   );
