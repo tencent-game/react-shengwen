@@ -2,8 +2,8 @@ import React from 'react';
 import {StyledMyAvatarLogin} from "./styledMy"
 import {Icon} from "antd-mobile"
 import {useHistory} from "react-router-dom"
-import defaultImg from "../assets/img/u4206.png";
-import woman from "../assets/img/my/woman.png"
+import defaultImg from "@/assets/img/u4206.png";
+import woman from "@/assets/img/my/woman.png"
 
 function MyAvatarLogin(props) {
   const history = useHistory()
@@ -29,16 +29,22 @@ function MyAvatarLogin(props) {
             </i></span>
         </div>
         <div className="avatar-top-right">
-          <span onClick={() => history.push("/personal/dynamic")}>个人主页</span>
+          <span onClick={() => history.push("/personal/ambulatory")}>个人主页</span>
           <Icon type="right"/>
         </div>
       </div>
       <div className="avatar-bottom">
-        <div className="avatar-bottom-item">
+        <div
+          className="avatar-bottom-item"
+          onClick={() => history.push("/ambulatoryArticle/ambulatory")}
+        >
           <h4>232</h4>
           <span>动态</span>
         </div>
-        <div className="avatar-bottom-item">
+        <div
+          className="avatar-bottom-item"
+          onClick={() => history.push("/ambulatoryArticle/article")}
+        >
           <h4>269</h4>
           <span>文章</span>
         </div>
@@ -46,7 +52,10 @@ function MyAvatarLogin(props) {
           <h4>143</h4>
           <span>收藏</span>
         </div>
-        <div className="avatar-bottom-item">
+        <div
+          className="avatar-bottom-item"
+          onClick={() => history.push("/historyLog")}
+        >
           <h4>20</h4>
           <span>浏览</span>
         </div>
