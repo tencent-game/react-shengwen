@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 const HeaderWrap=styled.div`
-  position: sticky;
-  top: 0;
   background:#ffffff;
   box-sizing: border-box;
   height : .47rem;
@@ -10,18 +8,34 @@ const HeaderWrap=styled.div`
   line-height: .47rem;
   z-index: 9999;
     .my-drawer {
+      height: 100%;
       position: relative;
       overflow: auto;
       -webkit-overflow-scrolling: touch;
     }
     .my-drawer .am-drawer-sidebar {
       background-color: #fff;
-      overflow: auto;
+      height: 100%;
       -webkit-overflow-scrolling: touch;
     }
     .my-drawer .am-drawer-sidebar .am-list {
-      width: 300px;
       padding: 0;
+      height: 100%,
+    }
+    .my-drawer .am-drawer-sidebar .am-list  .am-list-body{
+      display: grid;
+      height: 100%;
+      grid-template-columns: repeat(3, 1.03rem);
+      grid-template-rows: repeat(5, .5rem);
+      grid-row-gap: .2rem;
+      grid-column-gap: .2rem;
+      justify-content:center;
+      
+    }
+    .my-drawer .am-drawer-sidebar .am-list  .am-list-body .am-list-item{
+      width: 1.03rem;
+      height: .5rem;
+      border: 1px solid #0080ff;
     }
   
   

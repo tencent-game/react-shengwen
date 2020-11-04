@@ -17,6 +17,7 @@ export default class SelectionofActivities extends Component {
         <h1>活动精选</h1>
         <Carousel
           infinite
+          selectedIndex={2}
           dots={false}
           cellSpacing={15}
           slideWidth={0.4}
