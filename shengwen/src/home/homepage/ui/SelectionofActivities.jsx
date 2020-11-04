@@ -9,8 +9,13 @@ import active1 from '@a/img/homepage/active-1.png'
 import active2 from '@a/img/homepage/active-2.png'
 import active3 from '@a/img/homepage/active-3.png'
 import active4 from '@a/img/homepage/active-4.png'
-
-export default class SelectionofActivities extends Component {
+import {withRouter} from "react-router-dom"
+@withRouter
+class SelectionofActivities extends Component {
+  handleClick=()=>{
+    let {history}=this.props
+    history.push('/detail')
+  }
   render() {
     return (
       <ActivitiesWrap>
@@ -23,19 +28,19 @@ export default class SelectionofActivities extends Component {
           slideWidth={0.4}
           
         >
-          <div className="active-img">
+          <div className="active-img" onClick={this.handleClick}>
             <img src={active1 } alt=""/>
             <span>全栈工程师线下培训课程</span>
           </div>
-          <div className="active-img">
+          <div className="active-img" onClick={this.handleClick}>
             <img src={active2 } alt=""/>
             <span>全栈工程师线下培训课程</span>
           </div>
-          <div className="active-img">
+          <div className="active-img" onClick={this.handleClick}>
             <img src={active3 } alt=""/>
             <span>全栈工程师线下培训课程</span>
           </div>
-          <div className="active-img">
+          <div className="active-img" onClick={this.handleClick}>
             <img src={active4 } alt=""/>
             <span>全栈工程师线下培训课程</span>
           </div>
@@ -44,3 +49,4 @@ export default class SelectionofActivities extends Component {
     )
   }
 }
+export default SelectionofActivities 
