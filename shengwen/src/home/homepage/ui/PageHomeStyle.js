@@ -1,38 +1,43 @@
 import styled from "styled-components";
 
 const HeaderWrap=styled.div`
-  position: sticky;
-  top: 0;
   background:#ffffff;
   box-sizing: border-box;
   height : .47rem;
   width :100%;
   line-height: .47rem;
   z-index: 9999;
-  h1{
-    position: absolute;
-    float:left;
-    line-height: .46rem;
-    padding-left: .1rem;
-    font-size:.24rem;
-    font-weight：700;
-  } 
-  >div{
-    float:right;
-    width: .72rem;
-    padding-right:.1rem;
-    padding-top:.12rem;
-    .menu{
-      float:left;     
-      height: .23rem;
-      width: .23rem;
+    .my-drawer {
+      height: 100%;
+      position: relative;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
     }
-    .search{
-      float:right;
-      height: .23rem;
-      width: .23rem;
+    .my-drawer .am-drawer-sidebar {
+      background-color: #fff;
+      height: 100%;
+      -webkit-overflow-scrolling: touch;
     }
-  }
+    .my-drawer .am-drawer-sidebar .am-list {
+      padding: 0;
+      height: 100%,
+    }
+    .my-drawer .am-drawer-sidebar .am-list  .am-list-body{
+      display: grid;
+      height: 100%;
+      grid-template-columns: repeat(3, 1.03rem);
+      grid-template-rows: repeat(5, .5rem);
+      grid-row-gap: .2rem;
+      grid-column-gap: .2rem;
+      justify-content:center;
+      
+    }
+    .my-drawer .am-drawer-sidebar .am-list  .am-list-body .am-list-item{
+      width: 1.03rem;
+      height: .5rem;
+      border: 1px solid #0080ff;
+    }
+  
   
 `
 const SwiperWrap=styled.div`
@@ -93,8 +98,9 @@ const ActivitiesWrap=styled.div`
     padding-top:.1rem;
     padding-bottom:.1rem;
   }
-  div{
-    box-shadow: .06rem .06rem .03rem #888888;
+  .active-img{
+    border：1px solid #888888;
+    box-shadow: .04rem .04rem .02rem .02rem #888888;
     img{
       width: 100%;
     }
