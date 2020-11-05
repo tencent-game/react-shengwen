@@ -25,7 +25,7 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject",
-    "mock": "json-server ./src/mock/mock.js -r ./src/mock/route.json -p 9000 -w"
+    "mock": "json-server src/mock/mock.js -r src/mock/route.json -p 9000 -w"
   },
   "eslintConfig": {
     "extends": "react-app"

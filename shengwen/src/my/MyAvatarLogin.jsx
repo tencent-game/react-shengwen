@@ -1,24 +1,22 @@
-import React, {useEffect} from 'react';
-import {StyledMyAvatarLogin} from "./styledMy"
-import {Icon} from "antd-mobile"
-import {useHistory} from "react-router-dom"
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from "react-redux"
+import { StyledMyAvatarLogin } from "./styledMy"
+import { Icon } from "antd-mobile"
+import { useHistory } from "react-router-dom"
 import defaultImg from "@/assets/img/u4206.png";
 import woman from "@/assets/img/my/woman.png"
-import http from "@/utils/http";
+import useGetUserInfo from "./useGetUserInfo"
 
 function MyAvatarLogin(props) {
-  useEffect(async () => {
-    let result = await http.get("http://localhost:9000/api/userInfo")
-    console.log(result)
-  })
-
+  const { state } = useGetUserInfo()
+  console.log(state)
   const history = useHistory()
   return (
     <StyledMyAvatarLogin>
       <div className="avatar-top">
         <div className="avatar-top-left">
-          <img src={defaultImg} alt=""/>
-          <img src={woman} alt="gender"/>
+          <img src={defaultImg} alt="" />
+          <img src={woman} alt="gender" />
         </div>
         <div className="avatar-top-center">
           <h3>特立独行的狗</h3>
@@ -26,7 +24,7 @@ function MyAvatarLogin(props) {
             <i
               onClick={() => history.push("/followFans/concern")}
             >
-            关注 22
+              关注 22
             </i>&nbsp;&nbsp;&nbsp;&nbsp;
             <i
               onClick={() => history.push("/followFans/fans")}
@@ -36,7 +34,7 @@ function MyAvatarLogin(props) {
         </div>
         <div className="avatar-top-right">
           <span onClick={() => history.push("/personal/ambulatory")}>个人主页</span>
-          <Icon type="right"/>
+          <Icon type="right" />
         </div>
       </div>
       <div className="avatar-bottom">

@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 // my主页面样式
-const StyledMyPage = styled.div`
+const StyledMyPage = styled.div `
     background-color: rgba(61, 126, 255, 1);
     color: #ffffff;
     height: 100%;
@@ -25,13 +25,13 @@ const StyledMyPage = styled.div`
       font-weight: 700;
       background-color: #ffffff;
       .am-list-body::before {
-        border: 0;!important;
+        border: 0!important;
       }
       .am-list-body::after {
-        border: 0;!important;
+        border: 0!important;
       }
       .am-list-line {
-      border: 0;!important
+      border: 0!important;
       }
       span {
       font-size: .14rem;
@@ -40,7 +40,7 @@ const StyledMyPage = styled.div`
 `
 
 // 未登录状态下头像部分样式
-const StyledMyAvatar = styled.div`
+const StyledMyAvatar = styled.div `
   align-items: center;
   display: flex;
   padding-top: .28rem;
@@ -67,7 +67,7 @@ const StyledMyAvatar = styled.div`
 `
 
 // 登陆下头像部分样式
-const StyledMyAvatarLogin = styled.div`
+const StyledMyAvatarLogin = styled.div `
   .avatar-top {
     width: 100%;
     height: 1rem;
@@ -83,8 +83,9 @@ const StyledMyAvatarLogin = styled.div`
       border-radius: 50%;
       background-color: #508bff;
       img {
-       width: .23rem;
-       height: .3rem;
+       width: 100%;
+       height: 100%;
+       border-radius: 50%;
       }
       img[alt=gender] {
         position: absolute;

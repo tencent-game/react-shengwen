@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import {connect} from "react-redux"
-import {WingBlank} from 'antd-mobile'
-import {StyledMyPage} from "./styledMy"
+import React, { Component } from 'react';
+import { connect } from "react-redux"
+import { WingBlank } from 'antd-mobile'
+import { StyledMyPage } from "./styledMy"
 import MyAvatar from "./MyAvatar";
 import MyAvatarLogin from "./MyAvatarLogin";
 import MyList from "./MyList";
 // 图片
-import {withRouter} from "react-router-dom"
+import { withRouter } from "react-router-dom"
 
 const mapStateToProps = (state) => {
   return {
