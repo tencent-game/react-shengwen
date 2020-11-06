@@ -1,6 +1,6 @@
 import React from 'react';
 import MyListPublicTitle from "@/component/MyListPublicTitle";
-import {StyledActivities} from "./styledActivities"
+import { StyledActivities } from "./styledActivities"
 import activitiesImg from "@/assets/img/my/activitiesImg.png"
 import eyes from "@/assets/img/my/eyes.png"
 import application from "@/assets/img/my/application.png"

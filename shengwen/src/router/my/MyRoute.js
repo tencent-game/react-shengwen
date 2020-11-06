@@ -1,4 +1,4 @@
-import My from "@/my/My"
+import { MyMain } from "@/my/index"
 import FollowAndFans from "@/my/followandfans/FollowAndFans";
 import MyPersonalData from "@/my/personal/MyPersonalData";
 import Submitted from "@/my/submitted/Submitted"
@@ -13,7 +13,7 @@ import EditInfo from "@/my/editinfo/EditInfo";
 
 const MyRoute = [
   {
-    id: 1, path: "/my", component: My, exact: false
+    id: 1, path: "/my", component: MyMain, exact: false
   },
   {
     id: 2, path: "/followFans", component: FollowAndFans, exact: false

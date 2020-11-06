@@ -1,13 +1,13 @@
 import React from 'react';
-import {useSelector} from "react-redux"
-import {List} from "antd-mobile";
-import {useHistory} from "react-router-dom"
+import { useSelector } from "react-redux"
+import { List } from "antd-mobile";
+import { useHistory } from "react-router-dom"
 // 图片
-import submitted from "../assets/img/my/post.png";
-import activities from "../assets/img/my/activities.png";
-import wallet from "../assets/img/my/wallet.png";
-import setting from "../assets/img/my/setting.png";
-import feedback from "../assets/img/my/feedback.png";
+import submitted from "@/assets/img/my/post.png";
+import activities from "@/assets/img/my/activities.png";
+import wallet from "@/assets/img/my/wallet.png";
+import setting from "@/assets/img/my/setting.png";
+import feedback from "@/assets/img/my/feedback.png";
 
 const Item = List.Item
 

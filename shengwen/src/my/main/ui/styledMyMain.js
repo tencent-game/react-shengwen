@@ -1,7 +1,7 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 // my主页面样式
-const StyledMyPage = styled.div `
+const StyledMyPage = styled.div`
     background-color: rgba(61, 126, 255, 1);
     color: #ffffff;
     height: 100%;
@@ -39,35 +39,8 @@ const StyledMyPage = styled.div `
     }
 `
 
-// 未登录状态下头像部分样式
-const StyledMyAvatar = styled.div `
-  align-items: center;
-  display: flex;
-  padding-top: .28rem;
-  padding-bottom: .18rem;
-  div {
-    display: table-cell;
-    width: .6rem;
-    height: .6rem;
-    text-align: center;
-    line-height: .6rem;
-    border-radius: 50%;
-    background-color: #508bff;
-    img {
-     width: .23rem;
-     height: .3rem;
-    }
-  }
-  span {
-    padding-left: .12rem;
-    font-size: .18rem;
-    flex: 1;
-    font-weight: 700;
-  }
-`
-
 // 登陆下头像部分样式
-const StyledMyAvatarLogin = styled.div `
+const StyledMyAvatarLogin = styled.div`
   .avatar-top {
     width: 100%;
     height: 1rem;
@@ -138,8 +111,35 @@ const StyledMyAvatarLogin = styled.div `
   }
 `
 
+// 未登录状态下头像部分样式
+const StyledMyAvatar = styled.div`
+  align-items: center;
+  display: flex;
+  padding-top: .28rem;
+  padding-bottom: .18rem;
+  div {
+    display: table-cell;
+    width: .6rem;
+    height: .6rem;
+    text-align: center;
+    line-height: .6rem;
+    border-radius: 50%;
+    background-color: #508bff;
+    img {
+     width: .23rem;
+     height: .3rem;
+    }
+  }
+  span {
+    padding-left: .12rem;
+    font-size: .18rem;
+    flex: 1;
+    font-weight: 700;
+  }
+`
+
 export {
   StyledMyPage,
-  StyledMyAvatar,
   StyledMyAvatarLogin,
+  StyledMyAvatar
 }

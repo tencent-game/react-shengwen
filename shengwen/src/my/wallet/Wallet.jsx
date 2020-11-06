@@ -1,8 +1,13 @@
 import React from 'react';
-import {StyledWallet, StyledBalance,StyledWalletItem,StyledStyledWalletItemTips} from "./styledWallet"
-import {useHistory} from "react-router-dom"
-import MyListPublicTitle from "../../component/MyListPublicTitle";
-import question from "../../assets/img/my/question.png"
+import {
+  StyledWallet,
+  StyledBalance,
+  StyledWalletItem,
+  StyledStyledWalletItemTips
+} from "./styledWallet"
+import { useHistory } from "react-router-dom"
+import MyListPublicTitle from "@/component/MyListPublicTitle";
+import question from "@/assets/img/my/question.png"
 
 function Wallet(props) {
   const history = useHistory()

@@ -1,25 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from "react-redux"
-import { StyledMyAvatarLogin } from "./styledMy"
+import React, { useContext } from 'react';
+import { StyledMyAvatarLogin } from "./styledMyMain"
 import { Icon } from "antd-mobile"
 import { useHistory } from "react-router-dom"
 import defaultImg from "@/assets/img/u4206.png";
 import woman from "@/assets/img/my/woman.png"
-import useGetUserInfo from "./useGetUserInfo"
+import UserData from "../container/context"
 
 function MyAvatarLogin(props) {
-  const { state } = useGetUserInfo()
-  console.log(state)
   const history = useHistory()
+  const userInfo = useContext(UserData);
   return (
     <StyledMyAvatarLogin>
       <div className="avatar-top">
         <div className="avatar-top-left">
-          <img src={defaultImg} alt="" />
-          <img src={woman} alt="gender" />
+          <img src={defaultImg} alt=""/>
+          <img src={woman} alt="gender"/>
         </div>
         <div className="avatar-top-center">
-          <h3>特立独行的狗</h3>
+          <h3>{userInfo.data.userInfo.userName}</h3>
           <span>
             <i
               onClick={() => history.push("/followFans/concern")}
@@ -34,7 +32,7 @@ function MyAvatarLogin(props) {
         </div>
         <div className="avatar-top-right">
           <span onClick={() => history.push("/personal/ambulatory")}>个人主页</span>
-          <Icon type="right" />
+          <Icon type="right"/>
         </div>
       </div>
       <div className="avatar-bottom">
