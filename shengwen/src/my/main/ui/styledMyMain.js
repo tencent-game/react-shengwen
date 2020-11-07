@@ -60,7 +60,7 @@ const StyledMyAvatarLogin = styled.div`
        height: 100%;
        border-radius: 50%;
       }
-      img[alt=gender] {
+      img[alt=woman] {
         position: absolute;
         width: .2rem;
         height: .2rem;
@@ -68,6 +68,13 @@ const StyledMyAvatarLogin = styled.div`
         right: 0;
         -moz-transform:rotate(-45deg);
         -webkit-transform:rotate(-45deg);
+      }
+      img[alt=man] {
+        position: absolute;
+        width: .22rem;
+        height: .22rem;
+        bottom: .05rem;
+        right: 0;
       }
     }
     .avatar-top-center {

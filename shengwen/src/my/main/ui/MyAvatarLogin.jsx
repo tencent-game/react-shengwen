@@ -4,17 +4,25 @@ import { Icon } from "antd-mobile"
 import { useHistory } from "react-router-dom"
 import defaultImg from "@/assets/img/u4206.png";
 import woman from "@/assets/img/my/woman.png"
+import man from "@/assets/img/my/man.png"
 import UserData from "../container/context"
 
 function MyAvatarLogin(props) {
   const history = useHistory()
   const userInfo = useContext(UserData);
+  console.log(userInfo)
   return (
     <StyledMyAvatarLogin>
       <div className="avatar-top">
         <div className="avatar-top-left">
-          <img src={defaultImg} alt=""/>
-          <img src={woman} alt="gender"/>
+          <img src={userInfo.data.userInfo.userinfoPhoto} alt=""/>
+          {
+            userInfo.data.userInfo.userinfoSex === "男" ? (
+              <img src={man} alt="man"/>
+            ):(
+              <img src={woman} alt="woman"/>
+            )
+          }
         </div>
         <div className="avatar-top-center">
           <h3>{userInfo.data.userInfo.userName}</h3>
@@ -22,12 +30,12 @@ function MyAvatarLogin(props) {
             <i
               onClick={() => history.push("/followFans/concern")}
             >
-              关注 22
+              关注 {userInfo.likeCount}
             </i>&nbsp;&nbsp;&nbsp;&nbsp;
             <i
               onClick={() => history.push("/followFans/fans")}
             >
-              粉丝 2302
+              粉丝 {userInfo.fansCount}
             </i></span>
         </div>
         <div className="avatar-top-right">

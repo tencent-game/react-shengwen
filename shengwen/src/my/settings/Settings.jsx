@@ -1,9 +1,9 @@
 import React from 'react';
-import {useHistory} from "react-router-dom"
-import {useDispatch} from "react-redux"
+import { useHistory } from "react-router-dom"
+import { useDispatch } from "react-redux"
 import MyListPublicTitle from "../../component/MyListPublicTitle";
-import {actionCreator} from "@/login/index"
-import {List} from "antd-mobile"
+import { actionCreator } from "@/login/index"
+import { List } from "antd-mobile"
 
 
 const Item = List.Item
