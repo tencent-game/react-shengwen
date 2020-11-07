@@ -2,7 +2,6 @@ import React from 'react';
 import {  DynamicInfoHeaderCss,DynamicInfoCss} from './StyledDynamic'
 import FollowBtn from '../../component/Dynamic/FollowBtn'
 import DynamicMore from '../../component/Dynamic/DynamicMore';
-import My from '../../assets/img/my.png'
 import {useHistory} from 'react-router-dom'
 import {info,info1,info2 } from '@a/img/Dynamic/index'
 const  DynamicInfoHeader =()=> {
@@ -17,7 +16,7 @@ const  DynamicInfoHeader =()=> {
       <>
       <DynamicInfoHeaderCss >
         <div className='dynamicleft' onClick={personalDynamic}>
-        <div className='image'><img src={My} alt="" /></div>
+        <div className='image'><img src={info} alt="" /></div>
         <div className="describe">
           <span>十点新闻</span>
           <p >2018-05-06 10:56:56</p>

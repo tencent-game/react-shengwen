@@ -3,6 +3,7 @@ import PageSearch from '@/home/searchpage/container/PageSearch'
 import searchResult from '@/home/searchpage/ui/searchResult'
 import Article from '@/home/searchpage/ui/Article'
 import Author from '@/home/searchpage/ui/Author'
+import PageField from "@/home/homepage/ui/PageField";
 
 const HomeRoute = [
   {
@@ -19,6 +20,9 @@ const HomeRoute = [
   },
   {
     id: 5, path: "/author", component: Author, exact: false
+  },
+  {
+    id: 6, path: "/field", component: PageField, exact: false
   },
 ]
 
