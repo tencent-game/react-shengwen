@@ -1,6 +1,6 @@
 import React from 'react';
-import {DynamicContentCss} from './StyledDynamic'
-import {Route,NavLink,Switch} from 'react-router-dom'
+
+import {Route,Switch} from 'react-router-dom'
 import DynamicInfo from './DynamicInfo'
 const DynamicContent = () => {
   return (

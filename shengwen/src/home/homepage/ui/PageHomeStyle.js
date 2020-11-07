@@ -6,23 +6,8 @@ const HeaderWrap=styled.div`
   height : .47rem;
   width :100%;
   line-height: .47rem;
-  z-index: 9999;
-    .my-drawer {
-      height: 100%;
-      position: relative;
-      overflow: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    .my-drawer .am-drawer-sidebar {
-      background-color: #fff;
-      height: 100%;
-      -webkit-overflow-scrolling: touch;
-    }
-    .my-drawer .am-drawer-sidebar .am-list {
-      padding: 0;
-      height: 100%,
-    }
-    .my-drawer .am-drawer-sidebar .am-list  .am-list-body{
+  z-index: 9999; 
+    .popup-list {
       display: grid;
       height: 100%;
       grid-template-columns: repeat(3, 1.03rem);
@@ -30,12 +15,6 @@ const HeaderWrap=styled.div`
       grid-row-gap: .2rem;
       grid-column-gap: .2rem;
       justify-content:center;
-      
-    }
-    .my-drawer .am-drawer-sidebar .am-list  .am-list-body .am-list-item{
-      width: 1.03rem;
-      height: .5rem;
-      border: 1px solid #0080ff;
     }
   
   
@@ -47,47 +26,50 @@ const SwiperWrap=styled.div`
   position: relative;
 `
 const ArtListWrap=styled.div`
-  height: 1.35rem;
-  width: 100%;
-  padding-left:.14rem;
-  padding-top:.17rem ;
-  .art-left{
-    float:left;
-    width: 2.01rem;
-    padding-left:.1rem
-    .art-left-top{
-      font-size:.12rem;
-      width: 1.78rem;
-    }
-    .art-left-bot{
-      padding-top: .42rem;
-      height: .14rem;
-      .img-watch{
-        float:left;
-        display:block;
-        width: .18rem;
+  .art-card{
+    height: 1.35rem;
+    width: 100%;
+    padding-left:.14rem;
+    padding-top:.17rem ;
+    border-bottom:1px solid #888888;
+    .art-left{
+      float:left;
+      width: 2.01rem;
+      padding-left:.1rem
+      .art-left-top{
+        font-size:.12rem;
+        width: 1.78rem;
+      }
+      .art-left-bot{
+        padding-top: .42rem;
         height: .14rem;
-        padding-top:.2rem
+        .img-watch{
+          float:left;
+          display:block;
+          width: .18rem;
+          height: .14rem;
+          padding-top:.2rem
+        }
+        >span{
+          font-size:.1rem;
+          color:#aaaa
+        }
       }
-      >span{
-        font-size:.1rem;
-        color:#aaaa
+      .art-left-ri{
+        >span{
+          display:block;
+          float:right;
+          font-size:.1rem;
+          color:#aaaa
+        }
       }
     }
-    .art-left-ri{
-      >span{
-        display:block;
-        float:right;
-        font-size:.1rem;
-        color:#aaaa
-      }
+    .art-right{
+      float:left;
+      height: 1.02rem;
+      width: 1.42rem;
+      
     }
-  }
-  .art-right{
-    float:left;
-    height: 1.02rem;
-    width: 1.42rem;
-    
   }
 `
 const ActivitiesWrap=styled.div`
@@ -106,9 +88,111 @@ const ActivitiesWrap=styled.div`
     }
   }
 `
+const FieldWrap=styled.div`
+  .art-card{
+    height: 1.35rem;
+    width: 100%;
+    padding-left:.14rem;
+    padding-top:.17rem ;
+    border-bottom:1px solid #888888;
+    .art-right{
+      float:right;
+      width: 2.01rem;
+      .art-right-top{
+        font-size:.12rem;
+        width: 1.78rem;
+      }
+      .art-right-bot{
+        padding-top: .5rem;
+        height: .14rem;
+        .img-watch{
+          float:left;
+          display:block;
+          width: .18rem;
+          height: .14rem;
+          padding-top:.2rem
+        }
+        >span{
+          font-size:.1rem;
+          color:#aaaa
+        }
+      }
+      .art-right-ri{
+        >span{
+          display:block;
+          float:right;
+          margin-right:.1rem;
+          font-size:.1rem;
+          color:#aaaa
+        }
+      }
+    }
+    .art-left{
+      float:left;
+      height: 1.02rem;
+      width: 1.42rem;
+      padding-left:.1rem
+      >img{
+        height: 1.02rem;
+      width: 1.42rem;
+      }
+    }
+  }
+  .art-modular{
+    height: 1.7rem;
+    width: 100%;
+    padding-left:.14rem;
+    padding-top:.17rem ;
+    border-bottom:1px solid #888888;
+    .modular-title{
+      font-size:.13rem;
+    }
+    .modular-img{
+      display:grid;
+      grid-template-columns: repeat(3, 1.06rem);
+      grid-row-gap: .2rem;
+      justify-content:space-around  ;
+      >div{
+        float:left;
+        >img{
+          width: 1.06rem;
+          height: .82rem;
+        }
+      }
+    }
+    .modular-right-bot{
+      padding:.2rem;
+      float:left;
+      height: .14rem;
+      .modular-watch{
+        float:left;
+        display:block;
+        width: .18rem;
+        height: .14rem;
+        padding-top:.2rem
+      }
+      >span{
+        font-size:.1rem;
+        color:#aaaa
+      }
+    }
+    .modular-right-ri{
+      margin-left:1.1rem;
+      padding:.2rem;
+      height: .1rem;
+      >span{
+        display:block;
+        float:left;
+        font-size:.1rem;
+        color:#aaaa
+      }
+    }
+  }
+`
 export{
   HeaderWrap,
   SwiperWrap,
   ArtListWrap,
   ActivitiesWrap,
+  FieldWrap
 }

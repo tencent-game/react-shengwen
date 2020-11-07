@@ -8,18 +8,15 @@ import Active from '@a/img/homepage/art-1.png';
 import {withRouter} from "react-router-dom"
 @withRouter
 class ArticleList extends Component {
-  constructor(props){
-    super(props)
-  }
-  handleClick=()=>{
-    console.log("aaa");
-    // let {history}=this.props
-    // history.push('/detail')
+
+  handleDetail=()=>{
+    let {history}=this.props
+    history.push('/detail')
   }
   render() {
     return (
       <ArtListWrap >
-        <div className="art-card" onClick={this.handleClick}>
+        <div className="art-card" onClick={this.handleDetail}>
           <div className="art-left" >
             <div className="art-left-top">
               首届UGD设计大会在京举办，引领增长时代的设计变
