@@ -7,16 +7,16 @@ import Active from '@a/img/homepage/art-1.png';
 import Active1 from '@a/img/homepage/active-1.png';
 import Active2 from '@a/img/homepage/active-2.png';
 import Active3 from '@a/img/homepage/active-3.png';
-
+import Active4 from '@a/img/homepage/active-4.png';
 import { withRouter } from "react-router-dom"
 @withRouter
  class PageField extends Component {
-   constructor(props){
-     super(props)
-     this.state={
-        title:this.props.location.state.itemValue
-     }
-   }
+  constructor(props){
+    super(props)
+    this.state={
+       title:this.props.location.state.itemValue
+    }
+  }
    handleReturn=()=>{
      let {history}=this.props
      history.goBack()
@@ -33,7 +33,7 @@ import { withRouter } from "react-router-dom"
             icon={<Icon style={
               {background:`url(${Return}) center center /  .2rem .2rem no-repeat`}} />}
             onLeftClick={this.handleReturn}
-            >{this.state.title}</NavBar>
+          >{this.state.title}</NavBar>
         <div>
           <div className="art-card"  onClick={this.handleDetail}>
             <div className="art-left">

@@ -33,6 +33,12 @@ class PageSearchUi extends Component {
   onChange= (value) => {
     this.setState({ value });
   };
+  clear = () => {
+    this.setState({ value: '' });
+  };
+  handleClick = () => {
+    this.manualFocusInst.focus();
+  }
   handleCancel=()=>{
       let{history} =this.props
       history.goBack()
@@ -42,6 +48,7 @@ class PageSearchUi extends Component {
     this.state.addItem.content=value;
     this.state.addItem.id=pId
     this.state.hisList.push(this.state.addItem);
+    console.log(this.state.hisList);
     this.setState({
       hisList:this.state.hisList,
       addItem:{content:'',id:''}
@@ -57,6 +64,7 @@ class PageSearchUi extends Component {
     
   }
   handleHistory=(dataItem)=>{
+    console.log(dataItem.id);
     let {history}=this.props
     history.push('/result')
   }

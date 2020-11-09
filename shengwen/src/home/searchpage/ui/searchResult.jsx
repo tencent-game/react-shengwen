@@ -10,11 +10,15 @@ export default class searchResult extends Component {
       title:this.props.location.state.ItemValue
    }
   }
-  
   onChange= (value) => {
     this.setState({ value });
   };
-  
+  clear = () => {
+    this.setState({ value: '' });
+  };
+  handleClick = () => {
+    this.manualFocusInst.focus();
+  }
   handleCancel=()=>{
       let{history} =this.props
       history.goBack()
