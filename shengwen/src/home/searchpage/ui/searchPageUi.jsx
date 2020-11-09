@@ -33,12 +33,6 @@ class PageSearchUi extends Component {
   onChange= (value) => {
     this.setState({ value });
   };
-  clear = () => {
-    this.setState({ value: '' });
-  };
-  handleClick = () => {
-    this.manualFocusInst.focus();
-  }
   handleCancel=()=>{
       let{history} =this.props
       history.goBack()
@@ -48,11 +42,13 @@ class PageSearchUi extends Component {
     this.state.addItem.content=value;
     this.state.addItem.id=pId
     this.state.hisList.push(this.state.addItem);
-    console.log(this.state.hisList);
     this.setState({
       hisList:this.state.hisList,
       addItem:{content:'',id:''}
     })
+    let ItemValue=this.state.addItem.content
+    let {history}=this.props
+    history.push('/result',{ItemValue})
   }
   handleDelete=()=>{
     this.setState({
@@ -61,7 +57,6 @@ class PageSearchUi extends Component {
     
   }
   handleHistory=(dataItem)=>{
-    console.log(dataItem.id);
     let {history}=this.props
     history.push('/result')
   }
@@ -72,10 +67,7 @@ class PageSearchUi extends Component {
         className="searchBox"
         value={this.state.value}
         placeholder="Search"
-        onSubmit={value => this.handleEnter(value)}
-        onClear={value => console.log(value, 'onClear')}
-        onFocus={() => console.log('onFocus')}
-        onBlur={() => console.log('onBlur')}
+        onSubmit={this.handleEnter}
         onCancel={this.handleCancel}
         showCancelButton
         onChange={this.onChange}

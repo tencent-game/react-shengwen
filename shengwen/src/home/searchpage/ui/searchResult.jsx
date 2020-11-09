@@ -4,18 +4,17 @@ import {SearchResultWrap} from './searchStyle'
 import head1 from '@a/img/homepage/head1.png'
 import head2 from '@a/img/homepage/head2.png'
 export default class searchResult extends Component {
-  state = {
-    value: '搜索文章作者',
-  };
+  constructor(props){
+    super(props)
+    this.state={
+      title:this.props.location.state.ItemValue
+   }
+  }
+  
   onChange= (value) => {
     this.setState({ value });
   };
-  clear = () => {
-    this.setState({ value: '' });
-  };
-  handleClick = () => {
-    this.manualFocusInst.focus();
-  }
+  
   handleCancel=()=>{
       let{history} =this.props
       history.goBack()
@@ -33,12 +32,9 @@ export default class searchResult extends Component {
       <SearchResultWrap>
           <SearchBar
           className="searchBox"
-          value={this.state.value}
+          value={this.state.title}
           placeholder="Search"
-          onSubmit={value => this.handleEnter(value)}
-          onClear={value => console.log(value, 'onClear')}
-          onFocus={() => console.log('onFocus')}
-          onBlur={() => console.log('onBlur')}
+          onSubmit={this.handleEnter}
           onCancel={this.handleCancel}
           showCancelButton
           onChange={this.onChange}

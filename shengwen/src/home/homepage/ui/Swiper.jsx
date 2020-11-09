@@ -11,6 +11,16 @@ import {
 } from './PageHomeStyle';
 
 export default class Swiper extends Component {
+  constructor(props){
+    super(props)
+    this.state={
+      data:[
+        {img:swiper1},
+        {img:swiper2},
+        {img:swiper3}
+      ]
+    }
+  }
   render() {
     return (
       <SwiperWrap>
@@ -19,10 +29,11 @@ export default class Swiper extends Component {
           autoplay={true}
           infinite
           dots={false}
+
         >
-          <img src={swiper1} alt=""/>
-          <img src={swiper2} alt=""/>
-          <img src={swiper3} alt=""/>
+          {this.state.data.map((item,index)=>{
+            return<img key={index} src={item.img} alt=""/>
+          })}
         </Carousel>
       </SwiperWrap>
     )

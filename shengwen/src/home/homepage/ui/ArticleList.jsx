@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import border from '@/styles/border';
 import {
   ArtListWrap
 } from './PageHomeStyle'
@@ -38,7 +37,6 @@ class ArticleList extends Component {
           }>
           </div>
         </div>
-        <border></border>
       </ArtListWrap>
     )
   }
