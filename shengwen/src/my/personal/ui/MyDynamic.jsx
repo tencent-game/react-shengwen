@@ -1,8 +1,8 @@
 import React from 'react';
-import {StyledMyDynamic} from "./styledMyDynamic"
-import avatar from "../../assets/img/my/avatar.png"
-import DynamicInfoHeader from '../../dynamic/UI/DynamicInfoHeader';
-import DynamicFooter from '../../dynamic/UI/DynamicFooter';
+import {StyledMyDynamic} from "../styledMyDynamic"
+import avatar from "../../../assets/img/my/avatar.png"
+import DynamicInfoHeader from '../../../dynamic/UI/DynamicInfoHeader';
+import DynamicFooter from '../../../dynamic/UI/DynamicFooter';
 
 
 function MyDynamic(props) {

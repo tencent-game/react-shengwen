@@ -1,7 +1,7 @@
 import React from 'react';
-import {Button, Flex, Icon, InputItem, List, NavBar} from "antd-mobile";
-import {DownIcon, QQ, WeChat, WeiBo} from "@/component/PublicIcon";
-import {H1NavBar, IconsContainer} from "@/login/ui/styledLogin";
+import { Button, Flex, Icon, InputItem, List, NavBar } from "antd-mobile";
+import { DownIcon, QQ, WeChat, WeiBo } from "@/component/PublicIcon";
+import { H1NavBar, IconsContainer } from "@/login/ui/styledLogin";
 
 function LoginUi(props) {
   return (
@@ -35,16 +35,30 @@ function LoginUi(props) {
               <span style={{lineHeight: "44px", fontSize: "16px", paddingRight: "6px"}}>+86</span>
               <DownIcon/>
             </InputItem>
+            <InputItem
+              style={{fontSize: "14px", height: ".5rem"}}
+              type="number"
+              placeholder="请输入验证码"
+              clear
+              maxLength={4}
+              defaultValue={props.code}
+              onInput={props.onHandleCode}
+            >
+            </InputItem>
             <Button
               onClick={props.getCode}
               type="default"
               style={{
+                width: "100%",
+                height: ".45rem",
                 color: "#fff",
                 marginTop: "12px",
+                fontSize: ".18rem",
                 backgroundColor: "rgba(76, 89, 248, 0.317647058823529)",
                 border: "1px solid rgba(76, 89, 248, 0.317647058823529)"
               }}
-            >获取验证码</Button>
+            >获取验证码
+            </Button>
             <p style={{
               width: "145px",
               height: "25px",

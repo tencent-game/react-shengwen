@@ -1,6 +1,6 @@
 import { MyMain } from "@/my/index"
 import FollowAndFans from "@/my/followandfans/FollowAndFans";
-import MyPersonalData from "@/my/personal/MyPersonalData";
+import { PersonData } from "@/my/personal/index";
 import Submitted from "@/my/submitted/Submitted"
 import Activities from "@/my/activities/Activities";
 import Wallet from "@/my/wallet/Wallet";
@@ -19,7 +19,7 @@ const MyRoute = [
     id: 2, path: "/followFans", component: FollowAndFans, exact: false
   },
   {
-    id: 3, path: "/personal/:tag", component: MyPersonalData, exact: false
+    id: 3, path: "/personal/:tag", component: PersonData, exact: false
   },
   {
     id: 4, path: "/submitted", component: Submitted, exact: false

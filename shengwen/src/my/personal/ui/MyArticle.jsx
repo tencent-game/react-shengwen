@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyledPersonalDataArticle} from "./styledMyDynamic"
+import {StyledPersonalDataArticle} from "../styledMyDynamic"
 import demo from "@/assets/img/my/article-demo-img.png"
 import watch from "@/assets/img/homepage/watch.png"
 

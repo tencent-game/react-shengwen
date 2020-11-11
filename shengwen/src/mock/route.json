@@ -1,3 +1,5 @@
 {
-  "/api/userInfo": "/userInfo"
+  "/api/userInfo": "/userInfo",
+  "/homePage/dynamic": "/dynamicData",
+  "/user/getCode": "/userList"
 }

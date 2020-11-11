@@ -1,31 +1,30 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import MyDynamic from "@/my/personal/ui/MyDynamic";
+import MyArticle from "@/my/personal/ui/MyArticle";
+import MyInfo from "@/my/personal/ui/MyInfo";
 import {
-  StyledMyPersonalDataTop,
+  StyledMyPersonalDataBottom,
   StyledMyPersonalDataMain,
-  StyledMyPersonalDataBottom
-} from "./styledMyDynamic"
-import {useHistory} from "react-router-dom"
-import MyDynamic from "./MyDynamic"
-import MyArticle from "./MyArticle"
-import MyInfo from "./MyInfo"
-import {ActionSheet} from "antd-mobile"
+  StyledMyPersonalDataTop
+} from "@/my/personal/styledMyDynamic";
 
-// 图片
-import back from "../../assets/img/my/back.png"
-import more from "../../assets/img/my/more.png"
-import defaultImg from "../../assets/img/u4206.png";
-import woman from "../../assets/img/my/woman.png";
-import wechat from "../../assets/img/my/wechat.png"
-import wechatFriends from "../../assets/img/my/wechatFriends.png"
-import weibo from "../../assets/img/my/weibo.png"
+import back from "@/assets/img/my/back.png";
+import more from "@/assets/img/my/more.png";
+import defaultImg from "@/assets/img/u4206.png";
+import woman from "@/assets/img/my/woman.png";
+import wechat from "@/assets/img/my/wechat.png";
+import wechatFriends from "@/assets/img/my/wechatFriends.png";
+import weibo from "@/assets/img/my/weibo.png";
+import { ActionSheet } from "antd-mobile";
+import { useHistory } from "react-router-dom";
+import man from "@/assets/img/my/man.png";
 
-function MyPersonalData(props) {
+function PersonDataUI(props) {
   const history = useHistory()
-  const [activeTag, setActiveTag] = useState("info")
+  const [activeTag, setActiveTag] = useState("ambulatory")
   const [state, setState] = useState({
     clicked: 'none'
   })
-
   const renderContent = (tagName) => {
     switch (tagName) {
       case "ambulatory":
@@ -54,7 +53,6 @@ function MyPersonalData(props) {
       },
       (buttonIndex) => {
         setState({clicked: buttonIndex > -1 ? dataList[buttonIndex].title : 'cancel'});
-        console.log(state)
       });
   }
 
@@ -70,8 +68,14 @@ function MyPersonalData(props) {
       </StyledMyPersonalDataTop>
       <StyledMyPersonalDataMain>
         <div className="avatar-top-left">
-          <img src={defaultImg} alt=""/>
-          <img src={woman} alt="gender"/>
+          <img src={props.userInfo.data.userInfo.userinfoPhoto} alt=""/>
+          {
+            props.userInfo.data.userInfo.userinfoSex === "女" ? (
+              <img src={man} alt="man"/>
+            ) : (
+              <img src={woman} alt="woman"/>
+            )
+          }
         </div>
         <div className="personal-nickname">
           <h2>特立独行的狗</h2>
@@ -80,19 +84,19 @@ function MyPersonalData(props) {
         <div className="personal-list">
           <ul>
             <li>
-              <h3>2302</h3>
+              <h3>{props.userInfo.likeCount}</h3>
               <span>赞</span>
             </li>
             <li>
-              <h3>2069</h3>
+              <h3>{props.userInfo.favoriateCount}</h3>
               <span>收藏</span>
             </li>
             <li onClick={() => history.push("/followFans/concern")}>
-              <h3>22</h3>
+              <h3>{props.userInfo.attentionCount}</h3>
               <span>关注</span>
             </li>
             <li onClick={() => history.push("/followFans/fans")}>
-              <h3>2302</h3>
+              <h3>{props.userInfo.fansCount}</h3>
               <span>粉丝</span>
             </li>
           </ul>
@@ -137,4 +141,4 @@ function MyPersonalData(props) {
   );
 }
 
-export default MyPersonalData;
+export default PersonDataUI;

@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { StyledMyAvatarLogin } from "./styledMyMain"
 import { Icon } from "antd-mobile"
 import { useHistory } from "react-router-dom"
-import defaultImg from "@/assets/img/u4206.png";
 import woman from "@/assets/img/my/woman.png"
 import man from "@/assets/img/my/man.png"
 import UserData from "../container/context"
@@ -10,16 +9,15 @@ import UserData from "../container/context"
 function MyAvatarLogin(props) {
   const history = useHistory()
   const userInfo = useContext(UserData);
-  console.log(userInfo)
   return (
     <StyledMyAvatarLogin>
       <div className="avatar-top">
         <div className="avatar-top-left">
           <img src={userInfo.data.userInfo.userinfoPhoto} alt=""/>
           {
-            userInfo.data.userInfo.userinfoSex === "男" ? (
+            userInfo.data.userInfo.userinfoSex === "女" ? (
               <img src={man} alt="man"/>
-            ):(
+            ) : (
               <img src={woman} alt="woman"/>
             )
           }
