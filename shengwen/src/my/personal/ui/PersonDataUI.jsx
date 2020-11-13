@@ -10,7 +10,6 @@ import {
 
 import back from "@/assets/img/my/back.png";
 import more from "@/assets/img/my/more.png";
-import defaultImg from "@/assets/img/u4206.png";
 import woman from "@/assets/img/my/woman.png";
 import wechat from "@/assets/img/my/wechat.png";
 import wechatFriends from "@/assets/img/my/wechatFriends.png";
@@ -52,6 +51,7 @@ function PersonDataUI(props) {
         options: dataList,
       },
       (buttonIndex) => {
+        console.log(state)
         setState({clicked: buttonIndex > -1 ? dataList[buttonIndex].title : 'cancel'});
       });
   }

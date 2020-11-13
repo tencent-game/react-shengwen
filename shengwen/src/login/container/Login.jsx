@@ -4,7 +4,6 @@ import LoginUi from "@/login/ui/LoginUI";
 import { useHistory } from "react-router-dom"
 import { Toast } from "antd-mobile";
 import { SuccessIcon, TipsIcon } from "@/component/PublicIcon";
-import http from "@/utils/http";
 import { actionCreator } from "../index"
 
 function Login(props) {

@@ -1,6 +1,6 @@
 import {LOADDATA} from './actionTypes'
 
-import {get} from '@/utils/http.js'
+import http from '@/utils/http.js'
 
 
 const loadDateSync=list=>{
@@ -12,7 +12,7 @@ const loadDateSync=list=>{
 
 const  loadDateAsync=()=>{
   return async(dispatch)=>{
-      let result= await get ({
+      let result= await http.get ({
         url:'/api/searchList'
       })
       //  console.log(result.data.data);

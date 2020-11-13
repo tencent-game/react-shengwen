@@ -18,7 +18,7 @@ function PersonData(props) {
     })()
   })
   return (
-    userInfo && (<PersonDataUI userInfo={userInfo}/>)
+    dynamicData && userInfo && (<PersonDataUI userInfo={userInfo}/>)
   );
 }
 
