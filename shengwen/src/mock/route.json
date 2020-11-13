@@ -1,0 +1,5 @@
+{
+  "/api/userInfo": "/userInfo",
+  "/api/articleList":"/articleList",
+  "/api/searchList":"/searchList"
+}

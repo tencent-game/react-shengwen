@@ -22,7 +22,7 @@ import { DetailWrap } from './PageDetailStyle'
 import Return from '@a/img/homepage/Return.png'
 import forward from '@a/img/homepage/forward.png'
 import ArticleList from '@/home/homepage/ui/ArticleList'
-import DynamicDetailComment from '@/dynamic/UI/DynamicDetailComment'
+// import DynamicDetailComment from '@/dynamic/UI/DynamicDetailComment'
 import { Modal } from 'antd-mobile';
 import { withRouter } from "react-router-dom"
 @withRouter
@@ -199,7 +199,7 @@ class PageDetailUi extends Component {
               <ArticleList ></ArticleList>
             </div>
           </div>
-          <DynamicDetailComment style={{ margin: 0, }}></DynamicDetailComment>
+        
         </div>
       </DetailWrap>
     )

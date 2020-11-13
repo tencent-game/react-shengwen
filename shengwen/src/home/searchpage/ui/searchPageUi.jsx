@@ -8,15 +8,7 @@ import Delete from '@a/img/homepage/delete.png'
 class PageSearchUi extends Component {
   state = {
     value: '搜索文章作者',
-    hisList:[
-      {content:'AR',id:"1"},
-      {content:'汽车',id:"2"},
-      {content:'艺术',id:"3"},
-      {content:'技术',id:"4"},
-      {content:'大数据',id:"5"},
-      {content:'半导体',id:"6"},
-      {content:'新浪微博',id:"7"},
-    ],
+    hisList:this.props.list,
     seaList:[
       {content:'A股',id:"11"},
       {content:'大智慧',id:"12"},
@@ -27,11 +19,11 @@ class PageSearchUi extends Component {
       {content:'天长地久',id:"17"},
       {content:'医疗',id:"18"},
     ],
-    addItem:{content:"",id:""}
   };
   
   onChange= (value) => {
     this.setState({ value });
+    
   };
   clear = () => {
     this.setState({ value: '' });
@@ -40,22 +32,33 @@ class PageSearchUi extends Component {
     this.manualFocusInst.focus();
   }
   handleCancel=()=>{
+    //  console.log(this.props);
       let{history} =this.props
       history.goBack()
   }
   handleEnter=(value)=>{
-    let pId=this.state.hisList.length+55
-    this.state.addItem.content=value;
-    this.state.addItem.id=pId
-    this.state.hisList.push(this.state.addItem);
-    console.log(this.state.hisList);
+    let ItemValue=value;
+    this.state.hisList.push(ItemValue);
+    // console.log(this.state.hisList);
     this.setState({
       hisList:this.state.hisList,
-      addItem:{content:'',id:''}
     })
-    let ItemValue=this.state.addItem.content
+    let articleList= this.props.location.state.list
+    let authorList=articleList.filter((data)=>{
+      return data.author.includes(ItemValue)
+    })
+    let titleList=articleList.filter((data)=>{
+      return data.title.includes(ItemValue)
+    })
+    // console.log(ItemValue);
+    //  console.log(authorList);
+    //  console.log(titleList);
     let {history}=this.props
-    history.push('/result',{ItemValue})
+     if(authorList.length===0&&titleList.length===0){
+      history.push('/noresult',{ItemValue,authorList,titleList,articleList})
+     }else{
+      history.push('/result',{ItemValue,authorList,titleList,articleList})
+     }
   }
   handleDelete=()=>{
     this.setState({
@@ -64,9 +67,9 @@ class PageSearchUi extends Component {
     
   }
   handleHistory=(dataItem)=>{
-    console.log(dataItem.id);
+    let ItemValue=dataItem.target.innerText
     let {history}=this.props
-    history.push('/result')
+    history.push('/result',{ItemValue})
   }
   render() {
     return (
@@ -91,10 +94,10 @@ class PageSearchUi extends Component {
         <div className="his-main">
           <ul>
             {
-               this.state.hisList.map(dataItem=>{
+               this.props.list&&this.props.list.map((dataItem,index)=>{
                 return(
-                  <li key={dataItem.id} onClick={this.handleHistory}>
-                    {dataItem.content}
+                  <li key={index} onClick={this.handleHistory}>
+                    {dataItem}
                   </li>
                 )
               })

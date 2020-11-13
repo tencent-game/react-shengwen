@@ -20,7 +20,7 @@ class Header extends Component {
       {value:"大数据"},
       {value:"社交"},
       {value:"时政新闻"},
-      {value:"医疗健康"},
+      {value:"前沿技术"},
       {value:"投资金融"},
       {value:"证券投资"},
       {value:"硬件"},
@@ -43,13 +43,18 @@ class Header extends Component {
 
   
   handleHistory=()=>{
+    let  list=this.props.list
     let  {history}=this.props
-    history.push('./search')
+    history.push('./search',{list})
   }
   handleField=(dataItem)=>{
     let itemValue=dataItem.target.innerText
+    let FieldList=this.props.list.filter((data)=>{
+      return data.field.includes(itemValue)
+    })
+    console.log(FieldList);
     let  {history}=this.props
-    history.push('./field',{itemValue})
+    history.push('./field',{FieldList,itemValue})
   }
   render() {
    
