@@ -10,7 +10,6 @@ import UserData from "../container/context"
 function MyAvatarLogin(props) {
   const history = useHistory()
   const userInfo = useContext(UserData);
-  console.log(userInfo)
   return (
     <StyledMyAvatarLogin>
       <div className="avatar-top">

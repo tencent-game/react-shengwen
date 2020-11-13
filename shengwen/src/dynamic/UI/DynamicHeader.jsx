@@ -4,7 +4,6 @@ import {NavLink } from 'react-router-dom'
 import {useLocation} from 'react-router-dom'
 const DynamicHeader = () => {
    const  {pathname} = useLocation()
-  console.log(pathname)
   return (
     <DynamicHeaderCss>
       <ul>
