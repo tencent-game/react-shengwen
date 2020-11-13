@@ -1,1 +1,0 @@
-export const LOADDATA="home/homepage/LoadData"
