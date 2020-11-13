@@ -6,7 +6,6 @@ const FollowBtn = () => {
   // const [activeTag, setActiveTag] = useState("follow")
   const [follow, setFollow] = useState(true)
   const {pathname} = useLocation()
-  console.log(pathname)
   return (
     <FollowBtnCss style={ pathname==='/dynamic/hot' ? { display:'block'} : {display:'none'}}>
     <div
