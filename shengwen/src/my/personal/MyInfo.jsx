@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledPersonalDataInfo } from "../styledMyDynamic"
+import {StyledPersonalDataInfo} from "./styledMyDynamic"
 
 function MyInfo(props) {
   return (

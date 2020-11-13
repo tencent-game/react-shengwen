@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import MyListPublicTitle from "@/component/MyListPublicTitle";
-import { ImagePicker, TextareaItem, InputItem, Button } from "antd-mobile"
-import { StyledFeedback } from "./styledFeedback"
+import {ImagePicker, TextareaItem, InputItem, Button} from "antd-mobile"
+import {StyledFeedback} from "./styledFeedback"
 
 /**
  * @Description: 我的页面 反馈

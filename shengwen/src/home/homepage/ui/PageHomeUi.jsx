@@ -1,19 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
+import propTypes from 'prop-types'
+import memoize from 'memoize-one'
 import Header from './Header'
 import Swiper from './Swiper'
 import ArticleList from './ArticleList';
 import SelectionofActivities from './SelectionofActivities'
-export default class PageHomeUi extends Component {
-  render() {
+const PageHomeUi =(props)=> {
+    const activities=memoize(list=>list.slice(0,5))
+    const article1=memoize(list=>list.slice(0,2))
+    const article2=memoize(list=>list.slice(2,10))
     return (
       <div>
-        <Header></Header>
+        <Header list={props.list}></Header>
         <Swiper></Swiper>
-        <ArticleList></ArticleList>
-        <SelectionofActivities></SelectionofActivities>
-        <ArticleList></ArticleList>
-        <ArticleList></ArticleList>
+        <ArticleList list={article1(props.list)}></ArticleList>
+        <SelectionofActivities list={activities(props.list)}></SelectionofActivities>
+        <ArticleList list={article2(props.list)}></ArticleList>
       </div>
     )
-  }
 }
+PageHomeUi.propTypes={
+    list:propTypes.array
+}
+export default PageHomeUi

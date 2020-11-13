@@ -5,15 +5,6 @@ const changeLogin = (loginState) => {
   }
 }
 
-const setUserId = (userId) => {
-  console.log(userId)
-  return {
-    type: "SET_USERID",
-    userId
-  }
-}
-
 export default {
-  changeLogin,
-  setUserId
+  changeLogin
 }

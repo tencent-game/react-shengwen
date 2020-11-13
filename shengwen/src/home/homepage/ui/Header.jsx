@@ -12,6 +12,21 @@ class Header extends Component {
     super(props);
     this.state = {
       modal1: false,
+      filedList:[{value:"医疗健康"},
+      {value:"新媒体"},
+      {value:"娱乐"},
+      {value:"AI"},
+      {value:"人工智能"},
+      {value:"大数据"},
+      {value:"社交"},
+      {value:"时政新闻"},
+      {value:"前沿技术"},
+      {value:"投资金融"},
+      {value:"证券投资"},
+      {value:"硬件"},
+      {value:"互联网"},
+      {value:"教育"},
+      ],
     };
   }
   showModal = key => (e) => {
@@ -28,12 +43,18 @@ class Header extends Component {
 
   
   handleHistory=()=>{
+    let  list=this.props.list
     let  {history}=this.props
-    history.push('./search')
+    history.push('./search',{list})
   }
-  handleField=()=>{
+  handleField=(dataItem)=>{
+    let itemValue=dataItem.target.innerText
+    let FieldList=this.props.list.filter((data)=>{
+      return data.field.includes(itemValue)
+    })
+    console.log(FieldList);
     let  {history}=this.props
-    history.push('./field',)
+    history.push('./field',{FieldList,itemValue})
   }
   render() {
    
@@ -72,7 +93,7 @@ class Header extends Component {
             display: "block",
             
           }}>
-            {["医疗健康","新媒体","娱乐","AI","人工智能","大数据","社交","时政新闻","医疗健康","金融投资","股票证卷","硬件","互联网","教育"].map((field, index) => (
+            {this.state.filedList.map((dataItem, index) => (
               <List.Item key={index} style={{
                 width: "1.03rem",
                 height: ".5rem",
@@ -81,7 +102,7 @@ class Header extends Component {
                 marginRight:".12rem",
                 marginBottom:".1rem",
                 fontColor:'#0080ff',
-              }} onClick={this.handleField}>{field}</List.Item>
+              }} onClick={this.handleField}>{dataItem.value}</List.Item>
             ))}
           </List>
         </Modal>

@@ -1,5 +1,5 @@
 const path = require("path")
-const {override, fixBabelImports, addWebpackAlias, addDecoratorsLegacy} = require('customize-cra');
+const {override, fixBabelImports,addWebpackAlias,addDecoratorsLegacy} = require('customize-cra');
 
 module.exports = override(
   fixBabelImports('import', {

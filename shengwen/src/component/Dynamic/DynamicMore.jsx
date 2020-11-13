@@ -92,13 +92,7 @@ let wrapProps;
 //     onTouchStart: e => e.preventDefault(),
 //   };
 // }
-class DynamicMore extends React.Component {
-  constructor() {
-    super();
-    const state={
-      clicked:''
-    }
-  }
+class DynamicMore extends React.Component { 
   
   showActionSheet = () => {
     const {pathname}= this.props.location
