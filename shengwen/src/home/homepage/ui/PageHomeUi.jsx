@@ -13,9 +13,9 @@ const PageHomeUi =(props)=> {
       <div>
         <Header list={props.list}></Header>
         <Swiper></Swiper>
-        <ArticleList list={article1(props.list)}></ArticleList>
-        <SelectionofActivities list={activities(props.list)}></SelectionofActivities>
-        <ArticleList list={article2(props.list)}></ArticleList>
+        <ArticleList list={article1(props.list)} detailList={props.list}></ArticleList>
+        <SelectionofActivities list={activities(props.list)} detailList={props.list}></SelectionofActivities>
+        <ArticleList list={article2(props.list)} detailList={props.list}></ArticleList>
       </div>
     )
 }

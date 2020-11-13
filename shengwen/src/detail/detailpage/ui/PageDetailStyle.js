@@ -8,6 +8,7 @@ const DetailWrap=styled.div`
       top:0;
       height: 2.2rem;
       width: 100%;
+    
       .detail-nav{
         width: 100%,
         height: .44rem;
@@ -83,6 +84,11 @@ const DetailWrap=styled.div`
         }
         .article-img{
           margin-top:.15rem;
+          >img{
+            width: 3.5rem;
+            height: 2rem;
+            border-radius:.1rem;
+          }
         }
       }
       .appreciate_main{
@@ -95,7 +101,7 @@ const DetailWrap=styled.div`
             float:left;
             margin-right:.1rem;
             background:#f2f2f2;
-            width: .55rem;
+            width: .85rem;
             height: .25rem;
             .reCard-contents{
               float:left;
@@ -158,8 +164,66 @@ const DetailWrap=styled.div`
         }
         >div{
           position: absolute;
+          height: 100%;
+  .art-card{
+    height: 1.35rem;
+    width: 100%;
+    padding-left:.14rem;
+    padding-top:.17rem ;
+    border-bottom:1px solid #888888;
+    .art-left{
+      position: relative;
+      float:left;
+      width: 2.01rem;
+      padding-left:.1rem
+      .art-left-top{
+        font-size:.12rem;
+        width: 1.78rem;
+        height: 1.2rem;
+      }
+     .art-left-bn{
+      position:absolute;
+      top:.8rem;
+      height: .14rem;
+      width: 2.01rem;
+      .art-left-bot{
+        float:left;
+        width: .7rem;
+        .img-watch{
+          float:left;
+          display:block;
+          width: .18rem;
+          height: .14rem;
+          padding-top:.2rem
+        }
+        >span{
+          display:block;
+          font-size:.1rem;
+          color:#aaaa
         }
       }
+      .art-left-ri{
+        float:right;
+        margin-right:.1rem;
+        >span{
+          display:block;
+          float:right;
+          font-size:.1rem;
+          color:#aaaa
+        }
+      }
+     }
+    }
+    .art-right{
+      float:left;
+      height: 1.02rem;
+      width: 1.42rem;
+      border-radius:.1rem;
+    }
+  }
+        }
+      }
+
       .hotCommit{
         margin-top:0;
       }

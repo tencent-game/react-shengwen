@@ -8,8 +8,8 @@ import {withRouter} from "react-router-dom"
 @withRouter
 class ArticleList extends Component {
   handleDetail=(data)=>{
-    let {history}=this.props
-    history.push('/detail',{data})
+    let {history,detailList}=this.props
+    history.push('/detail',{data,detailList})
   }
   render() {
     return (

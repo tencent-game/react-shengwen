@@ -15,7 +15,7 @@ const  loadDateAsync=()=>{
       let result= await get ({
         url:'/api/articleList'
       })
-      // console.log(result.data.data);
+        // console.log(result.data.data);
       dispatch(loadDateSync(result.data.data))
   }
 }

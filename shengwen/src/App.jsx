@@ -6,7 +6,6 @@ import PageFooter from "./component/PageFooter"
 import routes from "@/router";
 
 class App extends Component {
-
   renderFooter() {
     let {pathname} = this.props.location
     if (pathname.match(/\/home.*?|\/dynamic.*?|\/message.*?|\/my.*?/)) return <PageFooter/>
@@ -15,12 +14,12 @@ class App extends Component {
 
   render() {
     return (
-      <div style={{height: '100%'}}>
+      <div style={{height: '100%'}}  >
         <Switch>
           {
             routes.map((route) => {
               return (
-                <Route path={route.path} component={route.component} exact={route.exact} key={route.id}/>
+                <Route path={route.path} component={route.component} exact={route.exact} key={route.id} />
               )
             })
           }

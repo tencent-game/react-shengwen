@@ -80,7 +80,7 @@ const ArtListWrap=styled.div`
       float:left;
       height: 1.02rem;
       width: 1.42rem;
-      
+      border-radius:.1rem;
     }
   }
 `
@@ -133,6 +133,7 @@ const EvenWrap=styled.div`
   .modular-img{
     margin-top:.15rem;
     display:grid;
+    border-radius:.1rem;
     grid-template-columns: repeat(3, 1.06rem);
     grid-row-gap: .2rem;
     justify-content:space-around  ;
@@ -141,6 +142,7 @@ const EvenWrap=styled.div`
       >img{
         width: 1.06rem;
         height: .82rem;
+        border-radius:.1rem;
       }
     }
   }

@@ -21,7 +21,8 @@ class OddList extends Component {
           <div className="art-left">
             <img className="art-img" src={this.state.data.img[0]} alt=""style={{
               width:"1.42rem",
-              height: "1.02rem"
+              height: "1.02rem",
+              borderRadius:".1rem",
             }}/>
           </div>
           <div className="art-right" >
