@@ -1,18 +1,21 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from "react-redux"
 import LoginUi from "@/login/ui/LoginUI";
-import {useHistory} from "react-router-dom"
-import {Toast} from "antd-mobile";
-import {SuccessIcon, TipsIcon} from "@/component/PublicIcon";
-
+import { useHistory } from "react-router-dom"
+import { Toast } from "antd-mobile";
+import { SuccessIcon, TipsIcon } from "@/component/PublicIcon";
+// import { get } from "@/utils/http";
+import { actionCreator } from "../index"
 
 function Login(props) {
   const [usePwd, setUsePwd] = useState(true)
   const [phone, setPhone] = useState("")
   const [email, setEmail] = useState("")
   const [pwd, setPwd] = useState("")
+  const [code, setCode] = useState("")
 
   const history = useHistory()
-
+  const dispatch = useDispatch()
   const ErrorTips = () => {
     return (
       <>
@@ -41,19 +44,33 @@ function Login(props) {
   }
 
   const onHandlePhone = (e) => {
-    console.log(e.target.value)
     setPhone(e.target.value)
   }
 
-  const getCode = () => {
+  const onHandleCode = (e) => {
+    setCode(e.target.value)
+  }
+
+  const getCode = async () => {
     if (phone.length < 13) {
       console.log("错误")
       Toast.info(<ErrorTips/>, 1, null, false);
     } else {
-      console.log("正确")
+
+      let phoneData = phone.replace(/( )/g, "")
+      console.log(phoneData)
+      // let result = post("", {
+      //   email: phoneData
+      // })
+      let code1 = "1234"
+      let userId = "1545"
+      if (code === code1) {
+        // 成功逻辑
+        dispatch(actionCreator.setUserId(userId))
+      }
       Toast.info(<SuccessTips/>, 1, null, false);
       setTimeout(() => {
-        history.push("/VeriCode")
+        history.push("/home")
       }, 1000)
     }
   }
@@ -85,6 +102,8 @@ function Login(props) {
       pwdInput={pwdInput}
       pwd={pwd}
       toHome={toHome}
+      code={code}
+      onHandleCode={onHandleCode}
     />
   );
 }
