@@ -4,6 +4,7 @@ import searchResult from '@/home/searchpage/ui/searchResult'
 import Article from '@/home/searchpage/ui/Article'
 import Author from '@/home/searchpage/ui/Author'
 import PageField from "@/home/homepage/ui/PageField";
+import PageNoResult from '@/home/searchpage/ui/noresult'
 
 const HomeRoute = [
   {
@@ -23,6 +24,9 @@ const HomeRoute = [
   },
   {
     id: 6, path: "/field", component: PageField, exact: false
+  },
+  {
+    id: 7, path: "/noresult", component: PageNoResult, exact: false
   },
 ]
 

@@ -1,7 +1,11 @@
 // 我的个人主页底部 动态 样式
 import styled from "styled-components";
 import border from "../../styles/border";
+<<<<<<< HEAD
 import { select } from "@/assets/img/my/select.png";
+=======
+// import {select} from "@/assets/img/my/select.png";
+>>>>>>> master
 
 const StyledMyDynamic = styled.div`
   padding: .1rem 0 0 0;

@@ -22,7 +22,7 @@ import { DetailWrap } from './PageDetailStyle'
 import Return from '@a/img/homepage/Return.png'
 import forward from '@a/img/homepage/forward.png'
 import ArticleList from '@/home/homepage/ui/ArticleList'
-import DynamicDetailComment from '@/dynamic/UI/DynamicDetailComment'
+// import DynamicDetailComment from '@/dynamic/UI/DynamicDetailComment'
 import { Modal } from 'antd-mobile';
 import { withRouter } from "react-router-dom"
 @withRouter
@@ -32,6 +32,12 @@ class PageDetailUi extends Component {
     super(props);
     this.state = {
       modal1: false,
+      filedList:[
+        {value:"设计"},
+        {value:"装修"},
+        {value:"家具"},
+        ],
+      
     };
   }
   
@@ -50,10 +56,10 @@ class PageDetailUi extends Component {
     let { history } = this.props
     history.push('/appreciate')
   }
-  handleField=()=>{
-    // console.log(this.props);
+  handleField=(item)=>{
+    let itemValue=item.target.innerText
     let { history } = this.props
-    history.push('/field')
+    history.push('/field',{itemValue})
   }
   handleReturn = () => {
     let { history } = this.props
@@ -154,24 +160,14 @@ class PageDetailUi extends Component {
           </div>
           <div className="appreciate_main">
             <div className="related-contents">
-              <div className="related-card" onClick={this.handleField}>
-                <div className="reCard-contents">设计</div>
+              {this.state.filedList.map((item,index)=>{
+                return <div key={index} className="related-card" onClick={this.handleField}>
+                <div className="reCard-contents">{item.value}</div>
                 <div className="reCard-img">
                   <img src={arrow} alt="" />
                 </div>
               </div>
-              <div className="related-card" onClick={this.handleField}>
-                <div className="reCard-contents">装修</div>
-                <div className="reCard-img">
-                  <img src={arrow} alt="" />
-                </div>
-              </div>
-              <div className="related-card" onClick={this.handleField}>
-                <div className="reCard-contents">家具</div>
-                <div className="reCard-img">
-                  <img src={arrow} alt="" />
-                </div>
-              </div>
+              })}
             </div>
             <div className="appreciate-bn" onClick={this.handleAppreciate}>
               <span>赞赏</span>
@@ -203,7 +199,7 @@ class PageDetailUi extends Component {
               <ArticleList ></ArticleList>
             </div>
           </div>
-          <DynamicDetailComment style={{ margin: 0, }}></DynamicDetailComment>
+        
         </div>
       </DetailWrap>
     )

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useHistory} from "react-router-dom"
 import back from "@/assets/img/my/back.png";
-import more from "@/assets/img/my/more.png";
+// import more from "@/assets/img/my/more.png";
 import {StyledMyPersonalDataTop, StyledPersonalDataArticle} from "@/my/personal/styledMyDynamic";
 import demo from "@/assets/img/my/article-demo-img.png";
 import watch from "@/assets/img/homepage/watch.png";

@@ -1,5 +1,10 @@
 {
   "/api/userInfo": "/userInfo",
+<<<<<<< HEAD
   "/homePage/dynamic": "/dynamicData",
   "/user/getCode": "/userList"
+=======
+  "/api/articleList":"/articleList",
+  "/api/searchList":"/searchList"
+>>>>>>> master
 }

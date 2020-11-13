@@ -2,6 +2,10 @@ import React, { useContext } from 'react';
 import { StyledMyAvatarLogin } from "./styledMyMain"
 import { Icon } from "antd-mobile"
 import { useHistory } from "react-router-dom"
+<<<<<<< HEAD
+=======
+// import defaultImg from "@/assets/img/u4206.png";
+>>>>>>> master
 import woman from "@/assets/img/my/woman.png"
 import man from "@/assets/img/my/man.png"
 import UserData from "../container/context"

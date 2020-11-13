@@ -156,6 +156,10 @@ const SearchResultWrap=styled.div`
         border-bottom:1px solid #888888;
         .article-introduction{
           font-size:.15rem;
+          width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space:nowrap;
         }
         .article-writer{
           float:left;
@@ -221,6 +225,10 @@ const ArticleWrap=styled.div`
       border-bottom:1px solid #888888;
       .article-introduction{
         font-size:.15rem;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space:nowrap;
       }
       .article-writer{
         float:left;

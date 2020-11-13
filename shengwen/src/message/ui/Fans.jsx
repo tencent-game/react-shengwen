@@ -1,4 +1,4 @@
-import React , { Component }from 'react'
+import React from 'react'
 import {ListWrap} from '../../component/Message/styledMessage'
 
 import img from '../../assets/img/message/head.png'
