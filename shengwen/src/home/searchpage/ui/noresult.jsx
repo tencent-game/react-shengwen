@@ -27,9 +27,9 @@ export default class noresult extends Component {
     let ItemValue =value
     this.setState({value:value});
     // console.log(this.state.value);
-    let result= await get ({
-      url:'/api/search/content?keyword='+this.state.value
-    })
+    let result= await get (
+      '/api/search/content?keyword='+this.state.value
+    )
     this.setState({
       hisList:this.state.hisList,
     })

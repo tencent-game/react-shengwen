@@ -26,11 +26,11 @@ class PageSearchUi extends Component {
     hisList:this.props.list,
     seaList:[
       {content:'A股',id:"11"},
-      {content:'大智慧',id:"12"},
-      {content:'医疗',id:"13"},
+      {content:'花木兰',id:"12"},
+      {content:'特立独行',id:"13"},
       {content:'沐浴露',id:"14"},
       {content:'特斯拉',id:"15"},
-      {content:'朴有天',id:"16"},
+      {content:'UGD',id:"16"},
       {content:'天长地久',id:"17"},
       {content:'医疗',id:"18"},
     ],
@@ -55,9 +55,9 @@ class PageSearchUi extends Component {
     let ItemValue =value
     this.setState({value:value});
     // console.log(this.state.value);
-    let result= await get ({
-      url:'/api/search/content?keyword='+this.state.value
-    })
+    let result= await get (
+      '/api/search/content?keyword='+this.state.value
+    )
     this.setState({
       hisList:this.state.hisList,
     })
@@ -75,10 +75,27 @@ class PageSearchUi extends Component {
   handleDelete=()=>{
     this.props.loadData()
   }
-  handleHistory=(dataItem)=>{
+  handleHistory= async(dataItem)=>{
     let ItemValue=dataItem.target.innerText
+    this.setState({value:ItemValue});
+    // console.log(this.state.value);
+    let result= await get (
+      '/api/search/content?keyword='+ItemValue
+    )
+    this.setState({
+      hisList:this.state.hisList,
+    })
+    console.log(result);
+    let authorList=result.data.data.users
+    let titleList=result.data.data.articles
+  //  console.log(authorList.length);
+  //  console.log(titleList);
     let {history}=this.props
-    history.push('/result',{ItemValue})
+    if(authorList.length===0&&titleList.length===0){
+      history.push('/noresult',{ItemValue,authorList,titleList})
+     }else{
+      history.push('/result',{ItemValue,authorList,titleList})
+     }
   }
   render() {
     // console.log(this.props.list);

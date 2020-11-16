@@ -75,7 +75,7 @@ const DetailWrap=styled.div`
           float:right;
           width: .65rem;
           height: .26rem;
-          background:#0080ff;
+          background:#aaa;
           text-align:center;
           border-radius:.1rem;
           margin-top:.1rem;

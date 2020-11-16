@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { SearchBar } from 'antd-mobile';
 import {SearchResultWrap} from './searchStyle'
-import {get} from '@/utils/http.js'
+import {get,post} from '@/utils/http.js'
+
 export default class searchResult extends Component {
   constructor(props){
     super(props)
@@ -33,9 +34,10 @@ export default class searchResult extends Component {
     });
     
     // console.log(this.state.value);
-    let result= await get ({
-      url:'/api/search/content?keyword='+this.state.value
-    })
+    let result= await get (
+      '/api/search/content?keyword='+this.state.value
+    )
+    console.log(result);
     let authorList=result.data.data.users
     let titleList=result.data.data.articles
   //  console.log(titleList);
@@ -61,11 +63,22 @@ export default class searchResult extends Component {
     let {titleList}=this.state
     history.push('/article',{titleList})
   }
-  handleDetail=()=>{
-    // let{history} =this.props
-    // history.push('/detail')
+  handleDetail= async(dataItem)=>{
+    let result= await post ({
+      url:'/api/article/content',
+      data:{
+        "articleId":dataItem.articleId,
+        "publisherId":dataItem.userId
+      }   
+    })
+    
+    let data=result.data
+    console.log(data);
+    let {history}=this.props
+    // history.push('/detail',{data})
   }
   render() {
+    // console.log(this.props);
     return (
       <SearchResultWrap>
           <SearchBar
@@ -85,7 +98,7 @@ export default class searchResult extends Component {
           <div className="author-main">
             {this.state.authorList&&this.state.authorList.map(item=>{
               return(
-                <div className="author-card" key={item.userId} onClick={this.handleDetail}>
+                <div className="author-card" key={item.userId} >
               <div className="author-head" style={
               {background:`url(${item.userinfoPhoto}) center center /  .4rem .4rem no-repeat`}}
               ></div>
@@ -93,7 +106,7 @@ export default class searchResult extends Component {
               <div className="author-name">{item.userName}</div>
                 <div className="author-introduce">这个人还没有想好怎么介绍自己</div>
               </div>
-              <div className="follow-bn">+关注</div>
+              <button className={item.fansType===0?"follow-bn":"followEnd-bn"} onClick={this.handleFollow}>{item.fansType===0? "+关注" :"已关注"}</button>
             </div>
               )
             })}
@@ -106,14 +119,14 @@ export default class searchResult extends Component {
             <div className="more" onClick={this.handleArticle}>更多</div>
           </div>
           <div className="article-main">
-            {this.state.titleList&&this.state.titleList.map(data=>{
+            {this.state.titleList&&this.state.titleList.map(dataItem=>{
               return(
-                <div className="article-card" key={data.articleId} onClick={this.handleDetail}>
-                  <div className="article-introduction">{data.articleHeadline}</div>
+                <div className="article-card" key={dataItem.articleId} onClick={this.handleDetail.bind(this,dataItem)}>
+                  <div className="article-introduction">{dataItem.articleHeadline}</div>
                   <div className="article-writer">
-                    {data.userName}
+                    {dataItem.userName}
                   </div>
-                  <div className="article-day">{data.articleTime}</div>
+                  <div className="article-day">{dataItem.articleTime}</div>
                 </div>
               )
             })}

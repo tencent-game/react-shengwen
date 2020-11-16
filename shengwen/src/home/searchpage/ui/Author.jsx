@@ -27,7 +27,7 @@ export default class Article extends Component {
             onLeftClick={this.handleReturn}
           >作者</NavBar>
         <div className="author-main">
-            {this.state.authorList.map(item=>{
+            {this.state.authorList&&this.state.authorList.map(item=>{
               return(
                 <div className="author-card" onClick={this.handleAuthor} key={item.userId}>
                   <div className="author-head" style={
@@ -37,7 +37,7 @@ export default class Article extends Component {
                     <div className="author-name">{item.userName}</div>
                     <div className="author-introduce">这个人还没有想好怎么介绍自己</div>
                   </div>
-                  <div className="follow-bn">+关注</div>
+                  <button className={item.fansType===0?"follow-bn":"followEnd-bn"} onClick={this.handleFollow}>{item.fansType===0? "+关注" :"已关注"}</button>
                 </div>
               )
             })}

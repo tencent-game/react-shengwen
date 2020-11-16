@@ -16,9 +16,9 @@ class Swiper extends Component {
    } 
   }
   async componentDidMount(){
-    let result= await get ({
-      url:'/api/carousels'
-    })
+    let result= await get (
+      '/api/carousels'
+    )
     
       this.setState({
         swiperList:result.data.data.carousels

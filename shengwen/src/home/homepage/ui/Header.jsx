@@ -17,9 +17,9 @@ class Header extends Component {
     };
   }
   async componentDidMount(){
-    let result= await get ({
-      url:'/api/domain/findDomains'
-    })
+    let result= await get (
+      "/api/domain/findDomains"
+   )
     // console.log(result.data.data);
       this.setState({
         filedList:result.data.data.rows

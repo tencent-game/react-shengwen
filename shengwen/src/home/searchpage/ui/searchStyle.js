@@ -25,13 +25,25 @@ const SearchWrap=styled.div`
         display: flex;
         flex-direction: row;
         flex-wrap:wrap;
-        justify-content:space-around;
+        
         >li{
           background:#f2f2f2;
-          padding:.08rem .25rem;
           font-size:.12rem;
+          width: .7rem;
+          height: .26rem;
+          padding-top:.03rem;
           margin-bottom: .15rem;
           margin-top: .1rem;
+          display:table-cell;
+          text-align:center; 
+          align-content:center; 
+          margin-right:.11rem;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space:nowrap;
+        }
+        >li:nth-child(4n){
+          margin-right:0;
         }
       }
     }
@@ -60,6 +72,7 @@ const SearchWrap=styled.div`
           font-size:.12rem;
           width: .7rem;
           height: .26rem;
+          padding-top:.03rem; 
           margin-bottom: .15rem;
           margin-top: .1rem;
           display:table-cell;
@@ -126,6 +139,15 @@ const SearchResultWrap=styled.div`
           border-radius:.1rem;
           margin-top:.1rem;
         }
+        .followEnd-bn{
+          float:right;
+          width: .65rem;
+          height: .26rem;
+          background:#aaa;
+          text-align:center;
+          border-radius:.1rem;
+          margin-top:.1rem;
+        }
       }
     }
   }
@@ -166,18 +188,19 @@ const SearchResultWrap=styled.div`
         .article-writer{
           margin-top:.1rem;
           float:left;
-          width: .6rem;
+          width: 1rem;
           height: .25rem;
           font-size:.1rem;
-          
+          color:#aaaa;
         }
         .article-day{
           margin-top:.1rem;
-          width: 2rem;
+          width: 1.5rem;
           height: .2rem;
-          float:left;
+          float:right;
           font-size:.1rem;
           margin-left: .4rem;
+          color:#aaaa;
         }
       }
     }
@@ -218,6 +241,15 @@ const AuthorWrap=styled.div`
       border-radius:.1rem;
       margin-top:.1rem;
     }
+    .followEnd-bn{
+      float:right;
+      width: .65rem;
+      height: .26rem;
+      background:#aaa;
+      text-align:center;
+      border-radius:.1rem;
+      margin-top:.1rem;
+    }
   }
 `
 const ArticleWrap=styled.div`
@@ -239,18 +271,19 @@ const ArticleWrap=styled.div`
       .article-writer{
         margin-top:.1rem;
         float:left;
-        width: .6rem;
+        width: 1rem;
         height: .25rem;
         font-size:.1rem;
-        
+        color:#aaaa;
       }
       .article-day{
         margin-top:.1rem;
-        width: 2rem;
+        width: 1.5rem;
         height: .2rem;
-        float:left;
+        float:right;
         font-size:.1rem;
         margin-left: .4rem;
+        color:#aaaa;
       }
     }
 `

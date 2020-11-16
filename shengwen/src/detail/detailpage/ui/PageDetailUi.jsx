@@ -74,6 +74,7 @@ class PageDetailUi extends Component {
    this.setState({
     fanType:Negation
    })
+   console.log(Negation);
    console.log(this.state.fanType);
      await post ({
       url:'/api/homePage/author/attention',
@@ -96,11 +97,17 @@ class PageDetailUi extends Component {
         "publisherId":item.userId
       }   
     })
+    let result1= await post ({
+      url:'/api/article/relation',
+      data:{
+        articleId:result.data.article.articleId
+      }
+    })
     console.log(result);
     this.setState({
       data:result.data,
       article:result.data.article,
-      readList:[],
+      readList:result1.data.rows,
       fanType:result.data.fanType,
       Negation:""
     })
