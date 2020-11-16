@@ -14,8 +14,8 @@ export default class Article extends Component {
     history.goBack()
   }
   handleDetail=()=>{
-    let{history} =this.props
-    history.push('/detail')
+    // let{history} =this.props
+    // history.push('/detail')
   }
   render() {
     return (
@@ -29,13 +29,12 @@ export default class Article extends Component {
         <div className="article-main">
            {this.state.titleList.map(item=>{
              return(
-              <div className="article-card" key={item.id} onClick={this.handleDetail}>
-                <div className="article-introduction">{item.title}</div>
+              <div className="article-card" key={item.articleId} onClick={this.handleDetail}>
+                <div className="article-introduction">{item.articleHeadline}</div>
                 <div className="article-writer">
-                  <div className="article-name">{item.author}</div>
-                  <div className="article-time">{item.time}</div>
+               {item.userName}
                 </div>
-                <div className="article-day">2018-12-15</div>
+                <div className="article-day">{item.articleTime}</div>
             </div>
              )
            })}  

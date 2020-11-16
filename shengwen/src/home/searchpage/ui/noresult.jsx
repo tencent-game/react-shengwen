@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { SearchBar } from 'antd-mobile';
 import noResult from '@a/img/homepage/noresult.png'
+import {get} from '@/utils/http.js'
+import {NorResultWrap} from './searchStyle'
 export default class noresult extends Component {
   constructor(props){
     super(props)
@@ -21,27 +23,32 @@ export default class noresult extends Component {
       let{history} =this.props
       history.goBack()
   }
-  handleEnter=(value)=>{
-    let ItemValue=value;
-    let articleList= this.props.location.state.articleList
-    let authorList=articleList.filter((data)=>{
-      return data.author.includes(ItemValue)
+  handleEnter= async(value)=>{
+    let ItemValue =value
+    this.setState({value:value});
+    // console.log(this.state.value);
+    let result= await get ({
+      url:'/api/search/content?keyword='+this.state.value
     })
-    let titleList=articleList.filter((data)=>{
-      return data.title.includes(ItemValue)
+    this.setState({
+      hisList:this.state.hisList,
     })
     
+    let authorList=result.data.data.users
+    let titleList=result.data.data.articles
+    
     let {history}=this.props
-    // console.log(titleList);
-    if(authorList.length===0&&titleList.length===0){
-      history.push('/noresult',{ItemValue,authorList,titleList,articleList})
+     if(authorList.length===0&&titleList.length===0){
+      this.setState({
+        title:ItemValue 
+      })
      }else{
-      history.push('/result',{ItemValue,authorList,titleList,articleList})
+      history.push('/result',{ItemValue,authorList,titleList})
      }
   }
   render() {
     return (
-      <div>
+      <NorResultWrap>
         <SearchBar
           className="searchBox"
           defaultValue={this.state.title}
@@ -53,12 +60,16 @@ export default class noresult extends Component {
         />
         <div>
           <img src={noResult} style={{
-            width: "3.5rem",
-            height: "2.5rem",
-            marginLeft:".15rem"
+            width: "2rem",
+            height: "1.5rem",
+            marginLeft:".8rem",
           }} alt=""/>
+          <div style={{
+            fontSize:".1rem",
+            marginLeft:".3rem"
+          }}>糟糕，没有找到与'{this.state.title}'相关的内容，换个关键词试试吧~</div>
         </div>
-      </div>
+      </NorResultWrap>
     )
   }
 }

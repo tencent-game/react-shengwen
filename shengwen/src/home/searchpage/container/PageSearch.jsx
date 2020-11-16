@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import { loadDateAsync } from '../actionCreator'
 @connect(
   (state)=>{
-    //  console.log(state.getIn(["search","list"]));
+      // console.log(state.getIn(["searchList","list"]));
       return{
         list:state.getIn(["searchList","list"])
       }
@@ -18,6 +18,7 @@ import { loadDateAsync } from '../actionCreator'
 )
  class PageSearch  extends Component {
   render() {
+    
     return (
         <PageSearchUi
         list={this.props.list}

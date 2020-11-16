@@ -29,12 +29,12 @@ export default class Article extends Component {
         <div className="author-main">
             {this.state.authorList.map(item=>{
               return(
-                <div className="author-card" onClick={this.handleAuthor} key={item.id}>
+                <div className="author-card" onClick={this.handleAuthor} key={item.userId}>
                   <div className="author-head" style={
-                  {background:`url(${item.head}) center center /  .4rem .4rem no-repeat`}}
+                  {background:`url(${item.userinfoPhoto}) center center /  .4rem .4rem no-repeat`}}
                   ></div>
                   <div className="author-info">
-                    <div className="author-name">item.author</div>
+                    <div className="author-name">{item.userName}</div>
                     <div className="author-introduce">这个人还没有想好怎么介绍自己</div>
                   </div>
                   <div className="follow-bn">+关注</div>

@@ -51,6 +51,7 @@ const DetailWrap=styled.div`
           float:left;
           width: .4rem;
           height:.4rem;
+          border-radius: 50%;
         }
         .author-info{
           float:left;
@@ -62,6 +63,15 @@ const DetailWrap=styled.div`
           }
         }
         .follow-bn{
+          float:right;
+          width: .65rem;
+          height: .26rem;
+          background:#0080ff;
+          text-align:center;
+          border-radius:.1rem;
+          margin-top:.1rem;
+        }
+        .followEnd-bn{
           float:right;
           width: .65rem;
           height: .26rem;
@@ -265,13 +275,22 @@ const AppreciateWrap=styled.div`
       grid-row-gap: .1rem;
       grid-column-gap: .15rem;
       >li{
-        
         height: .4rem;
         width: .9rem;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items:center;
+        border: .01rem solid #0080ff; 
+      }
+      >li.active{
+        height: .4rem;
+        width: .9rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items:center;
+        background:#0080ff; 
         border: .01rem solid #0080ff; 
       }
     }

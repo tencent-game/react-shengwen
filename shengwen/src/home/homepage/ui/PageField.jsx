@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import Return from '@a/img/homepage/Return.png'
 import { NavBar, Icon } from 'antd-mobile';
 import {FieldWrap} from './PageHomeStyle'
-import OddList from './OddList'
-import EvenList from './EvenList'
+import watch from '@a/img/homepage/watch.png';
 import { withRouter } from "react-router-dom"
 @withRouter
 class PageField extends Component {
@@ -24,6 +23,14 @@ class PageField extends Component {
        history.push("/detail")
    }
   render() {
+    let dayList=this.state.FieldList&&this.state.FieldList.map(item=>{
+      let dateStart=item.articleTime
+      var dateBegin = new Date(dateStart.replace(/-/g, "/"))
+      let dateEnd=new Date()
+      var dateDiff = dateEnd.getTime() - dateBegin.getTime()
+      var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000))
+      return dayDiff
+    })
     return (
       <FieldWrap>
         <NavBar
@@ -34,7 +41,33 @@ class PageField extends Component {
           >{this.state.title}</NavBar>
         {this.state.FieldList&&this.state.FieldList.map((item,index)=>{
             return(
-              index % 2 === 0? <EvenList list={item} key={item.id}/>:<OddList key={item.id} list={item}/>
+              <div className="art-card" key={item.articleId} onClick={this.handleDetail}>
+              <div className="art-left">
+                <img className="art-img" src={item.articleCover} alt=""style={{
+                  width:"1.42rem",
+                  height: "1.02rem",
+                  borderRadius:".1rem",
+                }}/>
+              </div>
+              <div className="art-right" >
+                <div className="art-right-top">
+                  {item.articleHeadline}
+                </div>
+               <div className="art-bn">
+                <div className="art-right-bot">
+                    <div  className="img-watch" style={
+                      {background:`url(${watch})center center/  18px 14px no-repeat`}  
+                    }
+                    ></div>
+                    <span>{item.articleViewCount}</span>
+                  </div>
+                  <div className="art-right-ri">
+                    <span>{item.userName}</span>
+                    <span>{dayList[index]}天前</span>
+                  </div>
+                </div>
+              </div>
+            </div>
             )
         })}
       </FieldWrap>

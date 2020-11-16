@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { SearchBar } from 'antd-mobile';
 import {SearchResultWrap} from './searchStyle'
+import {get} from '@/utils/http.js'
 export default class searchResult extends Component {
   constructor(props){
     super(props)
@@ -23,27 +24,30 @@ export default class searchResult extends Component {
       let{history} =this.props
       history.goBack()
   }
-  handleEnter=(value)=>{
-    let ItemValue=value;
-    let articleList= this.props.location.state.articleList
-     this.setState({
-      authorList:articleList.filter((data)=>{
-        return data.author.includes(ItemValue)
-      }),
-      // console.log(authorList);
-      titleList:articleList.filter((data)=>{
-        return data.title.includes(ItemValue)
-      })
-     })
+  handleEnter= async(value)=>{
+    let ItemValue =value
+    this.setState({
+      value:value,
+      authorList:[],
+      titleList:[]
+    });
+    
+    // console.log(this.state.value);
+    let result= await get ({
+      url:'/api/search/content?keyword='+this.state.value
+    })
+    let authorList=result.data.data.users
+    let titleList=result.data.data.articles
+  //  console.log(titleList);
     let {history}=this.props
-    let {authorList,titleList}=this.state
-    // console.log(ItemValue);
-    // console.log(authorList);
-    // console.log(titleList);
-    if(authorList.length===0&&titleList.length===0){
-      return history.push('/noresult',{ItemValue,authorList,titleList,articleList})
-    }else{
-      history.push('/result',{ItemValue,authorList,titleList,articleList})
+     if(authorList.length===0&&titleList.length===0){
+      history.push('/noresult',{ItemValue,authorList,titleList})
+     }else{
+      this.setState({
+        value:value,
+        authorList:authorList,
+        titleList:titleList
+      });
      }
   }
   handleAuthor=()=>{
@@ -58,8 +62,8 @@ export default class searchResult extends Component {
     history.push('/article',{titleList})
   }
   handleDetail=()=>{
-    let{history} =this.props
-    history.push('/detail')
+    // let{history} =this.props
+    // history.push('/detail')
   }
   render() {
     return (
@@ -81,12 +85,12 @@ export default class searchResult extends Component {
           <div className="author-main">
             {this.state.authorList&&this.state.authorList.map(item=>{
               return(
-                <div className="author-card" key={item.id} onClick={this.handleDetail}>
+                <div className="author-card" key={item.userId} onClick={this.handleDetail}>
               <div className="author-head" style={
-              {background:`url(${item.head}) center center /  .4rem .4rem no-repeat`}}
+              {background:`url(${item.userinfoPhoto}) center center /  .4rem .4rem no-repeat`}}
               ></div>
               <div className="author-info">
-              <div className="author-name">{item.author}</div>
+              <div className="author-name">{item.userName}</div>
                 <div className="author-introduce">这个人还没有想好怎么介绍自己</div>
               </div>
               <div className="follow-bn">+关注</div>
@@ -104,13 +108,12 @@ export default class searchResult extends Component {
           <div className="article-main">
             {this.state.titleList&&this.state.titleList.map(data=>{
               return(
-                <div className="article-card" key={data.id} onClick={this.handleDetail}>
-                  <div className="article-introduction">{data.title}</div>
+                <div className="article-card" key={data.articleId} onClick={this.handleDetail}>
+                  <div className="article-introduction">{data.articleHeadline}</div>
                   <div className="article-writer">
-                    <div className="article-name">{data.author}</div>
-                    <div className="article-time">{data.time}</div>
+                    {data.userName}
                   </div>
-                  <div className="article-day">2018-12-15</div>
+                  <div className="article-day">{data.articleTime}</div>
                 </div>
               )
             })}

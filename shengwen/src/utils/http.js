@@ -6,7 +6,7 @@ axios.defaults.timeout = 5000
 axios.interceptors.request.use(
   config => {
     config.headers = {
-      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+      'Content-Type': 'application/json',
       'token': localStorage.getItem('token') // 获取token缓存
     }
     return config
@@ -30,7 +30,7 @@ const get = ({url}) =>{
     })
   }
   
-  const post = ({url,data}) =>{
+ const post =  ({url, data})=> {
     return new Promise((resolve, reject) => {
       axios.post(url, data)
         .then(response => {

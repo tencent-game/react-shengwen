@@ -1,10 +1,12 @@
 import {LOADDATA} from "./actionTypes"
 
+
 const defaultState={
-  list:[]
+  list:[],
+  
 }
 const reducer=(state=defaultState,action)=>{
-  //  console.log(action)
+    // console.log(action)
   switch(action.type){
     case LOADDATA:
       return{
