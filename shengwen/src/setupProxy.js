@@ -5,7 +5,7 @@ module.exports = function (app) {
     createProxyMiddleware(
       '/api',
       {
-        target: 'http://10.9.63.251:8805',
+        target: 'http://4iiqdx.natappfree.cc',
         changeOrigin: true,
         pathRewrite: {
           '/api': ''

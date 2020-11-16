@@ -87,15 +87,24 @@ class PageDetailUi extends Component {
 
 
   }
-  handleDetail=(item)=>{
-    this.setState({
-      data:item,
-      fieldList:item.field,
-      readList:this.state.detailList&&this.state.detailList.filter((value)=>{
-        return item.RelatedReading.includes(value.id
-        )
-      })
+  handleDetail= async(item)=>{
+    
+    let result= await post ({
+      url:'/api/article/content',
+      data:{
+        "articleId":item.articleId,
+        "publisherId":item.userId
+      }   
     })
+    console.log(result);
+    this.setState({
+      data:result.data,
+      article:result.data.article,
+      readList:[],
+      fanType:result.data.fanType,
+      Negation:""
+    })
+    
   }
   render() {
     // console.log(this.state.data.publisher.userId);

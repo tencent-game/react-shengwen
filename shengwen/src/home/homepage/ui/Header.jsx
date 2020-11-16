@@ -62,14 +62,14 @@ class Header extends Component {
         leftContent={[<span key="2" style={{fontSize:".22rem",color:"#000000"}}>首页</span>]}
         rightContent={[
           <Icon  key="0" className="menu" style={
-         {background:`url(${menu}) center center /  23px 23px no-repeat`,  
+         {background:`url(${menu}) center center /  .22rem .22rem no-repeat`,  
          height: ".23rem",
          width: ".23rem",
          marginRight:".4rem"}}
          onClick={this.showModal('modal1')}
           ></Icon>,
           <Icon key="1" className="search" style={
-            {background:`url(${search}) center center /  23px 23px no-repeat`,
+            {background:`url(${search}) center center /  .22rem .22rem no-repeat`,
             height: ".23rem",
             width: ".23rem",
           }}
