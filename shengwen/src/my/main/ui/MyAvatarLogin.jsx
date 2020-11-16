@@ -14,22 +14,22 @@ function MyAvatarLogin(props) {
     <StyledMyAvatarLogin>
       <div className="avatar-top">
         <div className="avatar-top-left">
-          <img src={userInfo.data.userInfo.userinfoPhoto} alt=""/>
+          <img src={userInfo.userInfo.userinfoPhoto} alt=""/>
           {
-            userInfo.data.userInfo.userinfoSex === "男" ? (
+            userInfo.userInfo.userinfoSex === "男" ? (
               <img src={man} alt="man"/>
-            ):(
+            ) : (
               <img src={woman} alt="woman"/>
             )
           }
         </div>
         <div className="avatar-top-center">
-          <h3>{userInfo.data.userInfo.userName}</h3>
+          <h3>{userInfo.userInfo.userName}</h3>
           <span>
             <i
               onClick={() => history.push("/followFans/concern")}
             >
-              关注 {userInfo.likeCount}
+              关注 {userInfo.attentionCount}
             </i>&nbsp;&nbsp;&nbsp;&nbsp;
             <i
               onClick={() => history.push("/followFans/fans")}

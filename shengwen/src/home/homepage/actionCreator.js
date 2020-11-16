@@ -12,9 +12,9 @@ const loadDateSync=list=>{
 
 const  loadDateAsync=()=>{
   return async(dispatch)=>{
-      let result= await get ({
-        url:'/api/articleList'
-      })
+      let result= await get (
+        '/api/articleList'
+      )
         // console.log(result.data.data);
       dispatch(loadDateSync(result.data.data))
   }

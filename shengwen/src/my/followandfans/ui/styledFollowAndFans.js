@@ -1,4 +1,4 @@
-import border from "../../styles/border";
+import border from "../../../styles/border";
 import styled from "styled-components";
 
 // 我的关注&我的粉丝主体部分列表样式

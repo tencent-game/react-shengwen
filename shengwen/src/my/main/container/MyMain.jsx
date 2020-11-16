@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import MyMainUi from "@/my/main/ui/MyMainUI";
-import { get } from "@/utils/http";
+import { post } from "@/utils/http";
 import { useSelector } from "react-redux";
 import UserData from "./context"
 
 function MyMain(props) {
   const [userInfo, setUserInfo] = useState(null)
+  const userId = useSelector((state) => {
+    return state.getIn(["login", "userId"])
+  })
   useEffect(() => {
     (async () => {
-      let result = await get({url: "http://localhost:9000/api/userInfo"})
+      let data = {
+        userId: userId || 2
+      }
+      let result = await post("/api/homePage/information", JSON.stringify(data))
       setUserInfo(result.data)
     })()
   }, [])
