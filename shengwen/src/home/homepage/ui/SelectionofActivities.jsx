@@ -8,10 +8,9 @@ import {withRouter} from "react-router-dom"
 @withRouter
 class SelectionofActivities extends Component {
  
-  handleClick=(data)=>{
-     
-     let {history,detailList}=this.props
-     history.push('/detail',{data,detailList})
+  handleClick=(data)=>{  
+    //  let {history,detailList}=this.props
+    //  history.push('/detail',{data,detailList})
   }
   render() {
     return (
@@ -27,9 +26,9 @@ class SelectionofActivities extends Component {
           
         >
          {this.props.list.map(item=>{
-            return <div key={item.id} className="active-img" onClick={this.handleClick.bind(this,item)}>
-                <img src={item.img[0]} alt=""/>
-                <span className="activeTitle">{item.title}</span>
+            return <div key={item.articleId} className="active-img" onClick={this.handleClick.bind(this,item)}>
+                <img src={item.articleCover} alt=""/>
+                <span className="activeTitle">{item.articleHeadline}</span>
             </div>
          })}
         </Carousel>

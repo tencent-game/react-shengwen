@@ -12,6 +12,7 @@ import Return from '@a/img/homepage/Return.png'
 import forward from '@a/img/homepage/forward.png'
 import watch from '@a/img/homepage/watch.png';
 import { Modal } from 'antd-mobile';
+import {post} from '@/utils/http.js'
 import { withRouter } from "react-router-dom"
 @withRouter
 
@@ -21,15 +22,25 @@ class PageDetailUi extends Component {
     this.state = {
       modal1: false,
       data:this.props.location.state.data,
-      fieldList:this.props.location.state.data.field ,
-      detailList:this.props.location.state.detailList,
-      readList:this.props.location.state.detailList&&this.props.location.state.detailList.filter((value)=>{
-        return this.props.location.state.data.RelatedReading.includes(value.id
-        )
-      })
+      article:this.props.location.state.data.article,
+      readList:[],
+      fanType:this.props.location.state.data.fanType,
+      Negation:""
     };
   }
   
+  async componentDidMount(){
+    let result= await post ({
+      url:'/api/article/relation',
+      data:{
+        articleId:this.state.data.article.articleId
+      }
+    })
+        //  console.log(result);
+     this.setState({
+      readList:result.data.rows
+    })
+  }
   
   showModal = key => (e) => {
     e.preventDefault(); // 修复 Android 上点击穿透
@@ -58,8 +69,25 @@ class PageDetailUi extends Component {
     let { history } = this.props
     history.goBack()
   }
+  handleFollow= async()=>{
+    let  Negation=(this.state.fanType===0?1:0)
+   this.setState({
+    fanType:Negation
+   })
+   console.log(this.state.fanType);
+     await post ({
+      url:'/api/homePage/author/attention',
+      data:{
+        "fansType":this.state.fanType,
+        "toUserId": this.state.data.publisher.userId,
+        "userId": "2"
+      }
+    })
+  
+
+
+  }
   handleDetail=(item)=>{
-    console.log(this.props.history);
     this.setState({
       data:item,
       fieldList:item.field,
@@ -70,11 +98,23 @@ class PageDetailUi extends Component {
     })
   }
   render() {
-    const backGround=this.state.data.img[2]
+    // console.log(this.state.data.publisher.userId);
+    console.log(this.state.fanType);
+    let content=this.state.article.articleText
+    let  arr=content.split("#")
+    let dayList=this.state.readList&&this.state.readList.map(item=>{
+      let dateStart=item.articleTime
+      var dateBegin = new Date(dateStart.replace(/-/g, "/"))
+      let dateEnd=new Date()
+      var dateDiff = dateEnd.getTime() - dateBegin.getTime()
+      var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000))
+      return dayDiff
+    })
     return (
       <DetailWrap>
+      
         <div className="detailBk" style={
-          { background: `url(${backGround}) center center /  100% 2.2rem no-repeat ` }}>
+          { background: `url(${this.state.article.articleCover}) center center /  100% 2.2rem no-repeat ` }}>
           <div className="detail-nav">
             <div className="detail-re" style={
               { background: `url(${Return}) center center /  .2rem .2rem no-repeat` }}
@@ -113,66 +153,50 @@ class PageDetailUi extends Component {
             { background: `url(${forward}) center center /  .2rem .2rem no-repeat` }}></div>
         </div>
         <div className="detail-main">
-          <h1 className="main-title">一大波好玩活动等你来“打卡”</h1>
+          <h1 className="main-title">{this.state.article.articleHeadline}</h1>
           <div className="author-card">
             <div className="author-head" style={
-              { background: `url(${this.state.data.head}) center center /  .4rem .4rem no-repeat` }}
+              { background: `url(${this.state.data.publisher.userinfoPhoto}) center center /  .4rem .4rem no-repeat` }}
             ></div>
             <div className="author-info">
-              <div className="author-name">{this.state.data.author}</div>
+              <div className="author-name">{this.state.data.publisher.userName}</div>
               <div className="author-introduce">这个人还没有想好怎么介绍自己</div>
             </div>
-            <div className="follow-bn">+关注</div>
+            <button className={this.state.fanType===0?"follow-bn":"followEnd-bn"} onClick={this.handleFollow}>{this.state.fanType===0? "+关注" :"已关注"}</button>
           </div>
           <div className="article-main">
             <div className="text-paragraph">
-              <span>瑞虹天地月亮湾L1</span>
-              <span><br /></span>
-              <span>既能买家具又能吃美食，还有这种跨界骚操作？集家居和餐饮于</span>
-              <span><br /></span>
-              <span>一体的Minderlands™就做到啦~</span>
+              <span>{arr[0]}</span>
+              
             </div>
             <div className="article-img">
-              <img src={this.state.data.img[0]} alt="" />
+              <img src={arr[3]} alt="" />
             </div>
             <div className="text-paragraph">
-              <span>瑞虹天地月亮湾L1</span>
-              <span><br /></span>
-              <span>既能买家具又能吃美食，还有这种跨界骚操作？集家居和餐饮于</span>
-              <span><br /></span>
-              <span>一体的Minderlands™就做到啦~</span>
+              <span>{arr[1]}</span>
             </div>
             <div className="article-img">
-              <img src={this.state.data.img[1]} alt="" />
+              <img src={arr[4]} alt="" />
             </div>
             <div className="text-paragraph">
-              <span>瑞虹天地月亮湾L1</span>
-              <span><br /></span>
-              <span>既能买家具又能吃美食，还有这种跨界骚操作？集家居和餐饮于</span>
-              <span><br /></span>
-              <span>一体的Minderlands™就做到啦~</span>
+              <span>{arr[2]}</span>
+              
             </div>
             <div className="article-img">
-              <img src={this.state.data.img[2]} alt="" />
+              <img src={arr[5]} alt="" />
             </div>
             <div className="text-paragraph">
-              <span>瑞虹天地月亮湾L1</span>
-              <span><br /></span>
-              <span>既能买家具又能吃美食，还有这种跨界骚操作？集家居和餐饮于</span>
-              <span><br /></span>
-              <span>一体的Minderlands™就做到啦~</span>
+              <span>{arr[0]}</span>   
             </div>
           </div>
           <div className="appreciate_main">
             <div className="related-contents">
-              {this.state.fieldList&&this.state.fieldList.map((item,index)=>{
-                return <div key={index} className="related-card" onClick={this.handleField}>
-                <div className="reCard-contents">{item}</div>
+               <div className="related-card" onClick={this.handleField}>
+                <div className="reCard-contents">{this.state.data.domain.domainName}</div>
                 <div className="reCard-img">
                   <img src={arrow} alt="" />
                 </div>
               </div>
-              })}
             </div>
             <div className="appreciate-bn" onClick={this.handleAppreciate}>
               <span>赞赏</span>
@@ -198,11 +222,11 @@ class PageDetailUi extends Component {
           <div className="related-reading">
             <h1>相关阅读</h1>
             <div>
-            {this.state.readList&&this.state.readList.map(item=>{
-                  return <div key={item.id} className="art-card" onClick={this.handleDetail.bind(this,item)} >
+            {this.state.readList&&this.state.readList.map((item,index)=>{
+                  return <div key={item.articleId} className="art-card" onClick={this.handleDetail.bind(this,item)} >
                   <div className="art-left" >
                     <div className="art-left-top">
-                      {item.title}
+                      {item.articleHeadline}
                     </div>
                     <div className="art-left-bn">
                       <div className="art-left-bot">
@@ -210,16 +234,16 @@ class PageDetailUi extends Component {
                           {background:`url(${watch})center center/  18px 14px no-repeat`}  
                         }
                         ></div>
-                        <span>{item.watchNumber}</span>
+                        <span>{item.articleViewCount}</span>
                       </div>
                       <div className="art-left-ri">
-                        <span>{item.author}</span>
-                        <span>{item.time}</span>
+                        <span>{item.userName}</span>
+                        <span>{dayList[index]}天前</span>
                       </div>
                     </div>
                   </div>
                   <div className="art-right" style={
-                  {background:`url(${item.img[0]}) center center/1.42rem 1.02rem`}
+                  {background:`url(${item.articleCover}) center center/1.42rem 1.02rem`}
                   }>
                   </div>
                 </div>

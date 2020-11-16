@@ -13,14 +13,23 @@ const loadDateSync=list=>{
 const  loadDateAsync=()=>{
   return async(dispatch)=>{
       let result= await get ({
-        url:'/api/searchList'
+        url:'/api/search/history'
       })
-      //  console.log(result.data.data);
-      dispatch(loadDateSync(result.data.data))
+      dispatch(loadDateSync(result.data.data.rows))
   }
 }
+const DeleteAsync=()=>{
+  return async(dispatch)=>{
+    let result= await get ({
+      url:'/api/search/deleteHistory'
+    })
+    dispatch(loadDateSync(result.data.data.rows))
+}
+}
+
                       
 export{
   loadDateSync,
-  loadDateAsync
+  loadDateAsync,
+  DeleteAsync,
 }

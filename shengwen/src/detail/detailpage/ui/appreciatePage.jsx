@@ -3,6 +3,7 @@ import Return from '@a/img/homepage/Return.png'
 import { NavBar, Icon } from 'antd-mobile';
 import {AppreciateWrap} from './PageDetailStyle';
 import header1 from '@a/img/detail/header1.png'
+import {post} from '@/utils/http.js'
 import { withRouter } from "react-router-dom"
 @withRouter
  class appreciatePage extends Component {
@@ -10,13 +11,33 @@ import { withRouter } from "react-router-dom"
     super();
     this.state = {
       clicked: 'none',
-      clicked1: 'none',
-      clicked2: 'none',
+      PriceList:["￥1","￥5","￥10","￥20","￥50","自定义"],
+      price: '',
+      active:''
     };
   }
   handleReturn = () => {
     let { history } = this.props
     history.goBack()
+  }
+  handlePay=()=>{
+      
+  }
+  handleClick= async()=>{
+      let result= await post ({
+        url:'/api/alipay/order',
+        data:{
+          "admireMoney": "50",        
+          "articleId": 0,
+          "toUserId": "2",
+          "userId": "string"
+        }
+      })
+      document.write(result)
+      this.setState({
+        html:result
+      })
+      console.log(this.state.html);
   }
   render() {
     return (
@@ -36,14 +57,13 @@ import { withRouter } from "react-router-dom"
           </div>
           <div className="PaymentAmount">
             <ul>
-              <li>￥1</li>
-              <li>￥5</li>
-              <li>￥10</li>
-              <li>￥20</li>
-              <li>￥50</li>
-              <li>自定义</li>
+              {this.state.PriceList&&this.state.PriceList.map((item,index)=>{
+                return (
+                  <li key={index} onClick={this.handlePay}>{item}</li>
+                )
+              })}
             </ul>
-            <div className="payBn">
+            <div className="payBn" onClick={this.handleClick}>
               确认支付
             </div>
             <div className="PayMethod">

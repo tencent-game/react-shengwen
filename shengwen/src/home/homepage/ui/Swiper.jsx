@@ -1,32 +1,52 @@
 import React, { Component } from 'react'
-
+import {get} from '@/utils/http.js'
 import  {
   Carousel
 } from 'antd-mobile';
-import swiper1 from '@a/img/homepage/swiper1.png';
-import swiper2 from '@a/img/homepage/swiper2.png';
-import swiper3 from '@a/img/homepage/swiper3.png';
 import {
   SwiperWrap
 } from './PageHomeStyle';
 
-export default class Swiper extends Component {
+
+class Swiper extends Component {
+  constructor (props){
+    super(props)
+    this.state={
+      swiperList:[]
+   } 
+  }
+  async componentDidMount(){
+    let result= await get ({
+      url:'/api/carousels'
+    })
+    
+      this.setState({
+        swiperList:result.data.data.carousels
+      })
+  }
   render() {
+    // console.log(this.state.swiperList);
     return (
-      <SwiperWrap>
+      <SwiperWrap οnClick={this.loadSwiper}>
         <Carousel
           selectedIndex={2}
           autoplay={true}
           infinite
           dots={false}
+      
         >
-          <img src={swiper1} alt=""/>
-          <img src={swiper2} alt=""/>
-          <img src={swiper3} alt=""/>
+          {this.state.swiperList&&this.state.swiperList.map((item)=>{
+            return(
+              <img src={item.carouselSrc} key={item.carouselId} alt="" style={{
+                // height: "1.7rem",
+                //  width: "3.48rem",
+              }} />
+            )
+          })}
         </Carousel>
       </SwiperWrap>
     )
   }
 }
-
+export default Swiper
 

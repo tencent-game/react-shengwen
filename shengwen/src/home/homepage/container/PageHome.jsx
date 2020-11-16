@@ -8,7 +8,7 @@ import { loadDateAsync } from '../actionCreator'
 
 @connect(
   (state)=>{
-    // console.log(state.getIn(["home","list"]));
+    //  console.log(state);
       return{
         list:state.getIn(["home","list"])
       }
@@ -25,6 +25,7 @@ import { loadDateAsync } from '../actionCreator'
        <PageHomeUi
         list={this.props.list}
         ></PageHomeUi>
+      
     )
   }
   componentDidMount(){

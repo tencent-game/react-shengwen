@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {
   HeaderWrap
 } from './PageHomeStyle'
+import {get} from '@/utils/http.js'
 import { Modal, List, Icon, NavBar } from 'antd-mobile';
 import menu from '@a/img/homepage/menu.png';
 import search from '@a/img/homepage/search.png';
@@ -12,22 +13,17 @@ class Header extends Component {
     super(props);
     this.state = {
       modal1: false,
-      filedList:[{value:"医疗健康"},
-      {value:"新媒体"},
-      {value:"娱乐"},
-      {value:"AI"},
-      {value:"人工智能"},
-      {value:"大数据"},
-      {value:"社交"},
-      {value:"时政新闻"},
-      {value:"前沿技术"},
-      {value:"投资金融"},
-      {value:"证券投资"},
-      {value:"硬件"},
-      {value:"互联网"},
-      {value:"教育"},
-      ],
+      filedList:[],
     };
+  }
+  async componentDidMount(){
+    let result= await get ({
+      url:'/api/domain/findDomains'
+    })
+    // console.log(result.data.data);
+      this.setState({
+        filedList:result.data.data.rows
+      })
   }
   showModal = key => (e) => {
     e.preventDefault(); // 修复 Android 上点击穿透
@@ -47,15 +43,17 @@ class Header extends Component {
     let  {history}=this.props
     history.push('./search',{list})
   }
-  handleField=(dataItem)=>{
-    let itemValue=dataItem.target.innerText
-    let FieldList=this.props.list.filter((data)=>{
-      return data.field.includes(itemValue)
+  handleField= async(dataItem)=>{
+    let itemValue=dataItem.domainName
+    let result= await get ({
+      url:'/api/domain/article?domainId='+dataItem.domainId+'&limit=2&offset=0'
+    
     })
-    console.log(FieldList);
+    console.log(result.data.data.rows);
+    let FieldList=result.data.data.rows
     let  {history}=this.props
-    history.push('./field',{FieldList,itemValue})
-  }
+     history.push('./field',{FieldList,itemValue,})
+   }
   render() {
    
     return (<HeaderWrap >
@@ -93,8 +91,8 @@ class Header extends Component {
             display: "block",
             
           }}>
-            {this.state.filedList.map((dataItem, index) => (
-              <List.Item key={index} style={{
+            {this.state.filedList&&this.state.filedList.map((dataItem) => (
+             <List.Item key={dataItem.domainId} style={{
                 width: "1.03rem",
                 height: ".5rem",
                 float:"left",
@@ -102,7 +100,7 @@ class Header extends Component {
                 marginRight:".12rem",
                 marginBottom:".1rem",
                 fontColor:'#0080ff',
-              }} onClick={this.handleField}>{dataItem.value}</List.Item>
+              }} onClick={this.handleField.bind(this,dataItem)}>{dataItem.domainName}</List.Item>
             ))}
           </List>
         </Modal>

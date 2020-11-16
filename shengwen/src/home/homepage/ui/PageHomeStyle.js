@@ -100,82 +100,16 @@ const ActivitiesWrap=styled.div`
     >img{
       width: 1.4rem;
       height: .95rem;
-    };
+    }
     .activeTitle{
       margin-top:.13rem;
       height: .4rem;
       font-size:.1rem;
-      text-overflow: -o-ellipsis-lastline;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
+      
     }
   }
 `
 const FieldWrap=styled.div`
-`
-const EvenWrap=styled.div`
-.art-modular{
-  height: 1.7rem;
-  width: 100%;
-  padding-left:.14rem;
-  padding-top:.17rem ;
-  border-bottom:1px solid #888888;
-  .modular-title{
-    font-size:.13rem;
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space:nowrap;
-  }
-  .modular-img{
-    margin-top:.15rem;
-    display:grid;
-    border-radius:.1rem;
-    grid-template-columns: repeat(3, 1.06rem);
-    grid-row-gap: .2rem;
-    justify-content:space-around  ;
-    >div{
-      float:left;
-      >img{
-        width: 1.06rem;
-        height: .82rem;
-        border-radius:.1rem;
-      }
-    }
-  }
-  .modular-right-bot{
-    padding:.1rem;
-    float:left;
-    height: .14rem;
-    .modular-watch{
-      float:left;
-      display:block;
-      width: .18rem;
-      height: .14rem;
-      padding-top:.2rem
-    }
-    >span{
-      font-size:.1rem;
-      color:#aaaa
-    }
-  }
-  .modular-right-ri{
-    margin-left:1.1rem;
-    padding:.1rem;
-    height: .1rem;
-    >span{
-      display:block;
-      float:left;
-      font-size:.1rem;
-      color:#aaaa
-    }
-  }
-}
-`
-const OddWrap=styled.div`
 .art-card{
   height: 1.35rem;
   width: 100%;
@@ -183,10 +117,12 @@ const OddWrap=styled.div`
   padding-top:.17rem ;
   border-bottom:1px solid #888888;
   .art-right{
+    position: relative;
     float:right;
     width: 2.01rem;
+    padding-left:.1rem
     .art-right-top{
-      font-size:.12rem;
+      font-size:.15rem;
       width: 1.78rem;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -194,28 +130,36 @@ const OddWrap=styled.div`
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
     }
-    .art-right-bot{
-      padding-top: .5rem;
+    .art-bn{
+      position:absolute;
+      top:.8rem;
       height: .14rem;
-      .img-watch{
-        float:left;
-        display:block;
-        width: .18rem;
+      width: 2.01rem;
+      .art-right-bot{
+        float:left;  
         height: .14rem;
+        .img-watch{
+          float:left;
+          display:block;
+          width: .18rem;
+          height: .14rem;
+          padding-top:.2rem
+        }
+        >span{
+          font-size:.1rem;
+          color:#aaaa
+        }
+      }
+      .art-right-ri{
         padding-top:.2rem
-      }
-      >span{
-        font-size:.1rem;
-        color:#aaaa
-      }
-    }
-    .art-right-ri{
-      >span{
-        display:block;
         float:right;
-        margin-right:.1rem;
-        font-size:.1rem;
-        color:#aaaa
+        >span{
+          display:block;
+          float:right;
+          margin-right:.1rem;
+          font-size:.1rem;
+          color:#aaaa
+        }
       }
     }
   }
@@ -228,12 +172,11 @@ const OddWrap=styled.div`
 }
 `
 
+
 export{
   HeaderWrap,
   SwiperWrap,
   ArtListWrap,
   ActivitiesWrap,
   FieldWrap,
-  EvenWrap,
-  OddWrap
 }

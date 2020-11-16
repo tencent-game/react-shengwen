@@ -2,9 +2,24 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { SearchBar } from 'antd-mobile';
 import {SearchWrap} from './searchStyle'
+import {connect} from 'react-redux'
 import Delete from '@a/img/homepage/delete.png'
-
+import {get} from '@/utils/http.js'
+import {DeleteAsync} from '../actionCreator'
 @withRouter
+
+@connect(
+  (state)=>{
+      return{
+        list:state.getIn(["searchList","list"])
+      }
+  },
+  (dispatch)=>({
+    loadData(){
+      dispatch(DeleteAsync())
+    }
+  })
+)
 class PageSearchUi extends Component {
   state = {
     value: '搜索文章作者',
@@ -36,35 +51,29 @@ class PageSearchUi extends Component {
       let{history} =this.props
       history.goBack()
   }
-  handleEnter=(value)=>{
-    let ItemValue=value;
-    this.state.hisList.push(ItemValue);
-    // console.log(this.state.hisList);
+  handleEnter=async(value)=>{
+    let ItemValue =value
+    this.setState({value:value});
+    // console.log(this.state.value);
+    let result= await get ({
+      url:'/api/search/content?keyword='+this.state.value
+    })
     this.setState({
       hisList:this.state.hisList,
     })
-    let articleList= this.props.location.state.list
-    let authorList=articleList.filter((data)=>{
-      return data.author.includes(ItemValue)
-    })
-    let titleList=articleList.filter((data)=>{
-      return data.title.includes(ItemValue)
-    })
-    // console.log(ItemValue);
-    //  console.log(authorList);
-    //  console.log(titleList);
+    let authorList=result.data.data.users
+    let titleList=result.data.data.articles
+  //  console.log(authorList.length);
+  //  console.log(titleList);
     let {history}=this.props
-     if(authorList.length===0&&titleList.length===0){
-      history.push('/noresult',{ItemValue,authorList,titleList,articleList})
+    if(authorList.length===0&&titleList.length===0){
+      history.push('/noresult',{ItemValue,authorList,titleList})
      }else{
-      history.push('/result',{ItemValue,authorList,titleList,articleList})
+      history.push('/result',{ItemValue,authorList,titleList})
      }
   }
   handleDelete=()=>{
-    this.setState({
-      hisList:[]
-    })
-    
+    this.props.loadData()
   }
   handleHistory=(dataItem)=>{
     let ItemValue=dataItem.target.innerText
@@ -72,6 +81,7 @@ class PageSearchUi extends Component {
     history.push('/result',{ItemValue})
   }
   render() {
+    // console.log(this.props.list);
     return (
       <SearchWrap>
         <SearchBar
@@ -97,7 +107,7 @@ class PageSearchUi extends Component {
                this.props.list&&this.props.list.map((dataItem,index)=>{
                 return(
                   <li key={index} onClick={this.handleHistory}>
-                    {dataItem}
+                    {dataItem.historyText}
                   </li>
                 )
               })

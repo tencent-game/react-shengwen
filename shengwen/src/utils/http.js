@@ -28,6 +28,7 @@ const get = (url, params = {}) => {
       .then(error => {
         reject(error)
       })
+<<<<<<< HEAD
   })
 }
 
@@ -41,6 +42,21 @@ const post = (url, data) => {
       })
   })
 }
+=======
+    })
+  }
+  
+ const post =  ({url, data})=> {
+    return new Promise((resolve, reject) => {
+      axios.post(url, data)
+        .then(response => {
+          resolve(response.data)
+        }, err => {
+          reject(err)
+        })
+    })
+  }
+>>>>>>> master
 export {
   get,
   post

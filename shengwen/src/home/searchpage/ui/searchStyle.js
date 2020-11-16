@@ -84,6 +84,7 @@ const SearchResultWrap=styled.div`
         width: .5rem;
         height:.2rem;
         float:left;
+        
       }
       .more{
         float:right;
@@ -105,6 +106,7 @@ const SearchResultWrap=styled.div`
           float:left;
           width: .4rem;
           height:.4rem;
+          border-radius: 50%;
         }
         .author-info{
           float:left;
@@ -151,7 +153,7 @@ const SearchResultWrap=styled.div`
     .article-main{
       height: 100%;
       .article-card{
-        height: .65rem;
+        height: .6rem;
         margin-top: .15rem;
         border-bottom:1px solid #888888;
         .article-introduction{
@@ -162,14 +164,17 @@ const SearchResultWrap=styled.div`
           white-space:nowrap;
         }
         .article-writer{
+          margin-top:.1rem;
           float:left;
-          width: .35rem;
+          width: .6rem;
           height: .25rem;
           font-size:.1rem;
+          
         }
         .article-day{
-          width: .7rem;
-          height: .1rem;
+          margin-top:.1rem;
+          width: 2rem;
+          height: .2rem;
           float:left;
           font-size:.1rem;
           margin-left: .4rem;
@@ -193,6 +198,7 @@ const AuthorWrap=styled.div`
       float:left;
       width: .4rem;
       height:.4rem;
+      border-radius:50% ;
     }
     .author-info{
       float:left;
@@ -231,24 +237,31 @@ const ArticleWrap=styled.div`
         white-space:nowrap;
       }
       .article-writer{
+        margin-top:.1rem;
         float:left;
-        width: .35rem;
+        width: .6rem;
         height: .25rem;
         font-size:.1rem;
-        font-color:#888888;
+        
       }
       .article-day{
-        width: .7rem;
-        height: .1rem;
+        margin-top:.1rem;
+        width: 2rem;
+        height: .2rem;
         float:left;
         font-size:.1rem;
         margin-left: .4rem;
       }
     }
 `
+const NorResultWrap=styled.div`
+
+`
+
 export{
   SearchWrap,
   SearchResultWrap,
   AuthorWrap,
-  ArticleWrap
+  ArticleWrap,
+  NorResultWrap
 }
