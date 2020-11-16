@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyledMyDynamic} from "./styledMyDynamic"
-import DynamicInfoHeader from '../../dynamic/UI/DynamicInfoHeader';
-import DynamicFooter from '../../dynamic/UI/DynamicFooter';
+import DynamicInfoHeader from '../../../dynamic/UI/DynamicInfoHeader';
+import DynamicFooter from '../../../dynamic/UI/DynamicFooter';
 
 
 function MyDynamic(props) {

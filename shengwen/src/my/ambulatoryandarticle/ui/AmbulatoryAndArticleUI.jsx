@@ -1,12 +1,12 @@
 import React from 'react';
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import back from "@/assets/img/my/back.png";
-import {StyledMyPublicMain, StyledMyPublicTop} from "@/my/followandfans/styledFollowAndFans";
+import { StyledMyPublicMain, StyledMyPublicTop } from "@/my/followandfans/ui/styledFollowAndFans";
 import demo from "@/assets/img/my/article-demo-img.png";
 import more from "@/assets/img/my/more.png";
-import {StyledAmbulatoryAndArticle} from "./styledAmbulatoryArticle";
+import { StyledAmbulatoryAndArticle } from "./styledAmbulatoryArticle";
 
-function AmbulatoryAndArticle(props) {
+function AmbulatoryAndArticleUI(props) {
   const history = useHistory()
   const pathname = history.location.pathname
   return (
@@ -38,8 +38,29 @@ function AmbulatoryAndArticle(props) {
       {
         history.location.pathname === "/ambulatoryArticle/article" ? (
           <StyledMyPublicMain>
-            <div className="my-title">共5篇文章</div>
+            <div className="my-title">共{props.articleList.length}篇文章</div>
 
+            {
+              props.articleList.map((item) => {
+                return (
+                  <div key={item.articleId}>
+                    <StyledAmbulatoryAndArticle width="0 0 1px 0">
+                      <div className="item-img">
+                        <img src={item.articleCover} alt=""/>
+                      </div>
+                      <div className="item-text">
+                        <p>{item.articleHeadline}</p>
+                        <i>审核中</i>
+                        <div className="item-bottom">
+                          <p>{item.articleTime}</p>
+                          <span><img src={more} alt=""/></span>
+                        </div>
+                      </div>
+                    </StyledAmbulatoryAndArticle>
+                  </div>
+                )
+              })
+            }
             <StyledAmbulatoryAndArticle width="0 0 1px 0">
               <div className="item-img">
                 <img src={demo} alt=""/>
@@ -95,4 +116,4 @@ function AmbulatoryAndArticle(props) {
   );
 }
 
-export default AmbulatoryAndArticle;
+export default AmbulatoryAndArticleUI;

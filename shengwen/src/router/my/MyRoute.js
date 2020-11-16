@@ -1,14 +1,14 @@
 import { MyMain } from "@/my/index"
-import FollowAndFans from "@/my/followandfans/FollowAndFans";
-import MyPersonalData from "@/my/personal/MyPersonalData";
+import { FollowAndFans } from "@/my/followandfans/index";
+import { PersonalData } from "@/my/personal/index";
 import Submitted from "@/my/submitted/Submitted"
 import Activities from "@/my/activities/Activities";
 import Wallet from "@/my/wallet/Wallet";
 import Settings from "@/my/settings/Settings";
 import Feedback from "@/my/feedback/Feedback";
 import Withdrawals from "@/my/wallet/Withdrawals";
-import AmbulatoryAndArticle from "@/my/ambulatoryandarticle/AmbulatoryAndArticle";
-import HistoryLog from "@/my/history/HistoryLog";
+import { AmbulatoryAndArticle } from "@/my/ambulatoryandarticle/index";
+import { HistoryLog } from "@/my/history/index";
 import EditInfo from "@/my/editinfo/EditInfo";
 
 const MyRoute = [
@@ -19,7 +19,7 @@ const MyRoute = [
     id: 2, path: "/followFans", component: FollowAndFans, exact: false
   },
   {
-    id: 3, path: "/personal/:tag", component: MyPersonalData, exact: false
+    id: 3, path: "/personal/:tag", component: PersonalData, exact: false
   },
   {
     id: 4, path: "/submitted", component: Submitted, exact: false

@@ -1,23 +1,25 @@
-import React, {useState} from 'react';
+import React, { useContext, useState } from 'react';
 import {
   StyledMyPersonalDataTop,
   StyledMyPersonalDataMain,
   StyledMyPersonalDataBottom
 } from "./styledMyDynamic"
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import MyDynamic from "./MyDynamic"
 import MyArticle from "./MyArticle"
 import MyInfo from "./MyInfo"
-import {ActionSheet} from "antd-mobile"
+import { ActionSheet } from "antd-mobile"
+import UserData from "@/my/main/container/context"
 
 // 图片
-import back from "../../assets/img/my/back.png"
-import more from "../../assets/img/my/more.png"
-import defaultImg from "../../assets/img/u4206.png";
-import woman from "../../assets/img/my/woman.png";
-import wechat from "../../assets/img/my/wechat.png"
-import wechatFriends from "../../assets/img/my/wechatFriends.png"
-import weibo from "../../assets/img/my/weibo.png"
+import back from "../../../assets/img/my/back.png"
+import more from "../../../assets/img/my/more.png"
+import defaultImg from "../../../assets/img/u4206.png";
+import woman from "../../../assets/img/my/woman.png";
+import wechat from "../../../assets/img/my/wechat.png"
+import wechatFriends from "../../../assets/img/my/wechatFriends.png"
+import weibo from "../../../assets/img/my/weibo.png"
+import man from "@/assets/img/my/man.png";
 
 function MyPersonalData(props) {
   const history = useHistory()
@@ -25,6 +27,8 @@ function MyPersonalData(props) {
   const [state, setState] = useState({
     clicked: 'none'
   })
+
+  const userInfo = useContext(UserData);
 
   const renderContent = (tagName) => {
     switch (tagName) {
@@ -59,7 +63,7 @@ function MyPersonalData(props) {
   }
 
   return (
-    <div>
+    userInfo && (<div>
       <StyledMyPersonalDataTop
         className="personal-top"
         width="0 0 1px 0"
@@ -70,11 +74,17 @@ function MyPersonalData(props) {
       </StyledMyPersonalDataTop>
       <StyledMyPersonalDataMain>
         <div className="avatar-top-left">
-          <img src={defaultImg} alt=""/>
-          <img src={woman} alt="gender"/>
+          <img src={userInfo.userInfo.userinfoPhoto} alt=""/>
+          {
+            userInfo.userInfo.userinfoSex === "男" ? (
+              <img src={man} alt="man"/>
+            ) : (
+              <img src={woman} alt="woman"/>
+            )
+          }
         </div>
         <div className="personal-nickname">
-          <h2>特立独行的狗</h2>
+          <h2>{userInfo.userInfo.userName}</h2>
           <span>与你分享我的观点，weibo：Alex Wang</span>
         </div>
         <div className="personal-list">
@@ -133,7 +143,7 @@ function MyPersonalData(props) {
         </ul>
         {renderContent(activeTag)}
       </StyledMyPersonalDataBottom>
-    </div>
+    </div>)
   );
 }
 

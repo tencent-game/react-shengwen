@@ -1,6 +1,6 @@
 // 我的个人主页底部 动态 样式
 import styled from "styled-components";
-import border from "../../styles/border";
+import border from "../../../styles/border";
 // import {select} from "@/assets/img/my/select.png";
 
 const StyledMyDynamic = styled.div`
@@ -74,7 +74,7 @@ const StyledMyPersonalDataMain = styled.div`
      width: .23rem;
      height: .3rem;
     }
-    img[alt=gender] {
+    img[alt=woman] {
       position: absolute;
       width: .2rem;
       height: .2rem;
@@ -82,6 +82,13 @@ const StyledMyPersonalDataMain = styled.div`
       right: 0;
       -moz-transform:rotate(-45deg);
       -webkit-transform:rotate(-45deg);
+    }
+    img[alt=man] {
+      position: absolute;
+      width: .22rem;
+      height: .22rem;
+      bottom: .05rem;
+      right: 0;
     }
   }
   .personal-nickname {

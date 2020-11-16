@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import back from "../../assets/img/my/back.png"
-import {useHistory} from "react-router-dom"
-import {StyledMyPublicTop, StyledMyPublicMain, StyledMyPublicMainItem} from "./styledFollowAndFans"
-import followImg from "../../assets/img/my/follow.png"
-import addFollow from "../../assets/img/my/addFollow.png"
+import React, { useState } from 'react';
+import back from "../../../assets/img/my/back.png"
+import { useHistory } from "react-router-dom"
+import { StyledMyPublicTop, StyledMyPublicMain, StyledMyPublicMainItem } from "./styledFollowAndFans"
+import followImg from "../../../assets/img/my/follow.png"
+import addFollow from "../../../assets/img/my/addFollow.png"
 
 /**
  * @Description: 我的页面 我的粉丝与关注
@@ -11,7 +11,7 @@ import addFollow from "../../assets/img/my/addFollow.png"
  * @date 2020/10/30
  * @time 16:45
  */
-function FollowAndFans(props) {
+function FollowAndFansUI(props) {
   const [follow, setFollow] = useState(false)
   const history = useHistory()
   const pathname = history.location.pathname
@@ -47,6 +47,27 @@ function FollowAndFans(props) {
           <StyledMyPublicMain>
             <div className="my-title">共<i>5</i>个关注</div>
             <ul>
+              {
+                props.followList.map((item) => {
+                  console.log(item)
+                  return (
+                    <StyledMyPublicMainItem
+                      width="0 0 1px 0"
+                    >
+                      <img src={item.userinfoPhoto} alt="avatar"/>
+                      <div>
+                        <h4>{item.userName}</h4>
+                        <span>{item.userinfoSignature}</span>
+                      </div>
+                      <button
+                        className={follow ? "active" : ""}
+                        onClick={() => setFollow(!follow)}
+                      >{follow ? (<span><img src={addFollow} alt="add"/>关注</span>) : "已关注"}</button>
+                    </StyledMyPublicMainItem>
+                  )
+                })
+              }
+
               <StyledMyPublicMainItem
                 width="0 0 1px 0"
               >
@@ -89,4 +110,4 @@ function FollowAndFans(props) {
   );
 }
 
-export default FollowAndFans;
+export default FollowAndFansUI;

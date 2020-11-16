@@ -44,21 +44,33 @@ function LoginUi(props) {
               defaultValue={props.code}
               onInput={props.onHandleCode}
             >
+              <Button
+                inline
+                size="small"
+                onClick={props.getCode}
+                type="default"
+                style={{
+                  position: "absolute",
+                  top: "0",
+                  lineHeight: ".44rem",
+                  right: "0",
+                  height: "100%",
+                  color: "#fff",
+                  fontSize: ".14rem",
+                  backgroundColor: "rgba(76, 89, 248, 0.317647058823529)",
+                  border: "1px solid rgba(76, 89, 248, 0.317647058823529)"
+                }}
+              >获取验证码
+              </Button>
             </InputItem>
             <Button
-              onClick={props.getCode}
-              type="default"
+              onClick={props.onLogin}
+              type="primary"
               style={{
-                width: "100%",
-                height: ".45rem",
-                color: "#fff",
-                marginTop: "12px",
-                fontSize: ".18rem",
+                marginTop: ".1rem",
                 backgroundColor: "rgba(76, 89, 248, 0.317647058823529)",
-                border: "1px solid rgba(76, 89, 248, 0.317647058823529)"
               }}
-            >获取验证码
-            </Button>
+            >登录</Button>
             <p style={{
               width: "145px",
               height: "25px",

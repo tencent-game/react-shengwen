@@ -4,15 +4,16 @@ import LoginUi from "@/login/ui/LoginUI";
 import { useHistory } from "react-router-dom"
 import { Toast } from "antd-mobile";
 import { SuccessIcon, TipsIcon } from "@/component/PublicIcon";
-// import { get } from "@/utils/http";
+import { post } from "@/utils/http";
 import { actionCreator } from "../index"
 
 function Login(props) {
   const [usePwd, setUsePwd] = useState(true)
-  const [phone, setPhone] = useState("")
+  const [phone, setPhone] = useState(null)
   const [email, setEmail] = useState("")
   const [pwd, setPwd] = useState("")
   const [code, setCode] = useState("")
+  const [isSucess, setIsSuccess] = useState(0)
 
   const history = useHistory()
   const dispatch = useDispatch()
@@ -58,15 +59,14 @@ function Login(props) {
     } else {
 
       let phoneData = phone.replace(/( )/g, "")
-      console.log(phoneData)
-      // let result = post("", {
-      //   email: phoneData
-      // })
-      let code1 = "1234"
-      let userId = "1545"
-      if (code === code1) {
+      let result = post("/api/mail/send", JSON.stringify({
+        mobile: phoneData
+      }))
+      console.log(result)
+      // console.log(result.data.verifyCode)
+      if (code === result.data.data.verifyCode) {
         // 成功逻辑
-        dispatch(actionCreator.setUserId(userId))
+        setIsSuccess(1)
       }
       Toast.info(<SuccessTips/>, 1, null, false);
       setTimeout(() => {
@@ -89,6 +89,20 @@ function Login(props) {
     }
   }
 
+  const onLogin = () => {
+    if (isSucess) {
+      // 正确
+      let result = post("/api/mail/success", JSON.stringify({
+        mobile: phone
+      }))
+      console.log(result.data.userId)
+      dispatch(actionCreator.setUserId(result.data.userId))
+    } else {
+      // 错误
+      Toast.info(<ErrorTips/>, 1, null, false);
+    }
+  }
+
   return (
     <LoginUi
       usePwd={usePwd}
@@ -104,6 +118,7 @@ function Login(props) {
       toHome={toHome}
       code={code}
       onHandleCode={onHandleCode}
+      onLogin={onLogin}
     />
   );
 }
