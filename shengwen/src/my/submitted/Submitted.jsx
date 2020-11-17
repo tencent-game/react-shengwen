@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom"
 import { StyledSubmitted } from "./styledSubmitted"
 import { Radio, ImagePicker, List, TextareaItem, Toast } from "antd-mobile"
 import MyListPublicTitle from "../../component/MyListPublicTitle";
@@ -7,6 +8,7 @@ import { get, post } from "@/utils/http"
 const RadioItem = Radio.RadioItem;
 
 function Submitted(props) {
+  const history = useHistory()
   const [files, setFiles] = useState([])
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
@@ -49,6 +51,9 @@ function Submitted(props) {
       })
     })
     console.log(articleResult)
+    if (articleResult.message === "投稿成功") {
+      history.push("/my")
+    }
   }
 
   const onChange = (files) => {

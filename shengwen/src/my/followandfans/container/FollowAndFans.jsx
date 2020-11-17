@@ -18,14 +18,22 @@ function FollowAndFans(props) {
           type: 1
         })
       })
-      setFollowList(follow.data.rows)
-      setFansList(fans.data.rows)
-      // console.log(follow.data)
+      console.log(follow)
+      if (follow.message === "查询失败") {
+        setFollowList([])
+      } else {
+        setFollowList(follow.data.rows)
+      }
+      if (fans.message === "查询失败") {
+        setFansList([])
+      } else {
+        setFansList(fans.data.rows)
+      }
     })()
   }, [])
 
   return (
-    followList && fansList && <FollowAndFansUI followList={followList} fansList={fansList}/>
+    followList && fansList && (<FollowAndFansUI followList={followList} fansList={fansList}/>)
   );
 }
 

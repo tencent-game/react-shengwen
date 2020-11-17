@@ -17,7 +17,7 @@ function MyMain(props) {
       let result = await post({url: "/api/homePage/information", data: JSON.stringify(data)})
       setUserInfo(result.data)
     })()
-  }, [])
+  }, [userId])
 
   const isLogin = useSelector(state => {
     return state.getIn(["login", "isLogin"])
