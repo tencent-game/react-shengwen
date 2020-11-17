@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Return from '@a/img/homepage/Return.png'
 import { NavBar, Icon } from 'antd-mobile';
 import{ ArticleWrap} from './searchStyle'
+import {post} from '@/utils/http.js'
 export default class Article extends Component {
   constructor(props){
     super(props)
@@ -13,9 +14,21 @@ export default class Article extends Component {
     let{history} =this.props
     history.goBack()
   }
-  handleDetail=()=>{
-    // let{history} =this.props
-    // history.push('/detail')
+  handleDetail= async(item)=>{
+    console.log(item);
+    let result= await post ({
+      url:'/api/article/content',
+      data:{
+        "articleId":item.articleId,
+        "publisherId":item.userId
+      }   
+    })
+    // console.log(item.articleId);
+    // console.log(item.userId);
+    let data=result.data
+    // console.log(data);
+    let {history}=this.props
+    history.push('/detail',{data})
   }
   render() {
     return (
@@ -29,7 +42,7 @@ export default class Article extends Component {
         <div className="article-main">
            {this.state.titleList.map(item=>{
              return(
-              <div className="article-card" key={item.articleId} onClick={this.handleDetail}>
+              <div className="article-card" key={item.articleId} onClick={this.handleDetail.bind(this,item)}>
                 <div className="article-introduction">{item.articleHeadline}</div>
                 <div className="article-writer">
                {item.userName}

@@ -71,11 +71,12 @@ export default class searchResult extends Component {
         "publisherId":dataItem.userId
       }   
     })
-    
+    // console.log(dataItem.articleId);
+    // console.log(dataItem.userId);
     let data=result.data
-    console.log(data);
+    // console.log(data);
     let {history}=this.props
-    // history.push('/detail',{data})
+    history.push('/detail',{data})
   }
   render() {
     // console.log(this.props);
@@ -106,7 +107,7 @@ export default class searchResult extends Component {
               <div className="author-name">{item.userName}</div>
                 <div className="author-introduce">这个人还没有想好怎么介绍自己</div>
               </div>
-              <button className={item.fansType===0?"follow-bn":"followEnd-bn"} onClick={this.handleFollow}>{item.fansType===0? "+关注" :"已关注"}</button>
+              <button className={item.fansType===0?"follow-bn":"followEnd-bn"} >{item.fansType===0? "+关注" :"已关注"}</button>
             </div>
               )
             })}
