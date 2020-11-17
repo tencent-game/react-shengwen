@@ -50,7 +50,7 @@ class PageDetailUi extends Component {
       readList:result.data.rows,
       commitList:resultCommit.data.data.rows
     })
-    console.log(this.state.commitList);
+    // console.log(this.state.commitList);
   }
   
   showModal = key => (e) => {
@@ -119,13 +119,7 @@ class PageDetailUi extends Component {
     })
     
   }
-  handleDbCommit=async(valueItem)=>{
-    let result= await get (
-      '/api/comment/person?commentDepth=1&commentId=1&limit=2&offset=0',
-        
-    )
-    // console.log(result);
-  }
+ 
    
   onSelect = (opt) => {
     // console.log(opt.props.value);
@@ -346,7 +340,7 @@ class PageDetailUi extends Component {
                             <div className="Copraise-bn" >{itemValue.commentType===0?<img src={praiseCo } alt=""/>:<img src={praiseCoEnd } alt=""/>}</div>
                             <span>{itemValue.commentCount}</span>
                           </div>
-                          <div className="commit-bn" onClick={this.handleDbCommit.bind(this,itemValue)}>
+                          <div className="commit-bn" >
                             <img src={commit}alt=""/>
                           </div>
                         </div>
