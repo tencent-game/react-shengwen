@@ -2,16 +2,16 @@ import React, { Component } from 'react'
 import Return from '@a/img/homepage/Return.png'
 import { NavBar, Icon } from 'antd-mobile';
 import {AppreciateWrap} from './PageDetailStyle';
-import header1 from '@a/img/detail/header1.png'
 import {post} from '@/utils/http.js'
 import { withRouter } from "react-router-dom"
 @withRouter
  class appreciatePage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
+      publisher:this.props.location.state.data.publisher,
       clicked: 'none',
-      PriceList:["￥1","￥5","￥10","￥20","￥50","自定义"],
+      PriceList:["1","5","10","20","50"],
       price: '',
       active:''
     };
@@ -20,26 +20,26 @@ import { withRouter } from "react-router-dom"
     let { history } = this.props
     history.goBack()
   }
-  handlePay=()=>{
-      
+  handlePay=(index)=>{
+    this.setState({
+      active:index
+    })   
+    console.log(this.state.active);
   }
+  
   handleClick= async()=>{
       let result= await post ({
         url:'/api/alipay/order',
         data:{
-          "admireMoney": "50",        
-          "articleId": 0,
-          "toUserId": "2",
-          "userId": "string"
+          "admireMoney": this.state.price,        
+          "articleId": this.props.location.state.data.article.articleId,
+          "toUserId": this.state.publisher.userId,
         }
       })
       document.write(result)
-      this.setState({
-        html:result
-      })
-      console.log(this.state.html);
   }
   render() {
+    // console.log(this.props.location.state);
     return (
       <AppreciateWrap>
         <NavBar
@@ -50,18 +50,21 @@ import { withRouter } from "react-router-dom"
           >赞赏</NavBar>
           <div className="Appreciate-info">
             <div className="userHeader">
-              <img src={header1} alt=""/>
+              <img src={this.state.publisher.userinfoPhoto} alt=""/>
             </div>
-            <div className="userName">十点新闻</div>
+            <div className="userName">{this.state.publisher.userName}</div>
             <div className="Appreciate-main">一点赞赏更多鼓励</div>
           </div>
           <div className="PaymentAmount">
             <ul>
               {this.state.PriceList&&this.state.PriceList.map((item,index)=>{
                 return (
-                  <li key={index} onClick={this.handlePay}>{item}</li>
+                  <li key={index} onClick={this.handlePay.bind(this,index)}
+                  className={this.state.active === index?" Active":''}
+                  >￥{item}</li>
                 )
               })}
+               <li>自定义</li>
             </ul>
             <div className="payBn" onClick={this.handleClick}>
               确认支付

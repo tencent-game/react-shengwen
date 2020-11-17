@@ -30,7 +30,6 @@ const DetailWrap=styled.div`
     .detail-main{
       position:absolute;
       top:2rem;
-      height: 100%;
       width: 100%;
       padding-left:.14rem;
       padding-right:.14rem;
@@ -168,74 +167,141 @@ const DetailWrap=styled.div`
         }
       }
       .related-reading{
-        height: 6rem;
+       
         >h1{
           font-size:.17rem;
         }
         >div{
-          position: absolute;
+
           height: 100%;
-  .art-card{
-    height: 1.35rem;
-    width: 100%;
-    padding-left:.14rem;
-    padding-top:.17rem ;
-    border-bottom:1px solid #888888;
-    .art-left{
-      position: relative;
-      float:left;
-      width: 2.01rem;
-      padding-left:.1rem
-      .art-left-top{
-        font-size:.12rem;
-        width: 1.78rem;
-        height: 1.2rem;
-      }
-     .art-left-bn{
-      position:absolute;
-      top:.8rem;
-      height: .14rem;
-      width: 2.01rem;
-      .art-left-bot{
-        float:left;
-        width: .7rem;
-        .img-watch{
-          float:left;
-          display:block;
-          width: .18rem;
-          height: .14rem;
-          padding-top:.2rem
-        }
-        >span{
-          display:block;
-          font-size:.1rem;
-          color:#aaaa
-        }
-      }
-      .art-left-ri{
-        float:right;
-        margin-right:.1rem;
-        >span{
-          display:block;
-          float:right;
-          font-size:.1rem;
-          color:#aaaa
-        }
-      }
-     }
-    }
-    .art-right{
-      float:left;
-      height: 1.02rem;
-      width: 1.42rem;
-      border-radius:.1rem;
-    }
-  }
+          .art-card{
+            height: 1.35rem;
+            width: 100%;
+            padding-left:.1rem;
+            padding-top:.17rem ;
+            border-bottom:1px solid #888888;
+            .art-left{
+              float:left;
+              width: 1.8rem;
+              padding-left:.1rem
+              .art-left-top{
+                font-size:.12rem;
+                width: 1.78rem;
+                height: 1.2rem;
+              }
+            .art-left-bn{
+              margin-top:.6rem;
+              height: .14rem;
+              width: 1.8rem;
+              .art-left-bot{
+                float:left;
+                width: .7rem;
+                .img-watch{
+                  float:left;
+                  display:block;
+                  width: .18rem;
+                  height: .14rem;
+                  padding-top:.2rem
+                }
+                >span{
+                  display:block;
+                  font-size:.1rem;
+                  color:#aaaa
+                }
+              }
+              .art-left-ri{
+                float:right;
+                >span{
+                  display:block;
+                  margin-right:.1rem;
+                  float:left;
+                  font-size:.1rem;
+                  color:#aaaa;
+                  width: .4rem;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space:nowrap;
+                }
+              }
+            }
+            }
+            .art-right{
+              float:right;
+              height: 1.02rem;
+              width: 1.42rem;
+              border-radius:.1rem;
+            }
+          }
         }
       }
 
       .hotCommit{
-        margin-top:0;
+        margin-top:.4rem;
+        .hotCommit-card{
+          height: 1.2rem;
+          .hotCommit-left{
+            width: 10%;
+            float:left;
+            >img{
+              margin-top:.1rem;
+              width: .3rem;
+              height: .3rem;
+              border-radius:50%;
+            }
+          }
+          .hotCommit-right{
+            float:right;
+            width: 90%;
+            .hotCommit-main{
+              .hotCommit-content{
+                height: .5rem;
+                font-size:.13rem;
+              }
+              .hotCommit-bot{
+                width:100%;
+                .commit-time{
+                  float:left;
+                  color:#aaa;
+                  font-size:.1rem;
+                }
+                .commit-bf{
+                  width: 1.2rem;
+                  float:right;
+                  height: .2rem;
+                  .commit-praise{
+                    float:left;
+                    margin-right:.28rem;
+                    .Copraise-bn{
+                      float:left;
+                      margin-right:.12rem;
+                      >img{
+                        width: .2rem;
+                        height: .2rem;
+                      }
+                    }
+                    >span{
+                      height: .2rem;
+                      margin-top:.05rem;
+                      float:left;
+                      color:#aaa;
+                      font-size:.1rem;
+                    }
+                  }
+                  .commit-bn{
+                    width: .2rem;
+                    float:right;
+                    margin-right:.1rem;
+                    >img{
+                      width: .2rem;
+                      height: .2rem;
+                    }
+                  }
+                }
+              }
+  
+            }
+        }
+        }
       }
     }
     
@@ -250,12 +316,14 @@ const AppreciateWrap=styled.div`
       >img{
         width: .4rem;
         height: .4rem;
+        border-radius:50% ;
       }
     }
     .userName{
-      width:.56rem;
+      width:1rem;
       font-size:.14rem;
       margin: 0 auto;
+      text-align:center;
     }
     .Appreciate-main{
       margin: 0 auto;
@@ -283,7 +351,7 @@ const AppreciateWrap=styled.div`
         align-items:center;
         border: .01rem solid #0080ff; 
       }
-      >li.active{
+      .Active{
         height: .4rem;
         width: .9rem;
         display: flex;

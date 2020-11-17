@@ -7,12 +7,17 @@ import header2 from '@a/img/detail/header2.png'
 import header3 from '@a/img/detail/header3.png'
 import header4 from '@a/img/detail/header4.png'
 import header5 from '@a/img/detail/header5.png'
+import Antipathy from '@a/img/Dynamic/踩.png';
+import report from '@a/img/Dynamic/举报.png';
+import praiseCo from '@a/img/Dynamic/点赞1.png';
+import praiseCoEnd from '@a/img/Dynamic/点赞2.png';
+import commit from '@a/img/Dynamic/评论.png';
 import { DetailWrap } from './PageDetailStyle'
 import Return from '@a/img/homepage/Return.png'
 import forward from '@a/img/homepage/forward.png'
 import watch from '@a/img/homepage/watch.png';
-import { Modal } from 'antd-mobile';
-import {post} from '@/utils/http.js'
+import {Popover, NavBar, Icon , Modal } from 'antd-mobile';
+import {post,get} from '@/utils/http.js'
 import { withRouter } from "react-router-dom"
 @withRouter
 
@@ -24,8 +29,9 @@ class PageDetailUi extends Component {
       data:this.props.location.state.data,
       article:this.props.location.state.data.article,
       readList:[],
+      commitList:[],
       fanType:this.props.location.state.data.fanType,
-      Negation:""
+      Negation:"",
     };
   }
   
@@ -36,10 +42,15 @@ class PageDetailUi extends Component {
         articleId:this.state.data.article.articleId
       }
     })
-        //  console.log(result);
+    let resultCommit= await get(
+      '/api/comment/findAll?commentType=0&id='+this.state.data.article.articleId+'&limit=10&offset=0'
+    )
+    //  console.log(resultCommit);
      this.setState({
-      readList:result.data.rows
+      readList:result.data.rows,
+      commitList:resultCommit.data.data.rows
     })
+    console.log(this.state.commitList);
   }
   
   showModal = key => (e) => {
@@ -55,28 +66,25 @@ class PageDetailUi extends Component {
   }
   handleAppreciate=()=>{
     let { history } = this.props
-    history.push('/appreciate')
-  }
-  handleField=(item)=>{
-    let itemValue=item.target.innerText
-    let FieldList=this.state.detailList.filter((data)=>{
-      return data.field.includes(itemValue)
-    })
-    let  {history}=this.props
-    history.push('./field',{FieldList,itemValue})
+    let  {data}=this.state
+    history.push('/appreciate',{data})
   }
   handleReturn = () => {
     let { history } = this.props
     history.goBack()
   }
   handleFollow= async()=>{
-    let  Negation=(this.state.fanType===0?1:0)
    this.setState({
-    fanType:Negation
-   })
-   console.log(Negation);
-   console.log(this.state.fanType);
-     await post ({
+    fanType:this.state.fanType===0?1:0
+   } ,function() {
+    this.loadList();
+  })
+  //  console.log(Negation);
+  //  console.log(this.state.fanType);
+     
+  }
+  async loadList(){
+    return await post ({
       url:'/api/homePage/author/attention',
       data:{
         "fansType":this.state.fanType,
@@ -84,10 +92,8 @@ class PageDetailUi extends Component {
         "userId": "2"
       }
     })
-  
-
-
   }
+  
   handleDetail= async(item)=>{
     
     let result= await post ({
@@ -103,7 +109,7 @@ class PageDetailUi extends Component {
         articleId:result.data.article.articleId
       }
     })
-    console.log(result);
+    // console.log(result);
     this.setState({
       data:result.data,
       article:result.data.article,
@@ -113,9 +119,29 @@ class PageDetailUi extends Component {
     })
     
   }
+  handleDbCommit=async(valueItem)=>{
+    let result= await get (
+      '/api/comment/person?commentDepth=1&commentId=1&limit=2&offset=0',
+        
+    )
+    // console.log(result);
+  }
+   
+  onSelect = (opt) => {
+    // console.log(opt.props.value);
+    this.setState({
+      visible: false,
+      selected: opt.props.value,
+    });
+  };
+  handleVisibleChange = (visible) => {
+    this.setState({
+      visible,
+    });
+  };
   render() {
     // console.log(this.state.data.publisher.userId);
-    console.log(this.state.fanType);
+    // console.log(this.state.fanType);
     let content=this.state.article.articleText
     let  arr=content.split("#")
     let dayList=this.state.readList&&this.state.readList.map(item=>{
@@ -207,7 +233,7 @@ class PageDetailUi extends Component {
           </div>
           <div className="appreciate_main">
             <div className="related-contents">
-               <div className="related-card" onClick={this.handleField}>
+               <div className="related-card" >
                 <div className="reCard-contents">{this.state.data.domain.domainName}</div>
                 <div className="reCard-img">
                   <img src={arrow} alt="" />
@@ -265,6 +291,72 @@ class PageDetailUi extends Component {
                 </div>
                 })}
             </div>
+          </div>
+          <div className="hotCommit">
+            <h1>热门评论</h1>
+            {this.state.commitList&&this.state.commitList.map((itemValue)=>{
+              return(
+                <div className="hotCommit-card" key={itemValue.commentId}>
+                  <div className="hotCommit-left">
+                      <img src={itemValue.userinfoPhoto} alt=""/>
+                  </div>
+                  <div className="hotCommit-right">
+                  <NavBar
+                    mode="light"
+                    leftContent={[<span key={555} style={{color:"#aaa",fontSize:".11rem"}}>阿银</span>]}
+                    rightContent={
+                      <Popover mask
+                        overlayClassName="fortest"
+                        overlayStyle={{ color: 'currentColor' }}
+                        visible={false}
+                        overlay={[
+                          (<Popover.Item key="4"><img src={Antipathy} alt=""/>踩</Popover.Item>),
+                          (<Popover.Item key="5"><img src={report} alt=""style={{width:".2rem"}}/>举报</Popover.Item>),
+                        ]}
+                        align={{
+                          overflow: { adjustY: 5, adjustX: -20},
+                          offset: [-20, 0],
+                        }}
+                        onVisibleChange={this.handleVisibleChange}
+                        onSelect={this.onSelect}
+                    
+                      >
+                        <div style={{
+                          height: '100%',
+                          padding: '0 15px',
+                          marginRight: '-20px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          color:"#aaa",
+                          fontSize:".11rem"
+                        }}
+                        >
+                          <Icon type="ellipsis" />
+                        </div>
+                      </Popover>
+                    }
+                  >           
+                  </NavBar>
+                  <div className="hotCommit-main">
+                    <div className="hotCommit-content">{itemValue.commentText}</div>
+                    <div className="hotCommit-bot">
+                        <div className="commit-time">{itemValue.commentTime}</div>
+                        <div className="commit-bf">
+                          <div className="commit-praise">
+                            <div className="Copraise-bn" >{itemValue.commentType===0?<img src={praiseCo } alt=""/>:<img src={praiseCoEnd } alt=""/>}</div>
+                            <span>{itemValue.commentCount}</span>
+                          </div>
+                          <div className="commit-bn" onClick={this.handleDbCommit.bind(this,itemValue)}>
+                            <img src={commit}alt=""/>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              )
+            })}
+            
           </div>
         </div>
       </DetailWrap>
