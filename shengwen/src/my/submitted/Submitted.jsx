@@ -38,14 +38,16 @@ function Submitted(props) {
     }
     let formData = new FormData()
     formData.append("photo", files[0].file)
-    let result = await post("/api/article/upload", formData)
+    let result = await post({url: "/api/article/upload", data: formData})
     console.log(result)
-    let articleResult = await post("/api/article/contribution", JSON.stringify({
-      articleCover: result.data.url,
-      articleHeadline: title,
-      articleText: content,
-      domainId: value
-    }))
+    let articleResult = await post({
+      url: "/api/article/contribution", data: JSON.stringify({
+        articleCover: result.data.url,
+        articleHeadline: title,
+        articleText: content,
+        domainId: value
+      })
+    })
     console.log(articleResult)
   }
 

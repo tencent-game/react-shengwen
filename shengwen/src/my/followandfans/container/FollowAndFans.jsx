@@ -8,12 +8,16 @@ function FollowAndFans(props) {
 
   useEffect(() => {
     (async () => {
-      let follow = await post("/api/homePage/attention", JSON.stringify({
-        type: 0
-      }))
-      let fans = await post("/api/homePage/attention", JSON.stringify({
-        type: 1
-      }))
+      let follow = await post({
+        url: "/api/homePage/attention", data: JSON.stringify({
+          type: 0
+        })
+      })
+      let fans = await post({
+        url: "/api/homePage/attention", data: JSON.stringify({
+          type: 1
+        })
+      })
       setFollowList(follow.data.rows)
       setFansList(fans.data.rows)
       // console.log(follow.data)

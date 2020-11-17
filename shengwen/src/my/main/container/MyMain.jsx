@@ -14,7 +14,7 @@ function MyMain(props) {
       let data = {
         userId: userId || 2
       }
-      let result = await post("/api/homePage/information", JSON.stringify(data))
+      let result = await post({url: "/api/homePage/information", data: JSON.stringify(data)})
       setUserInfo(result.data)
     })()
   }, [])

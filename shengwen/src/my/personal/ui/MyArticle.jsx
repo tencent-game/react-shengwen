@@ -1,59 +1,47 @@
-import React from 'react';
-import {StyledPersonalDataArticle} from "./styledMyDynamic"
-import demo from "@/assets/img/my/article-demo-img.png"
-import watch from "@/assets/img/homepage/watch.png"
+import React, { useEffect, useState } from 'react';
+import { get } from "@/utils/http";
+import { useSelector } from "react-redux";
+import { StyledAmbulatoryAndArticle } from "@/my/ambulatoryandarticle/ui/styledAmbulatoryArticle";
+import more from "@/assets/img/my/more.png";
 
 function MyArticle(props) {
+  const [articleList, setArticleList] = useState(null)
+  const userId = useSelector((state) => {
+    state.getIn(["login", "userId"])
+  })
+  useEffect(() => {
+    (async () => {
+      let article = await get("/api/article/findarticlebyuserid", {
+        limit: 5,
+        offset: 0,
+        userId: userId || 2
+      })
+      setArticleList(article.data.data.rows)
+    })()
+  })
   return (
-    <div>
-      <StyledPersonalDataArticle width="0 0 1px 0">
-        <div className="item-img">
-          <img src={demo} alt=""/>
-        </div>
-        <div className="item-text">
-          <p>首届UGD设计大会在京举办，引领增长时代的设计变</p>
-          <div className="item-bottom">
-            <p><img src={watch} alt=""/>30636</p>
-            <span>Daisy 16分钟前</span>
-          </div>
-        </div>
-      </StyledPersonalDataArticle>
-      <StyledPersonalDataArticle width="0 0 1px 0">
-        <div className="item-img">
-          <img src={demo} alt=""/>
-        </div>
-        <div className="item-text">
-          <p>首届UGD设计大会在京举办，引领增长时代的设计变</p>
-          <div className="item-bottom">
-            <p><img src={watch} alt=""/>30636</p>
-            <span>Daisy 16分钟前</span>
-          </div>
-        </div>
-      </StyledPersonalDataArticle>
-      <StyledPersonalDataArticle width="0 0 1px 0">
-        <div className="item-img">
-          <img src={demo} alt=""/>
-        </div>
-        <div className="item-text">
-          <p>首届UGD设计大会在京举办，引领增长时代的设计变</p>
-          <div className="item-bottom">
-            <p><img src={watch} alt=""/>30636</p>
-            <span>Daisy 16分钟前</span>
-          </div>
-        </div>
-      </StyledPersonalDataArticle>
-      <StyledPersonalDataArticle width="0 0 1px 0">
-        <div className="item-img">
-          <img src={demo} alt=""/>
-        </div>
-        <div className="item-text">
-          <p>首届UGD设计大会在京举办，引领增长时代的设计变</p>
-          <div className="item-bottom">
-            <p><img src={watch} alt=""/>30636</p>
-            <span>Daisy 16分钟前</span>
-          </div>
-        </div>
-      </StyledPersonalDataArticle>
+    articleList && <div>
+      {
+        articleList.map((item) => {
+          return (
+            <div key={item.articleId}>
+              <StyledAmbulatoryAndArticle width="0 0 1px 0">
+                <div className="item-img">
+                  <img src={item.articleCover} alt=""/>
+                </div>
+                <div className="item-text">
+                  <p>{item.articleHeadline}</p>
+                  <i>审核中</i>
+                  <div className="item-bottom">
+                    <p>{item.articleTime}</p>
+                    <span><img src={more} alt=""/></span>
+                  </div>
+                </div>
+              </StyledAmbulatoryAndArticle>
+            </div>
+          )
+        })
+      }
     </div>
   );
 }
