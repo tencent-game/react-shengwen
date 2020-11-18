@@ -36,7 +36,25 @@ const FollowBtnCss = styled.div `
   
 `
 
+const DispatchDynamicCss = styled.div `
+  position:fixed;
+  width:.6rem;
+  height:.6rem;
+  bottom:.8rem;
+  right:.1rem;
+  background:rgba(61, 126, 255, 1);
+  border-radius:.6rem;
+  z-index:999;
+  >img{
+    width:.4rem;
+    height:.4rem;
+    display:block;
+    margin: .08rem auto;
+  }
+`
+
 
 export {
   FollowBtnCss,
+  DispatchDynamicCss
 }

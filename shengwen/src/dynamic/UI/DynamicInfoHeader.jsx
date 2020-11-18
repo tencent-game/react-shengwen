@@ -7,29 +7,28 @@ import {info,info1,info2 } from '@a/img/Dynamic/index'
 const  DynamicInfoHeader =(props)=> {
   const history= useHistory()
   function dynamicDetail(){
-    history.push('/Dynamicdetail')
+    history.push('/Dynamicdetail/'+props.dynamicId)
   }
   function personalDynamic(){
     history.push('/personal/dynamic')
   }
-  // console.log(props)
+  // console.log(props.dynamic&&props.dynamic.dynamicText)
     return (
-      
-      <>
+      {props} && <>
       <DynamicInfoHeaderCss >
         <div className='dynamicleft' onClick={personalDynamic}>
         <div className='image'><img src={props.userinfoPhoto} alt="" /></div>
         <div className="describe">
           <span>{props.userName}</span>
-          <p >{props.dynamic.dynamicTime}</p>
+          <p>{props.dynamic&&props.dynamic.dynamicTime}</p>
         </div>
       </div>
-      <FollowBtn ></FollowBtn>
+      <FollowBtn></FollowBtn>
       <DynamicMore></DynamicMore>
     </DynamicInfoHeaderCss>
     <DynamicInfoCss onClick={dynamicDetail}>
         <div className='message'>
-          <p>{props.dynamic.dynamicText}</p>
+          <p>{props.dynamic&&props.dynamic.dynamicText}</p>
         </div>
         <div className='images'>
           <img src={info} alt="" />

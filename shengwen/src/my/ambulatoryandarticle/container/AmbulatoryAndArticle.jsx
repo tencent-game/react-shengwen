@@ -26,7 +26,7 @@ function AmbulatoryAndArticle(props) {
       setArticleList(article.data.data.rows)
       setAmbulatoryList(ambulatory.data.data.rows)
     })()
-  }, [])
+  }, [userId])
 
   return (
     ambulatoryList && articleList && (

@@ -13,9 +13,9 @@ const loadDateSync=list=>{
 
 const  loadDateAsync=()=>{
   return async(dispatch)=>{
-    let result= await get ({
-      url:'/api/article/findAll?limit=10&offset=0 '
-    })
+    let result= await get (
+      '/api/article/findAll?limit=20&offset=0 '
+    )
     //  console.log(result.data.data.rows);
      dispatch(loadDateSync(result.data.data.rows))
 }

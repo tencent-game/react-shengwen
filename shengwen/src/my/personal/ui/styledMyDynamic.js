@@ -71,8 +71,9 @@ const StyledMyPersonalDataMain = styled.div`
     border-radius: 50%;
     background-color: #508bff;
     img {
-     width: .23rem;
-     height: .3rem;
+     width: 100%;
+     height: 100%;
+     border-radius: 50%;
     }
     img[alt=woman] {
       position: absolute;

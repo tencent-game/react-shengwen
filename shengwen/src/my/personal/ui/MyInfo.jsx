@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {StyledPersonalDataInfo} from "./styledMyDynamic"
+import UserData from "@/my/main/container/context";
 
 function MyInfo(props) {
+  const userInfo = useContext(UserData);
   return (
-    <StyledPersonalDataInfo>
+    userInfo && <StyledPersonalDataInfo>
       <ul className="info-list">
         <li>
           <div>现居地</div>
@@ -18,15 +20,15 @@ function MyInfo(props) {
         </li>
         <li>
           <div>QQ</div>
-          <div>192882684</div>
+          <div>{userInfo.userInfo.userinfoQq}</div>
         </li>
         <li>
           <div>签名</div>
-          <div>daisy0609</div>
+          <div>{userInfo.userInfo.userinfoSignature}</div>
         </li>
         <li>
           <div>微博</div>
-          <div>daisy</div>
+          <div>{userInfo.userInfo.userinfoWeibo}</div>
         </li>
         <li style={{marginTop: ".2rem"}}>
           <div style={{color: "#333333"}}>关注领域</div>

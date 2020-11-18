@@ -10,7 +10,8 @@ import step from './踩.png'
 import nostep from './取消踩.png'
 import report from './举报.png'
 import message from './message.png'
-
+import dispatch from './dispatch.PNG'
+import share from './share.png'
 export {
   Fabulous,
   Fabulous_,
@@ -23,6 +24,8 @@ export {
   report,
   step,
   nostep,
-  message
+  message,
+  dispatch,
+  share
   
 }

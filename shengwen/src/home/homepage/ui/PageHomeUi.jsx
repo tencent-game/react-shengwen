@@ -9,7 +9,7 @@ const PageHomeUi =(props)=> {
     // console.log(props);
     const activities=memoize(list=>list.slice(0,5))
     const article1=memoize(list=>list.slice(0,2))
-    const article2=memoize(list=>list.slice(2,10))
+    const article2=memoize(list=>list.slice(2,20))
     return (
       <div>
         <Header list={props.list}></Header>

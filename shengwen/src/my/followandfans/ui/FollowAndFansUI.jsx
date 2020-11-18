@@ -88,6 +88,27 @@ function FollowAndFansUI(props) {
           <StyledMyPublicMain>
             <div className="my-title">共<i>5</i>个粉丝</div>
             <ul>
+              {
+                props.fansList.map((item) => {
+                  return (
+                    <div key={item.provinceId}>
+                      <StyledMyPublicMainItem
+                        width="0 0 1px 0"
+                      >
+                        <img src={item.userinfoPhoto || followImg} alt="avatar"/>
+                        <div>
+                          <h4>{item.userName}</h4>
+                          <span>{item.userinfoSignature}</span>
+                        </div>
+                        <button
+                          className={!follow ? "active" : ""}
+                          onClick={() => setFollow(!follow)}
+                        >{follow ? (<span><img src={addFollow} alt="add"/>关注</span>) : "已关注"}</button>
+                      </StyledMyPublicMainItem>
+                    </div>
+                  )
+                })
+              }
               <StyledMyPublicMainItem
                 width="0 0 1px 0"
               >

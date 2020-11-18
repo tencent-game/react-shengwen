@@ -30,7 +30,7 @@ const searchDynamicAsync =dType => {
     let res = await get(
      '/api/dynamic/content',
       {
-        limit:'5',
+        limit:'50',
         offset:'0',
         type:dType
       }

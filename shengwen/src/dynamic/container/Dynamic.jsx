@@ -47,7 +47,7 @@ class Dynamic extends PureComponent {
     
   // }
   componentDidUpdate(newProps,newState){
-    console.log(this.state.type,newState)
+    // console.log(this.state.type,newState)
     this.setState({type:(window.location.pathname==='/dynamic/hot' ? 1 :2)})
     if(this.state.type!==newState.type){
       this.props.loadData(newState.type)

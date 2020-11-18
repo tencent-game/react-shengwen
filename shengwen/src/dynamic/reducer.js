@@ -8,7 +8,7 @@ const defaultState = fromJS({
 })   
 
 const reducer = (state=defaultState,action)=>{
-  console.log(action)
+  // console.log(action)
   switch(action.type){
     case DYNAMIC_TIP :
       return state.set('dynamictip',action.checked)

@@ -249,6 +249,44 @@ const DynamicDetailCommentCss = styled.div `
   }
 `
 
+const DispatchDynamicInfoCss = styled.div `
+  width:100%;
+  padding:.1rem .15rem; 
+  .dispatch{
+    text-align:center;
+    textarea{
+      width:100%;
+      height:1rem;
+      outline:none;
+      resize:none;
+      border:none;
+    }
+  }
+`
+
+const ForwardDynamicCss = styled.div `
+  width:100%;
+  padding:.1rem .15rem;
+  height:1rem;
+  .forward{
+    width:100%;
+    height:100%;
+    background:#eee;
+    >span{
+      display:inline-block;
+      font-size:.14rem;
+      font-weight:700;
+      >p{
+        display:inline-block;
+        font-size:.12rem;
+        font-weight:normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+`
+
 export {
   DynamicHeaderCss,
   DynamicContentCss,
@@ -257,5 +295,7 @@ export {
   DynamicFooterCss,
   DynamicDetailFooterCss,
   AddCommentCss,
-  DynamicDetailCommentCss
+  DynamicDetailCommentCss,
+  DispatchDynamicInfoCss,
+  ForwardDynamicCss
 }

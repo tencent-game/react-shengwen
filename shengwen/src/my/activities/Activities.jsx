@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MyListPublicTitle from "@/component/MyListPublicTitle";
 import { StyledActivities } from "./styledActivities"
-import activitiesImg from "@/assets/img/my/activitiesImg.png"
+import defaultAvatar from "@/assets/img/my/miniAvatar.png"
 import eyes from "@/assets/img/my/eyes.png"
 import application from "@/assets/img/my/application.png"
 import { get } from "@/utils/http";
@@ -34,7 +34,7 @@ function Activities(props) {
               return (
                 <li key={item.activityId}>
                   <div className="activities-img">
-                    <img src={item.activityCover} alt="activitiesImg"/>
+                    <img src={item.activityCover || defaultAvatar} alt="activitiesImg"/>
                     <div className="top-left">
                       <img src={eyes} alt="eyes"/>
                       <span>{item.activityCount}</span>

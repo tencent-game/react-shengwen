@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom"
 import { StyledSubmitted } from "./styledSubmitted"
 import { Radio, ImagePicker, List, TextareaItem, Toast } from "antd-mobile"
 import MyListPublicTitle from "../../component/MyListPublicTitle";
@@ -7,6 +8,7 @@ import { get, post } from "@/utils/http"
 const RadioItem = Radio.RadioItem;
 
 function Submitted(props) {
+  const history = useHistory()
   const [files, setFiles] = useState([])
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
@@ -38,15 +40,20 @@ function Submitted(props) {
     }
     let formData = new FormData()
     formData.append("photo", files[0].file)
-    let result = await post("/api/article/upload", formData)
+    let result = await post({url: "/api/article/upload", data: formData})
     console.log(result)
-    let articleResult = await post("/api/article/contribution", JSON.stringify({
-      articleCover: result.data.url,
-      articleHeadline: title,
-      articleText: content,
-      domainId: value
-    }))
+    let articleResult = await post({
+      url: "/api/article/contribution", data: JSON.stringify({
+        articleCover: result.data.url,
+        articleHeadline: title,
+        articleText: content,
+        domainId: value
+      })
+    })
     console.log(articleResult)
+    if (articleResult.message === "投稿成功") {
+      history.push("/my")
+    }
   }
 
   const onChange = (files) => {

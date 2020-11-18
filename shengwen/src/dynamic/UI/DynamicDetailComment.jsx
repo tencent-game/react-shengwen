@@ -8,7 +8,8 @@ import {Fabulous,
   } from '@a/img/Dynamic/index.js'
 
 
-const DynamicDetailComment = () => {
+const DynamicDetailComment = (props) => {
+  console.log(props)
   let [bool1, setBool1] = useState(false)
   let [bool2, setBool2] = useState(false)
   function handleClick1(){
