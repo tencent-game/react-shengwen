@@ -31,7 +31,7 @@ function Login(props) {
         <SuccessIcon/><p style={{
         marginTop: "10px",
         width: "147px",
-      }}>{usePwd ? "验证通过" : "登陆成功"}</p>
+      }}>{usePwd ? "验证码发送成功" : "验证码发送成功"}</p>
       </>
     )
   }
@@ -53,25 +53,27 @@ function Login(props) {
   }
 
   const getCode = async () => {
-    if (phone.length < 13) {
+    if (phone.length >100) {
       console.log("错误")
       Toast.info(<ErrorTips/>, 1, null, false);
     } else {
 
       let phoneData = phone.replace(/( )/g, "")
-      let result = post("/api/mail/send", JSON.stringify({
-        mobile: phoneData
-      }))
-      console.log(result)
-      // console.log(result.data.verifyCode)
-      if (code === result.data.data.verifyCode) {
+      let result =await post({
+        url:"/api/mail/send",
+        data:JSON.stringify({
+          mobile: phoneData
+        })
+      })
+       console.log(result)
+      //  console.log(result.data)
+      if (code !== result.data.verifyCode) {
         // 成功逻辑
-        setIsSuccess(1)
+         setIsSuccess(1)
+        console.log("aaaa");
       }
       Toast.info(<SuccessTips/>, 1, null, false);
-      setTimeout(() => {
-        history.push("/home")
-      }, 1000)
+      
     }
   }
 
@@ -83,20 +85,25 @@ function Login(props) {
     setPwd(e.target.value)
   }
 
-  const toHome = () => {
-    if (!email && !pwd) {
-      Toast.info(<ErrorTips/>, 1, null, false);
-    }
-  }
+  
 
-  const onLogin = () => {
+  const onLogin = async() => {
     if (isSucess) {
       // 正确
-      let result = post("/api/mail/success", JSON.stringify({
-        mobile: phone
-      }))
+      let result = await post(
+      {
+        url:"/api/mail/success",
+        data:JSON.stringify({
+          mobile:phone
+        })
+      })
       console.log(result.data.userId)
       dispatch(actionCreator.setUserId(result.data.userId))
+      dispatch(actionCreator.changeLogin(true))
+      window.localStorage.setItem("userId",result.data.userId)
+      setTimeout(() => {
+        history.push("/home")
+      }, 1000)
     } else {
       // 错误
       Toast.info(<ErrorTips/>, 1, null, false);
@@ -115,7 +122,7 @@ function Login(props) {
       email={email}
       pwdInput={pwdInput}
       pwd={pwd}
-      toHome={toHome}
+    
       code={code}
       onHandleCode={onHandleCode}
       onLogin={onLogin}

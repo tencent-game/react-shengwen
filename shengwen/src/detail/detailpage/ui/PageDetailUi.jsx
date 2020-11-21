@@ -109,7 +109,7 @@ class PageDetailUi extends Component {
         articleId:result.data.article.articleId
       }
     })
-    // console.log(result);
+    console.log(result);
     this.setState({
       data:result.data,
       article:result.data.article,

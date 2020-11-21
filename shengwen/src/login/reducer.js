@@ -1,7 +1,7 @@
 import Immutable from "immutable"
 
 const defaultState = Immutable.Map({
-  isLogin: true,
+  isLogin: false,
   userId: null
 })
 

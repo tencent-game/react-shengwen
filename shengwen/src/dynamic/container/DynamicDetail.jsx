@@ -30,10 +30,10 @@ class DynamicDetail extends Component {
     const id = this.props.match.params.id
     console.log(id)
    const list1 =  (this.props&& this.props.list.filter((value)=>{
-      console.log(value.dynamicId)
+      // console.log(value.dynamicId)
       return (value.dynamicId==id)
     }))
-    console.log(list1)
+    // console.log(list1)
     this.setState({list:list1[0]})
   }
 

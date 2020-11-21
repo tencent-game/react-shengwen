@@ -40,7 +40,7 @@ function LoginUi(props) {
               type="number"
               placeholder="请输入验证码"
               clear
-              maxLength={4}
+              maxLength={6}
               defaultValue={props.code}
               onInput={props.onHandleCode}
             >

@@ -18,7 +18,7 @@ function Activities(props) {
     (async () => {
       let result = await get("/api/activity/myself")
       console.log(result.data.data.rows)
-      setActivities(result.data.data.rows)
+      setActivities(result.data.data.rows || [])
     })()
   }, [])
   return (

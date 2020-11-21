@@ -23,7 +23,7 @@ class App extends Component {
               )
             })
           }
-          <Redirect from="/" to="/home"/>
+          <Redirect from="/" to="/login"/>
         </Switch>
         {this.renderFooter()}
       </div>
